@@ -578,6 +578,64 @@
   .tier2-body .panel-section-title{ border-top:none; padding-top:0; }
   .tier2-body .chip-grid{ margin-bottom:0; }
 
+  .tier-body-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:21px;
+    margin:0 0 14px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--rule);
+  }
+
+  /* Tier 3 factor rows: barrier/facilitator badges + strategy chips */
+  .bf-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:6px;
+    white-space:nowrap;
+    flex:0 0 auto;
+  }
+  .bf-badge.bf-barrier{ background:#F9DEDC; color:#8A2E22; }
+  .bf-badge.bf-facilitator{ background:#DCEFE0; color:#1C6B35; }
+  .bf-badge.bf-both{ background:#EDE3F7; color:#5B3A8E; }
+
+  .factor-row{ display:flex; flex-direction:column; gap:8px; }
+  .factor-row-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .factor-text{ font-size:12.5px; line-height:1.45; }
+  .strategy-chip-row{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .strategy-chip-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    margin-right:2px;
+  }
+  .strategy-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    font-weight:600;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    padding:2px 7px;
+    color:var(--ink-soft);
+  }
+
   /* ---------- FOOTER ---------- */
   footer{
     margin-top:72px;
@@ -640,7 +698,7 @@
     <nav class="tier-tabs" role="tablist" aria-label="Model tier">
       <button class="tab active" role="tab" aria-selected="true" id="tabTier1">Tier 1 — Overview</button>
       <button class="tab" role="tab" aria-selected="false" id="tabTier2">Tier 2 — Details</button>
-      <button class="tab" role="tab" aria-selected="false" disabled>Tier 3 — Full detail <span class="soon">next</span></button>
+      <button class="tab" role="tab" aria-selected="false" id="tabTier3">Tier 3 — Full detail</button>
     </nav>
   </header>
 
@@ -760,6 +818,10 @@
 
   <div class="tier2-frame" id="tier2Frame">
     <div class="tier2-sections" id="tier2Sections"></div>
+  </div>
+
+  <div class="tier2-frame" id="tier3Frame">
+    <div class="tier2-sections" id="tier3Sections"></div>
   </div>
 
 </div>
@@ -891,6 +953,163 @@ const DATA = {
   }
 };
 
+const TIER3_DATA = {
+  intervention: DATA.intervention,
+  factors: {
+    accent: 'var(--factors-accent)',
+    title: 'Every factor, coded and linked',
+    tagline: 'Barrier or facilitator, and which strategies were used to address it',
+    summary: 'Every factor below is coded as a <strong>barrier</strong>, <strong>facilitator</strong>, or <strong>both</strong>, based on NEST360\'s experience, and linked to the strategy numbers used to address it (matching the numbering in Strategies, section 03). Sphere-of-influence coding (whether a factor sat within NEST360\'s control, within its influence but outside its control, or outside both) is still unresolved for several factors in the source material and isn\'t shown here yet — flagged for your input.',
+    sectionTitle: 'The 12 domains — tap to expand',
+    accordionRich: [
+      { name:'Leadership & Governance', factors:[
+        {text:'Absence of national plans and policies for SSNC', type:'Barrier', strategies:[1,4]},
+        {text:'Inconsistent facility level guidelines and protocols for SSNC', type:'Barrier', strategies:[1,4,13]},
+        {text:'Engagement with MOH', type:'Facilitator', strategies:[1,6]},
+        {text:'Engagement with facility-level leadership', type:'Facilitator', strategies:[1,6,13]},
+        {text:'Inadequate facility-level champions', type:'Barrier', strategies:[2,5,6,7]},
+        {text:'Global and national focus on SSNC and NMR', type:'Facilitator', strategies:[1]},
+        {text:'Poor integration of SSNC into current policy & funding', type:'Barrier', strategies:[1,6]}
+      ]},
+      { name:'Data Systems', factors:[
+        {text:'Fragmented neonatal health forms, registers, and data systems at facility level', type:'Barrier', strategies:[3]},
+        {text:'No SSNC sensitive indicators at facility and national levels', type:'Barrier', strategies:[3]},
+        {text:'Poor data access and utilization', type:'Barrier', strategies:[1,2,3]},
+        {text:'Poor data quality', type:'Barrier', strategies:[2,5]},
+        {text:'Poor data management and governance', type:'Barrier', strategies:[1,3]},
+        {text:'Lack of dedicated neonatal data clerk', type:'Barrier', strategies:[1,12]}
+      ]},
+      { name:'Human Resources', factors:[
+        {text:'Poor health worker attitudes/interest in SSNC', type:'Barrier', strategies:[1,5,6,7]},
+        {text:'Poor health workers competence/confidence in SSNC', type:'Barrier', strategies:[1,5,6,7]},
+        {text:'Inconsistent preservice training in SSNC', type:'Barrier', strategies:[1]},
+        {text:'Training available for SSNC', type:'Both', strategies:[5]},
+        {text:'Inconsistent BMET training', type:'Barrier', strategies:[5]},
+        {text:'Healthcare provider awareness/knowledge', type:'Both', strategies:[2,4,5,6]},
+        {text:'Supporting staff not following IPC guidelines (janitors, guards, support runners)', type:'Barrier', strategies:[2,5,6]},
+        {text:'BMETs unavailable', type:'Barrier', strategies:[3,5]},
+        {text:'Inadequate number of health workers', type:'Barrier', strategies:[3,5]},
+        {text:'Rotating staff and staff turnover', type:'Barrier', strategies:[1]}
+      ]},
+      { name:'Quality Improvement', factors:[
+        {text:'Inconsistent QI knowledge at national, regional, and facility levels', type:'Barrier', strategies:[1,2,4,5]},
+        {text:'Absent or inactive hospital and ward improvement teams', type:'Barrier', strategies:[1,2,4,5,6]},
+        {text:'Inconsistent QI training', type:'Barrier', strategies:[1,4]},
+        {text:'Inconsistent availability of QI documentation tools', type:'Barrier', strategies:[1,2,3]},
+        {text:'Gaps in documentation completeness', type:'Barrier', strategies:[1,2,3]},
+        {text:'Absent or inconsistent auditing of care quality (e.g. MPDSA)', type:'Barrier', strategies:[2,3,4,5]},
+        {text:'National/regional QI structures showed variability in SSNC-focused guidance', type:'Barrier', strategies:[1,3]}
+      ]},
+      { name:'Equipment & Commodities', factors:[
+        {text:'Unavailability of functional equipment and supplies at facilities', type:'Barrier', strategies:[5,8,9,10]},
+        {text:'No strong procurement system', type:'Barrier', strategies:[10]},
+        {text:'Technology not fit for purpose', type:'Barrier', strategies:[9]},
+        {text:'Skills labs/skills stations unavailable or underused', type:'Barrier', strategies:[5,6,7]},
+        {text:'Toolkits rarely available', type:'Barrier', strategies:[]},
+        {text:'Stockouts', type:'Barrier', strategies:[]},
+        {text:'Expensive technology', type:'Barrier', strategies:[8,10,12]},
+        {text:'Power outages', type:'Barrier', strategies:[]}
+      ]},
+      { name:'Referral Process', factors:[
+        {text:'Poor adherence to referral guidelines', type:'Barrier', strategies:[2,5,6]},
+        {text:'Poor pre- and during-referral communication and consultations', type:'Barrier', strategies:[1,11]},
+        {text:'Poor referral feedback mechanisms', type:'Barrier', strategies:[1,11]},
+        {text:'Lack of appropriate transportation for referrals', type:'Barrier', strategies:[1]}
+      ]},
+      { name:'Linkage to Maternal Care', factors:[
+        {text:'Policies that do not facilitate/enable zero separation', type:'Barrier', strategies:[1,11]},
+        {text:'Siloed antenatal, delivery, postnatal, and SSNC', type:'Barrier', strategies:[1,11]},
+        {text:'Women leaving the hospital early due to competing demands at home', type:'Barrier', strategies:[1,4,11]}
+      ]},
+      { name:'Family Centered Care', factors:[
+        {text:'Lack of training and policies to support parent involvement', type:'Barrier', strategies:[11]},
+        {text:'Poor education/counseling for caregivers', type:'Barrier', strategies:[4,6,11]},
+        {text:'Family members lack awareness in handwashing and IPC', type:'Barrier', strategies:[4,5,11]},
+        {text:'Family interest in being involved in the care process', type:'Both', strategies:[4,11]},
+        {text:'Lack of family involvement in decision making process', type:'Barrier', strategies:[6,7,11]},
+        {text:'Unavailability of bereavement care', type:'Barrier', strategies:[1,4]}
+      ]},
+      { name:'Post-Discharge Follow-Up', factors:[
+        {text:'No/poor discharge follow up and early child development', type:'Barrier', strategies:[1]},
+        {text:'No/poor follow up feedback mechanisms', type:'Barrier', strategies:[1,3]},
+        {text:'No/poor community health worker engagement', type:'Barrier', strategies:[5,6,7]},
+        {text:'Community based support and continuous care', type:'Both', strategies:[1,4,11]}
+      ]},
+      { name:'Infrastructure', factors:[
+        {text:'No standard guide for space for Level 2 SSNC', type:'Barrier', strategies:[1,4,13]},
+        {text:'Inadequate space for SSNC incl. KMC/immediate KMC', type:'Barrier', strategies:[1,3,12,13]},
+        {text:'Poorly designed space — poor flow, poor IPC practices', type:'Barrier', strategies:[1,12,13]},
+        {text:'Poor flow of care from labor ward to NBU', type:'Barrier', strategies:[1,13]},
+        {text:'Unreliable electric power and poor backup power sources', type:'Barrier', strategies:[1,12,13]},
+        {text:'Poor medical gas and vacuum systems', type:'Barrier', strategies:[1,8,13]},
+        {text:'Insufficient WASH facilities', type:'Barrier', strategies:[1,12,13]},
+        {text:'Blood cultures unavailable', type:'Barrier', strategies:[1,8,9,12]}
+      ]},
+      { name:'Infection Prevention & Control', factors:[
+        {text:'Healthcare provider awareness/knowledge', type:'Both', strategies:[2,4,5,6]},
+        {text:'Supporting staff not following IPC guidelines (janitors, guards, support runners)', type:'Barrier', strategies:[2,5,6]},
+        {text:'Family members lack awareness in handwashing and IPC', type:'Barrier', strategies:[4,5,11]},
+        {text:'Blood cultures are unavailable', type:'Barrier', strategies:[1,8,9,12]}
+      ], note:'Listed as its own domain in the source factors table; the Tier 2 slide deck folds these same items into Human Resources, Family Centered Care, and Infrastructure instead — flagged for your call.' },
+      { name:'Financing', factors:[
+        {text:'Donor funding', type:'Facilitator', strategies:[6,12]},
+        {text:'Government financing', type:'Both', strategies:[12]},
+        {text:'Long-term funding', type:'Both', strategies:[6,12]},
+        {text:'No budget allocation to SSNC in national/facility budgets', type:'Barrier', strategies:[1,12]},
+        {text:'Poverty', type:'Barrier', strategies:[1]},
+        {text:'Little insurance coverage', type:'Barrier', strategies:[]},
+        {text:'Poor exempted service reimbursement system', type:'Barrier', strategies:[]}
+      ]}
+    ],
+    footnote: '<strong>Domain count:</strong> shown here as 12 separate domains (matching the factors table). The Tier 1 wheel icon groups these into 11 — flagged as an open discrepancy.'
+  },
+  strategies: {
+    accent: 'var(--strategies-accent)',
+    title: 'Every discrete activity, by strategy',
+    tagline: 'What NEST360 actually did under each of the 13 strategies',
+    summary: 'The 13 strategies from Tier 2, now broken open to show every discrete activity carried out under each one — still organized into the same three buckets.',
+    nestedGroups: [
+      { icon:'tech', name:'Life saving technology', items:[
+        { name:'8 · Appropriate & functional SSNC medical devices', activities:['Providing devices to support hospitals','Providing consumables and spare parts','Providing toolkits for biomeds','Consumables forecasting tool for facility level','Development of novel SSNC devices (Celsi warmer, monitor, biliDx, Pumani)','Development of costing tool'] },
+        { name:'9 · Identify & qualify appropriate technology', activities:['Development/refinement of Target Product Profiles (TPPs)','Development/refinement of innovations landscape and newborn/maternal tech landscape','NEST360 engagement/collaboration with UNICEF/WHO','Development of qualification/usability testing process','Formation of NEST360-qualified technologies for SSNC','Establishing budgets for tech management'] },
+        { name:'10 · Hatch Technologies (device distribution)', activities:['Ensure consistent supply','Financing mechanism','Support for maintenance training'] },
+        { name:'13 · Tailoring local infrastructure', activities:['Developing floor plans','Small start-up grants to redesign flow/floor space','Infrastructure fund (e.g. backup power supply, running water)'] }
+      ]},
+      { icon:'book', name:'Education ecosystem', items:[
+        { name:'4 · Design & distribute clinical and biomedical educational materials', activities:['Job aids','Training manuals','Guidelines (decommissioning, workshop, SSNC, referral management, follow-up, installation trainings)','Training videos','GIC','Case scenarios','WASH/HH/IPC educational resources'] },
+        { name:'5 · Training & mentorship', activities:['Virtual data review meetings','Program-wide data review meetings (e.g. KIT)','Data-driven country implementation review meetings','QI and data interpretation trainings','Clinical care training (nationally approved SSNC courses)','BMET training (nationally approved)','Facility-level mentorship (clinical coaching)','Virtual/webinar CM/NES','Pre-service training (integrated SSNC content in clinical/BMET curricula + skills labs)','In-service training (BMETs and clinicians)','Off-site, pre-installation, on-site low-dose-high-frequency, and on-site induction training','Virtual training','Peer-to-peer mentorship process','Communities of learning via WhatsApp','PM/RM guidelines, decommissioning guidelines'] },
+        { name:'6 · Interprofessional collaboration & teamwork', activities:['Fostering collaboration between clinicians, biomeds, data officers, and hospital leadership at facility level','Cross-team meetings at program level (KMC working groups, KITs, Pause/Reflect/Act)','Collaboration with MOH technical working groups (QI, BMET, newborn)','Engagement of BMETs and labor unit in facility-level QI','Multidisciplinary training across cadres','SSNC Learning Toolkit (global)','National pediatric associations (country)','Inclusion of BMETs in communities of practice (program)'] },
+        { name:'7 · Motivate staff and foster collaboration between cadres', activities:['Identifying and training SSNC champions','Fostering collaboration between BMETs, clinicians (labor and newborn), and leadership'] }
+      ]},
+      { icon:'data', name:'Data-driven action', items:[
+        { name:'1 · Engage policy makers & leadership', activities:['Obtaining buy-in for improving SSNC','Advocate for funding/additional investment','Advocate for additional staff support and end mandatory staff rotations','Advocate for official recognition of neonatal nursing as a specialty','Advocate for strengthened BMET workshops','Development of standard, costed neonatal unit floor plans','Advocate for hiring a dedicated neonatal data clerk','National TV/newspaper/announcements (public communication)','Policy briefs','Strengthen SSNC policies/guidelines/national targets (SDG, ENGAP, national commitments)','Identify/engage local supply chains & MOH medical supplies division','Inclusion of ACS in national supply catalogues','Engage global SSNC players (Beginnings Fund, mMamas, UNICEF, WHO, VAN)','Collaboration with regulatory agencies'] },
+        { name:'2 · Quality improvement (QI) activities', activities:['Coordinate national/regional leadership to incorporate SSNC into existing QI structures','Developed training materials','Integration of clinical & QI mentorship/training','Development of standardized QI documentation/tools','Development & dissemination of the change package','Performed QI training','Developed guide for setting up QIST/WITs where absent','QI coaching visits (in-person/virtual) where inactive','Communities of learning via WhatsApp','QoC tools','Recognition of positive staff performance','Support standardized clinical audit processes at facility level','Cross-country QI meetings','Program/national QI capacity building within leadership','Foster QI projects with active program-team feedback','Incorporate improvement-research tools/methods to accelerate spread','Communities of practice'] },
+        { name:'3 · Develop data systems & feedback loops', activities:['Service readiness checklist','Health facility assessment','NID','Context tracker','Hadli','NEST-IT','Patient capture tools (admission forms, registers, etc.)','Developed data-use guidelines','Support integration of standard neonatal variables into national HMIS','Utilize data clerks','Identify/use SSNC-relevant indicators (facility, regional, national, program)','M&E reviews to inform programmatic decisions'] },
+        { name:'11 · Engage family members in care & follow-up', activities:['Training on providing parents with counseling','Facilitating an enabling environment (culture, space, equipment)','Developed educational resources for parents (NICU orientation video, IPC, KMC, discharge, breastfeeding education)','Encourage zero separation between mother and newborn'] },
+        { name:'12 · Ensure adequate funding', activities:['Supporting country teams in funding grants','Identifying additional funding mechanisms (global/national)','Country-level costing and investment cases','Encouraging facilities/MOHs to include SSNC/BMET budget lines (infrastructure, HR, running costs, health insurance)'] }
+      ]}
+    ],
+    footnote: '<strong>Flagged for review:</strong> the grouping above is a first-pass mapping of the 13 strategies into these three buckets — the source material doesn\'t spell this out explicitly, so please sanity-check it.'
+  },
+  mechanisms: {
+    accent: 'var(--mechanisms-accent)',
+    title: 'Every mechanism statement, in full',
+    tagline: 'The causal logic behind each of the 13 strategies',
+    summary: 'The same 13 mechanism statements from Tier 2. A full Tier 3 would also break each one into how it plays out at the global, country, and hospital level — that per-level narrative exists only as an unfilled template in the source material, not actual written content, so it isn\'t shown here yet.',
+    groups: DATA.mechanisms.groups,
+    footnote: '<strong>Still needed for true Tier 3 depth:</strong> the source template reads — <em>"At the global/program level [strategy] entails XYZ, NEST performed these activities because XYZ can lead to 123"</em> — repeated for country and hospital level, for each of the 13 strategies. None of the 13 have this written yet.'
+  },
+  outcomes: {
+    accent: 'var(--outcomes-accent)',
+    title: 'Every outcome example tracked',
+    tagline: 'The indicators used to assess how well SSNC was implemented into practice',
+    summary: 'The same domain-by-domain outcomes from Tier 2. A full Tier 3 would add a definition, rationale, measurement frequency, and numerator/denominator for each outcome — that detail lives in a separate outcomes spreadsheet that hasn\'t been shared yet.',
+    groups: DATA.outcomes.groups,
+    footnote: '<strong>Source note:</strong> the authoritative outcomes list (definitions, numerators/denominators, measurement frequency) lives in a separate spreadsheet not yet shared — this section will be completed once that\'s available.'
+  },
+  impact: DATA.impact
+};
+
 const flow = document.getElementById('flow');
 const overlay = document.getElementById('overlay');
 const panel = document.getElementById('panel');
@@ -918,12 +1137,49 @@ function buildDetailBody(d){
     html += `</div>`;
   }
 
+  if(d.accordionRich){
+    html += `<p class="panel-section-title">${d.sectionTitle}</p><div class="accordion-list">`;
+    d.accordionRich.forEach(a => {
+      html += `<details class="accordion-item"><summary style="color:${d.accent}">${a.name}</summary><ul>`;
+      a.factors.forEach(f => {
+        const typeClass = f.type === 'Barrier' ? 'bf-barrier' : (f.type === 'Facilitator' ? 'bf-facilitator' : 'bf-both');
+        const chips = f.strategies && f.strategies.length
+          ? `<span class="strategy-chip-label">Strategies:</span>` + f.strategies.map(s => `<span class="strategy-chip">S${s}</span>`).join('')
+          : `<span class="strategy-chip-label">No strategy linked in source</span>`;
+        html += `<li class="factor-row">
+          <div class="factor-row-top">
+            <span class="factor-text">${f.text}</span>
+            <span class="bf-badge ${typeClass}">${f.type}</span>
+          </div>
+          <div class="strategy-chip-row">${chips}</div>
+        </li>`;
+      });
+      html += `</ul>`;
+      if(a.note){ html += `<p class="accordion-note">${a.note}</p>`; }
+      html += `</details>`;
+    });
+    html += `</div>`;
+  }
+
   if(d.groups){
     html += `<p class="panel-section-title">Breakdown</p>`;
     d.groups.forEach(g => {
       html += `<div class="group-block"><h3 style="color:${d.accent}">${ICONS[g.icon] || ''} ${g.name}</h3><ul>`;
       g.items.forEach(it => html += `<li>${it}</li>`);
       html += `</ul></div>`;
+    });
+  }
+
+  if(d.nestedGroups){
+    html += `<p class="panel-section-title">Breakdown</p>`;
+    d.nestedGroups.forEach(g => {
+      html += `<div class="group-block"><h3 style="color:${d.accent}">${ICONS[g.icon] || ''} ${g.name}</h3><div class="accordion-list">`;
+      g.items.forEach(s => {
+        html += `<details class="accordion-item"><summary style="color:${d.accent}">${s.name}</summary><ul>`;
+        s.activities.forEach(act => html += `<li>${act}</li>`);
+        html += `</ul></details>`;
+      });
+      html += `</div></div>`;
     });
   }
 
@@ -1000,7 +1256,7 @@ window.addEventListener('load', layoutInterventionBanner);
 window.addEventListener('resize', layoutInterventionBanner);
 layoutInterventionBanner();
 
-/* ---------- TIER 2 VIEW ---------- */
+/* ---------- TIER 2 / TIER 3 VIEWS ---------- */
 const TIER2_ORDER = ['factors', 'intervention', 'strategies', 'mechanisms', 'outcomes', 'impact'];
 const NODE_LABELS = {
   factors: 'Implementation Factors',
@@ -1018,12 +1274,12 @@ function tier2IconHTML(key){
   return iconEl ? iconEl.outerHTML : '';
 }
 
-function renderTier2(){
-  const container = document.getElementById('tier2Sections');
+function renderTierSections(containerId, dataObj){
+  const container = document.getElementById(containerId);
   if(container.dataset.rendered === 'true') return;
   let html = '';
   TIER2_ORDER.forEach((key, i) => {
-    const d = DATA[key];
+    const d = dataObj[key];
     html += `
       <div class="tier2-section">
         <div class="tier2-head tier2-head-${key}">
@@ -1032,7 +1288,10 @@ function renderTier2(){
           <h2>${d.title}</h2>
           <p class="tier2-tagline">${d.tagline}</p>
         </div>
-        <div class="tier2-body">${buildDetailBody(d)}</div>
+        <div class="tier2-body">
+          <p class="tier-body-title" style="color:${d.accent}">${NODE_LABELS[key]}</p>
+          ${buildDetailBody(d)}
+        </div>
       </div>
     `;
   });
@@ -1042,31 +1301,48 @@ function renderTier2(){
 
 const tabTier1 = document.getElementById('tabTier1');
 const tabTier2 = document.getElementById('tabTier2');
+const tabTier3 = document.getElementById('tabTier3');
 const flowFrame = document.getElementById('flowFrame');
 const tier2Frame = document.getElementById('tier2Frame');
+const tier3Frame = document.getElementById('tier3Frame');
+
+function deactivateAllTabs(){
+  [tabTier1, tabTier2, tabTier3].forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected','false');
+  });
+  flowFrame.classList.add('hidden');
+  tier2Frame.classList.remove('visible');
+  tier3Frame.classList.remove('visible');
+}
 
 function showTier1(){
+  deactivateAllTabs();
   flowFrame.classList.remove('hidden');
-  tier2Frame.classList.remove('visible');
   tabTier1.classList.add('active');
   tabTier1.setAttribute('aria-selected','true');
-  tabTier2.classList.remove('active');
-  tabTier2.setAttribute('aria-selected','false');
   layoutInterventionBanner();
 }
 
 function showTier2(){
-  renderTier2();
-  flowFrame.classList.add('hidden');
+  renderTierSections('tier2Sections', DATA);
+  deactivateAllTabs();
   tier2Frame.classList.add('visible');
   tabTier2.classList.add('active');
   tabTier2.setAttribute('aria-selected','true');
-  tabTier1.classList.remove('active');
-  tabTier1.setAttribute('aria-selected','false');
+}
+
+function showTier3(){
+  renderTierSections('tier3Sections', TIER3_DATA);
+  deactivateAllTabs();
+  tier3Frame.classList.add('visible');
+  tabTier3.classList.add('active');
+  tabTier3.setAttribute('aria-selected','true');
 }
 
 tabTier1.addEventListener('click', showTier1);
 tabTier2.addEventListener('click', showTier2);
+tabTier3.addEventListener('click', showTier3);
 </script>
 
 </body>
