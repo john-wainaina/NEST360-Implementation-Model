@@ -510,6 +510,74 @@
   }
   .panel-footnote strong{ color:var(--ink); }
 
+  /* ---------- TIER 2 VIEW ---------- */
+  .tier2-frame{ display:none; margin-top:56px; }
+  .tier2-frame.visible{ display:block; }
+  .flow-frame.hidden{ display:none; }
+
+  .tier2-sections{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .tier2-section{
+    display:flex;
+    align-items:stretch;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    border:1px solid rgba(21,34,41,0.06);
+  }
+  .tier2-head{
+    flex:0 0 240px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:10px;
+    padding:28px 20px;
+  }
+  .tier2-head-factors{ background:var(--factors-bg); color:var(--factors-ink); }
+  .tier2-head-intervention{ background:var(--intervention-bg); color:var(--intervention-text); }
+  .tier2-head-strategies{ background:var(--strategies-bg); color:var(--strategies-ink); }
+  .tier2-head-mechanisms{ background:var(--mechanisms-bg); color:var(--mechanisms-ink); }
+  .tier2-head-outcomes{ background:var(--outcomes-bg); color:var(--outcomes-ink); }
+  .tier2-head-impact{ background:var(--impact-bg); color:var(--impact-ink); }
+
+  .tier2-icon{ width:54px; height:54px; display:flex; align-items:center; justify-content:center; }
+  .tier2-icon svg, .tier2-icon img{ width:54px; height:54px; object-fit:contain; }
+  .tier2-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:19px;
+    line-height:1.2;
+    margin:0;
+  }
+  .tier2-tagline{
+    font-size:12px;
+    line-height:1.4;
+    opacity:0.85;
+    margin:0;
+  }
+  .tier2-index{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    opacity:0.65;
+  }
+
+  .tier2-body{
+    flex:1;
+    background:var(--paper-raised);
+    padding:26px 30px;
+    min-width:0;
+  }
+  .tier2-body .panel-summary{ margin-bottom:18px; }
+  .tier2-body .panel-section-title{ border-top:none; padding-top:0; }
+  .tier2-body .chip-grid{ margin-bottom:0; }
+
   /* ---------- FOOTER ---------- */
   footer{
     margin-top:72px;
@@ -544,6 +612,10 @@
     }
     .intervention-drop{ display:none; }
     .banner-drop-connector{ display:flex; width:auto; height:34px; }
+
+    .tier2-section{ flex-direction:column; }
+    .tier2-head{ flex:0 0 auto; padding:22px 20px; }
+    .tier2-body{ padding:22px 20px; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -566,13 +638,13 @@
     <p class="hero-sub">How NEST360 turned newborn-survival evidence into practice — from the barriers on the ground to a measurable drop in newborn mortality. Click any stage below to go deeper.</p>
 
     <nav class="tier-tabs" role="tablist" aria-label="Model tier">
-      <button class="tab active" role="tab" aria-selected="true">Tier 1 — Overview</button>
-      <button class="tab" role="tab" aria-selected="false" disabled>Tier 2 — Details <span class="soon">next</span></button>
+      <button class="tab active" role="tab" aria-selected="true" id="tabTier1">Tier 1 — Overview</button>
+      <button class="tab" role="tab" aria-selected="false" id="tabTier2">Tier 2 — Details</button>
       <button class="tab" role="tab" aria-selected="false" disabled>Tier 3 — Full detail <span class="soon">next</span></button>
     </nav>
   </header>
 
-  <div class="flow-frame">
+  <div class="flow-frame" id="flowFrame">
     <div class="flow" id="flow">
 
       <!-- FACTORS -->
@@ -686,7 +758,10 @@
     </div>
   </div>
 
-  <footer>Draft — Stage 1 · Tier 1 shell · content pending your review</footer>
+  <div class="tier2-frame" id="tier2Frame">
+    <div class="tier2-sections" id="tier2Sections"></div>
+  </div>
+
 </div>
 
 <div class="panel-overlay" id="overlay"></div>
@@ -708,6 +783,16 @@ const ICONS = {
 };
 
 const DATA = {
+  intervention: {
+    accent: 'var(--intervention-bg)',
+    eyebrow: 'Intervention',
+    title: 'The practice NEST360 set out to embed',
+    tagline: 'The "thing" we want to get into our communities',
+    summary: 'Before NEST360 could improve small and sick newborn care, it first had to define exactly what "the intervention" was — a single, fixed target that every strategy, mechanism, and outcome in this model is built around. For NEST360, that target is evidence-based small and sick newborn care (SSNC) delivered in Level 2+ neonatal units: the level of care for babies who need more support than routine newborn care but not full neonatal intensive care.',
+    sectionTitle: 'What this covers',
+    chips: ['Level 2+ neonatal units', 'Evidence-based clinical care', 'The fixed target for every strategy below'],
+    footnote: ''
+  },
   factors: {
     accent: 'var(--factors-accent)',
     eyebrow: 'Implementation Factors — Tier 2',
@@ -778,12 +863,19 @@ const DATA = {
     eyebrow: 'Outcomes — Tier 2',
     title: 'What NEST360 measured to know it was working',
     tagline: 'The indicators used to assess how well SSNC was implemented into practice',
-    summary: 'Outcomes are tracked at three levels — global, national/country, and hospital. The source material has worked examples for a few domains so far; the rest are placeholders the team hasn\'t filled in yet (shown here rather than hidden, so nothing looks lost).',
+    summary: 'Outcomes are tracked at three levels — global, national/country, and hospital.',
     groups: [
       { icon:'globe', name:'Leadership & Governance', items:['National-level: SSNC and biomed allocations in annual budget','Global-level: not yet specified in source','Hospital-level: not yet specified in source'] },
       { icon:'data', name:'Data Systems', items:['Global-level: # of MOH NEST-IT logins','National-level: % of countries logging into NEST-IT monthly','Hospital-level: Data entry delays and data validity'] },
       { icon:'pin', name:'Human Resources', items:['Global-level: # of clinicians who have received NEST SSNC training','National-level: % of hospitals with SSNC-trained staff','Hospital-level: Trained biomed at the hospital (Y/N)'] },
-      { icon:'hospital', name:'Other domains (Linkage to Maternal Care, Family Centered Care, Post-Discharge Follow-Up, Quality Improvement, Equipment & Commodities, Referral Process, Infrastructure, Financing)', items:['No worked examples in the source yet at any of the three levels — flagged as an open item.'] }
+      { icon:'domain', name:'Linkage to Maternal Care', items:[] },
+      { icon:'domain', name:'Family Centered Care', items:[] },
+      { icon:'domain', name:'Post-Discharge Follow-Up', items:[] },
+      { icon:'domain', name:'Quality Improvement', items:[] },
+      { icon:'domain', name:'Equipment & Commodities', items:[] },
+      { icon:'domain', name:'Referral Process', items:[] },
+      { icon:'domain', name:'Infrastructure', items:[] },
+      { icon:'domain', name:'Financing', items:[] }
     ],
     footnote: '<strong>Source note:</strong> the authoritative outcomes list (definitions, numerators/denominators, measurement frequency) lives in a separate spreadsheet not yet shared — Tier 3 will be completed once that\'s available.'
   },
@@ -805,14 +897,8 @@ const panel = document.getElementById('panel');
 const panelContent = document.getElementById('panelContent');
 const panelClose = document.getElementById('panelClose');
 
-function renderPanel(key){
-  const d = DATA[key];
-  let html = `
-    <p class="panel-eyebrow" style="color:${d.accent}">${d.eyebrow}</p>
-    <h2>${d.title}</h2>
-    <p class="panel-tagline">${d.tagline}</p>
-    <p class="panel-summary">${d.summary}</p>
-  `;
+function buildDetailBody(d){
+  let html = `<p class="panel-summary">${d.summary}</p>`;
 
   if(d.chips){
     html += `<p class="panel-section-title">${d.sectionTitle}</p><div class="chip-grid">`;
@@ -845,6 +931,17 @@ function renderPanel(key){
     html += `<div class="panel-footnote">${d.footnote}</div>`;
   }
 
+  return html;
+}
+
+function renderPanel(key){
+  const d = DATA[key];
+  let html = `
+    <p class="panel-eyebrow" style="color:${d.accent}">${d.eyebrow}</p>
+    <h2>${d.title}</h2>
+    <p class="panel-tagline">${d.tagline}</p>
+  `;
+  html += buildDetailBody(d);
   panelContent.innerHTML = html;
 }
 
@@ -902,6 +999,74 @@ function layoutInterventionBanner(){
 window.addEventListener('load', layoutInterventionBanner);
 window.addEventListener('resize', layoutInterventionBanner);
 layoutInterventionBanner();
+
+/* ---------- TIER 2 VIEW ---------- */
+const TIER2_ORDER = ['factors', 'intervention', 'strategies', 'mechanisms', 'outcomes', 'impact'];
+const NODE_LABELS = {
+  factors: 'Implementation Factors',
+  intervention: 'Intervention',
+  strategies: 'Strategies',
+  mechanisms: 'Mechanisms',
+  outcomes: 'Outcomes',
+  impact: 'Impact'
+};
+const INTERVENTION_ICON_SVG = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="2.2" fill="currentColor" stroke="none"/></svg>';
+
+function tier2IconHTML(key){
+  if(key === 'intervention') return INTERVENTION_ICON_SVG;
+  const iconEl = document.querySelector(`.node[data-key="${key}"] .node-icon`);
+  return iconEl ? iconEl.outerHTML : '';
+}
+
+function renderTier2(){
+  const container = document.getElementById('tier2Sections');
+  if(container.dataset.rendered === 'true') return;
+  let html = '';
+  TIER2_ORDER.forEach((key, i) => {
+    const d = DATA[key];
+    html += `
+      <div class="tier2-section">
+        <div class="tier2-head tier2-head-${key}">
+          <span class="tier2-index">${String(i+1).padStart(2,'0')} · ${NODE_LABELS[key]}</span>
+          <div class="tier2-icon">${tier2IconHTML(key)}</div>
+          <h2>${d.title}</h2>
+          <p class="tier2-tagline">${d.tagline}</p>
+        </div>
+        <div class="tier2-body">${buildDetailBody(d)}</div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+  container.dataset.rendered = 'true';
+}
+
+const tabTier1 = document.getElementById('tabTier1');
+const tabTier2 = document.getElementById('tabTier2');
+const flowFrame = document.getElementById('flowFrame');
+const tier2Frame = document.getElementById('tier2Frame');
+
+function showTier1(){
+  flowFrame.classList.remove('hidden');
+  tier2Frame.classList.remove('visible');
+  tabTier1.classList.add('active');
+  tabTier1.setAttribute('aria-selected','true');
+  tabTier2.classList.remove('active');
+  tabTier2.setAttribute('aria-selected','false');
+  layoutInterventionBanner();
+}
+
+function showTier2(){
+  renderTier2();
+  flowFrame.classList.add('hidden');
+  tier2Frame.classList.add('visible');
+  tabTier2.classList.add('active');
+  tabTier2.setAttribute('aria-selected','true');
+  tabTier1.classList.remove('active');
+  tabTier1.setAttribute('aria-selected','false');
+}
+
+tabTier1.addEventListener('click', showTier1);
+tabTier2.addEventListener('click', showTier2);
 </script>
 
 </body>
