@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NEST360 Implementation Model</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAflBMVEUhHyD74XctKCglIyMlIyPu8PGLy/zzYm1dX12io6Rv+8uUX0xdlpypllVdUzdj3rA4WVLJs2JRNTJVdI5dAAByp9NJkXaBu+kyQzwymnVqPUFfX1//94EzOUKQO0IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC3A3yZAAAAIHRSTlP3/hSgXv///v7///39/fz+/P39/QL9/f7++/4C//37AOKsNzgAAASNSURBVHjajVeJduo4DFVsU5zEWeFBX9uZ/P9fjjbHMgGmOqeFEOtay5Usw8bi5GO7brU4ku2dQFka6qW1nnsP4AKw+PCwfSB5awQDOFKe55kgdK0L3oMRH9xrANz+n3T/+Pi4J1xKC0NW9izvMID3jx9Z0ArnvK7fFdAVxngCgQDe6BOC38zK4r/EKRwB0ABR/SP/yQT3NAsM4d0jgIcLKSYKBH2JuMv1mbdOIcIDAMAf0Yf8zb/hDcWnQgD04M77tqeWg4E+vNHnnPknADOcfgOwbYrgLAAZfsFcAqRHAHcsBlcjUBA1dkqHi3mrFNqOCKEEMcAs+UuSR3qpmzrlY5AsOovgLA+SIdLFbBhgbJqmP6TFkWmKAFeCKwiJ32AFUjkBDAjQCIfxeQ/G1e2pAPH0cmf1e2TvyHV2nwwgE/TZsNBlE0ATAzGlS4SsP5I2b88y8LNBICe8bSh7+TrWH5qlL+okS1zIl2JDNgH23oN1zzWI5izNCykEEBOuxYXKu6Ix9DEOBW+kQqtNALU/FMp56NXsUR3L0RjsRriO+IEA4rzl2boHP7ZtG2NOx2hISuu8WCAN0Blk3hDV2pNIqwhLZYH4APLN5zcux2Ao+ihREEZltXKIcg5qizWgl4Dv+m1sT0LKwfDcSRBAv3ybjrOwA/FUHMBYiAmmuevGsIdzr19dSaqqjwWGTiyZ1a4EQWJgQoN7LRKuyDtTn4MkAEPOzXuAnPGIKnjKJNEnoD6z0dk0HAAWA0Cqqk8N85cAPxlAjFf931uwDk0OIiF8qH6OARX2OwA+/4QybDbsfMw/m366B9FbfoVMmagUaC0VqwNaAVwF8K2dNDOx3cm0MGzpr1epJtjL6qEfLLYWWm2vq9lqp7KaYut81GqKbS4lSYHtBw6nF1ONrjp3pPqXlYogxi/Q/et+oEMZkDP+oUoH24wxs33urCaFeuyRC3xSbabGwHbjwXbY0Rx7QeoKSm/51tEGMucOMigJZKE0edjEBxfyaEYm9M2wjpVuT7+xvp4hefwEtbtMlWELD824GWI5pu3CcrCQym1CSTM1aJogBLLJ/OXnwLHvzyj9qsdUjsE8dSKJT5881Q0/zc+i/HWsv56zQG7rrN9NKU1duqVuKuWCJ8SyLGMhqjf6hKBNFXfqeMyjaXvu/tKoKcFWb/WRFhr9c1/KOXXEOZBBqyt0CTxrh1xnnvzv17U/ryuZQqUhw/Y0UfVGbiJzN1fErMqMt1U5n/+luZp+/0THP6lntAzwtzpoHgBoEVp66ikcGWDuunkHTgywvQRgU7FMGQCyBd008/FD+v9rAXW6NiJAny0AJMEkbfTWTS9jsL2IAQYX1SZyLpIBU3WI19PhF2Xvq+c/IYLemdCEG6F+ThQOz3eu4yXQveABIs+CoB9uHznMrI2YVA+Vfii18Km1MN2I+TLxmT4n1U63Kakl0fdlzCMOJyzG2z5qmlufufaRbWufq9FcfU2ZOxlzoLp3lrkiPO0H4iLt6PamzYYHvfua+7MuDI+X78O1/Xhben9739z1uMw9ufJs9a3yP7oB6gRRJ4zCAAAAAElFTkSuQmCC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -40,6 +41,10 @@
 
     --shadow: 0 1px 2px rgba(21,34,41,0.04), 0 8px 24px -12px rgba(21,34,41,0.18);
     --shadow-lift: 0 4px 10px rgba(21,34,41,0.06), 0 20px 40px -16px rgba(21,34,41,0.28);
+
+    /* Verified from NEST360's actual logo — used for site chrome (nav, links, CTA), not the model's own tier-coding colors */
+    --brand-navy:#014167;
+    --brand-teal:#2CA59D;
   }
 
   *{box-sizing:border-box;}
@@ -58,17 +63,221 @@
     padding:56px 32px 80px;
   }
 
-  /* ---------- BRAND ---------- */
-  .brand-bar{
+  /* ---------- SITE SHELL / SIDEBAR ---------- */
+  .site-shell{
     display:flex;
-    justify-content:flex-start;
-    margin-bottom:36px;
+    align-items:flex-start;
+    min-height:100vh;
   }
-  .brand-logo{
-    height:68px;
+  .sidebar{
+    flex:0 0 248px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    background:var(--paper-raised);
+    border-right:1px solid var(--rule);
+    padding:30px 22px;
+    display:flex;
+    flex-direction:column;
+    z-index:10;
+  }
+  .sidebar-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:32px;
+  }
+  .sidebar-brand .brand-logo{
+    height:30px;
     width:auto;
     object-fit:contain;
   }
+  .sidebar-brand-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    line-height:1.3;
+  }
+  .sidebar-nav{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    flex:1;
+  }
+  .sidebar-link{
+    all:unset;
+    cursor:pointer;
+    padding:11px 14px;
+    border-radius:10px;
+    font-family:'Public Sans', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--ink-soft);
+    transition:background .15s ease, color .15s ease;
+  }
+  .sidebar-link:hover{ background:var(--paper); color:var(--ink); }
+  .sidebar-link.active{ background:var(--brand-navy); color:#fff; }
+  .sidebar-foot{
+    font-size:11px;
+    line-height:1.5;
+    color:var(--ink-soft);
+    border-top:1px solid var(--rule);
+    padding-top:16px;
+    margin-top:16px;
+  }
+  .sidebar-foot a{
+    color:var(--brand-teal);
+    text-decoration:none;
+    font-weight:700;
+    display:inline-block;
+    margin-top:4px;
+  }
+
+  .site-main{ flex:1; min-width:0; }
+  .page-view{ display:none; }
+  .page-view.active{ display:block; }
+
+  /* ---------- SIMPLE CONTENT PAGES (Home / Resources / Contact) ---------- */
+  .content-page{
+    max-width:760px;
+    margin:0 auto;
+    padding:64px 40px 90px;
+  }
+  .content-page h1 .hl{
+    font-size:1.18em;
+    font-weight:800;
+    color:var(--brand-navy);
+  }
+  .content-page h1 .lead-in{
+    display:block;
+    font-size:0.42em;
+    font-weight:500;
+    color:var(--ink-soft);
+    letter-spacing:0.01em;
+    margin-bottom:10px;
+  }
+  .content-lead{
+    font-size:17px;
+    line-height:1.6;
+    color:var(--ink);
+    margin:18px 0 20px;
+  }
+  .content-page p{ font-size:15px; line-height:1.7; color:var(--ink); }
+  .content-list{
+    margin:8px 0 28px;
+    padding:0 0 0 20px;
+  }
+  .content-list li{ font-size:15px; line-height:1.7; margin-bottom:10px; }
+  .content-section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--brand-teal);
+    margin:36px 0 14px;
+  }
+  .content-footnote{
+    margin-top:34px;
+    padding-top:18px;
+    border-top:1px solid var(--rule);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .content-footnote a{ color:var(--brand-teal); font-weight:600; }
+
+  .cta-button{
+    all:unset;
+    cursor:pointer;
+    display:inline-block;
+    background:var(--brand-navy);
+    color:#fff;
+    font-family:'Public Sans', sans-serif;
+    font-weight:700;
+    font-size:14.5px;
+    padding:13px 24px;
+    border-radius:999px;
+    margin-top:8px;
+    transition:transform .12s ease, background .15s ease;
+  }
+  .cta-button:hover{ background:#012E49; }
+  .cta-button:active{ transform:scale(0.97); }
+
+  .pillar-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+    margin-bottom:8px;
+  }
+  .pillar-card{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-radius:14px;
+    padding:18px 16px;
+    box-shadow:var(--shadow);
+  }
+  .pillar-card h3{
+    font-family:'Fraunces', serif;
+    font-size:15px;
+    font-weight:600;
+    margin:0 0 8px;
+  }
+  .pillar-card p{ font-size:12.5px; line-height:1.5; margin:0; }
+
+  .resource-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin:8px 0 12px;
+  }
+  .resource-card{
+    display:block;
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-radius:14px;
+    padding:18px 20px;
+    text-decoration:none;
+    color:var(--ink);
+    box-shadow:var(--shadow);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .resource-card:hover{ transform:translateY(-2px); box-shadow:var(--shadow-lift); }
+  .resource-card h3{
+    font-family:'Fraunces', serif;
+    font-size:16.5px;
+    font-weight:600;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  .resource-card p{ font-size:13px; line-height:1.55; margin:0 0 10px; color:var(--ink-soft); }
+  .resource-link{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--brand-teal);
+  }
+
+  .contact-card{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-radius:14px;
+    padding:22px 24px;
+    box-shadow:var(--shadow);
+    margin-bottom:8px;
+  }
+  .contact-card h3{
+    font-family:'Fraunces', serif;
+    font-size:17px;
+    margin:0 0 10px;
+  }
+  .contact-card p{ margin:0 0 8px; font-size:14.5px; }
+  .contact-card a{ color:var(--brand-teal); font-weight:600; text-decoration:none; }
+  .contact-card a:hover{ text-decoration:underline; }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -80,7 +289,7 @@
     font-size:12.5px;
     letter-spacing:0.14em;
     text-transform:uppercase;
-    color:var(--strategies-accent);
+    color:var(--brand-teal);
     font-weight:600;
     margin:0 0 14px;
   }
@@ -359,6 +568,26 @@
     padding:30px 30px 40px;
   }
   .panel.open{ transform:translateX(0); }
+  .panel.panel-compact{ width:min(380px, 90vw); }
+
+  .ref-header{ display:flex; align-items:flex-start; gap:12px; margin-bottom:6px; }
+  .ref-icon svg{ width:30px; height:30px; }
+  .ref-activity-list{
+    margin:0 0 6px;
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+  }
+  .ref-activity-list li{
+    font-size:12.5px;
+    line-height:1.45;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:8px;
+    padding:8px 11px;
+  }
 
   .panel-close{
     all:unset;
@@ -578,6 +807,47 @@
   .tier2-body .panel-section-title{ border-top:none; padding-top:0; }
   .tier2-body .chip-grid{ margin-bottom:0; }
 
+  .tier3-toggle{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:22px;
+    background:var(--paper-raised);
+    border:1.5px solid var(--rule);
+    border-radius:999px;
+    padding:9px 18px;
+    font-family:'Public Sans', sans-serif;
+    font-size:12.5px;
+    font-weight:700;
+    cursor:pointer;
+    transition:background .15s ease, transform .1s ease;
+  }
+  .tier3-toggle:hover{ background:var(--paper); }
+  .tier3-toggle:active{ transform:scale(0.98); }
+  .tier3-toggle-arrow{ transition:transform .2s ease; display:inline-block; }
+  .tier3-toggle-arrow.up{ transform:rotate(180deg); }
+
+  .tier3-reveal{
+    margin-top:20px;
+    padding-top:20px;
+    border-top:2px dashed var(--rule);
+  }
+  .tier3-reveal-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    margin:0 0 14px;
+  }
+  .tier3-reveal .panel-summary{ margin-bottom:18px; }
+
+  @keyframes flashHighlight{
+    0%, 100% { background:var(--paper-raised); }
+    30% { background:#FFF3C4; }
+  }
+  .flash-highlight{ animation:flashHighlight 1.6s ease; }
+
   .tier-body-title{
     font-family:'Fraunces', serif;
     font-weight:600;
@@ -596,14 +866,72 @@
     text-transform:uppercase;
     padding:3px 8px;
     border-radius:6px;
-    white-space:nowrap;
     flex:0 0 auto;
+    text-align:right;
+    max-width:160px;
   }
   .bf-badge.bf-barrier{ background:#F9DEDC; color:#8A2E22; }
   .bf-badge.bf-facilitator{ background:#DCEFE0; color:#1C6B35; }
   .bf-badge.bf-both{ background:#EDE3F7; color:#5B3A8E; }
 
   .factor-row{ display:flex; flex-direction:column; gap:8px; }
+
+  /* Per-factor "NEST360 context" cascading reveal (Tier 2 factor list) */
+  .accordion-item li.factor-item-linked{
+    display:flex;
+    flex-direction:column;
+    padding:9px 11px 10px;
+  }
+  .factor-neutral-row{ font-size:12.5px; line-height:1.45; }
+  .nest-context-toggle{
+    all:unset;
+    align-self:flex-end;
+    cursor:pointer;
+    margin-top:8px;
+    font-family:'Public Sans', sans-serif;
+    font-size:11.5px;
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+  }
+  .nest-context-toggle:hover{ text-decoration:underline; }
+  .nest-context-arrow{ display:inline-block; transition:transform .2s ease; }
+  .nest-context-arrow.up{ transform:rotate(-90deg); }
+  .nest-context-reveal{
+    margin-top:10px;
+    margin-left:15%;
+    padding:11px 13px;
+    background:var(--paper);
+    border-left:3px solid var(--rule);
+    border-radius:0 8px 8px 0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .nest-context-reveal[hidden]{ display:none; }
+  .nest-context-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    margin:0;
+  }
+  .nest-context-sub{
+    opacity:0.65;
+    font-weight:600;
+    text-transform:none;
+    letter-spacing:0;
+  }
+  .activity-link{
+    color:inherit;
+    text-decoration:underline;
+    text-decoration-color:var(--rule);
+    text-underline-offset:2px;
+  }
+  .activity-link:hover{ text-decoration-color:currentColor; }
+  .activity-link .ext-icon{ font-size:10px; opacity:0.7; }
   .factor-row-top{
     display:flex;
     align-items:flex-start;
@@ -635,6 +963,16 @@
     padding:2px 7px;
     color:var(--ink-soft);
   }
+  .strategy-chip-link{
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease, border-color .15s ease, transform .1s ease;
+  }
+  .strategy-chip-link:hover{
+    background:var(--ink);
+    color:#fff;
+    border-color:var(--ink);
+  }
+  .strategy-chip-link:active{ transform:scale(0.94); }
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -648,6 +986,27 @@
 
   /* ---------- MOBILE ---------- */
   @media (max-width: 880px){
+    .site-shell{ flex-direction:column; }
+    .sidebar{
+      position:static;
+      width:100%;
+      height:auto;
+      flex-direction:row;
+      align-items:center;
+      padding:14px 16px;
+      overflow-x:auto;
+      white-space:nowrap;
+    }
+    .sidebar-brand{ margin-bottom:0; margin-right:14px; flex:0 0 auto; }
+    .sidebar-brand-label{ display:none; }
+    .sidebar-nav{ flex-direction:row; flex:0 0 auto; gap:4px; }
+    .sidebar-link{ padding:9px 13px; font-size:13px; white-space:nowrap; }
+    .sidebar-foot{ display:none; }
+
+    .content-page{ padding:40px 22px 70px; }
+    .nest-context-reveal{ margin-left:6%; }
+    .pillar-grid{ grid-template-columns:1fr; }
+
     .brand-logo{ height:44px; }
     .flow{ flex-direction:column; align-items:center; gap:0; }
     .node-wrap{ max-width:340px; width:100%; }
@@ -684,11 +1043,41 @@
 </head>
 <body>
 
-<div class="page">
+<div class="site-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
 
-  <div class="brand-bar">
     <img class="brand-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjAAAACSCAMAAABsZACRAAAA/1BMVEUAAAABQWei29ospZ0CMXBpyc0AW2BkxLZLuK8EPmCs5OYBQGWn29wBQGSr295xt7b1+vty5OZOu8ICPmJryM4BPmUAAP9sx86us7PD8/kA//+P1LeDy718fX2CzL6Cy7110bVsuNh1yLo5rKOtsPJQt6pJtqkAVao5sZdxxbfE5+5//3//AAA5rJIA/wB/f/89uX9/AABWvMRycqxdoWv//wAAAKoAfwAAf/8zt8EA/39/AH9/fwBPuMH/AH//AP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD1hDTAAAAQHRSTlMA/Pf7DvcI+vlkF6KfZ18GBRD6oKDTAV8E/wEfYALroRoTmw4EUqsDpGhZAgFnAQIGAp8EBwEDAgIZAgICVwIB8kzjgQAAHPBJREFUeNrtnYmC2zaShtEUeN+SWmdLrbYdO3EyuWZm7915/7daVAEgQRIEQYnyjNVELqdb1EF8+utAFUDIPOYxj3nMYx6PNIqyzNVRlsVhvivz0I0TQ0X7C/bzcqZmHuo4SFbKcrtdV2O73ZblL/gLBs18m+YhaEEWSkaKqxsMnPKNQzMLzTxOoC35di3QYJJSSQn7IwgOp2aLP5515p2PkuGyQybW27f/E45vW0fyUvBU/hX0qJhv27vFhelFCSxw+fiPN6Efv+xKPt52u+qhW84M/Pk037r3GRZxXBCCgrsp5du25cqA71uWHvdyXAHXbJneoasrcNmyKOg3DJJ6vV7hw/xBhB4BYW+zyryvkQtcUFU4LQoey2UAYwGD/XcpoXkD/1ggM+dm3hcvf+W4lIDLW00LQ2WhHwFnhl0Mj16zy2a79G6cXfY34oIpXO6aGGGpoPHZZREjDJDJyW8zMu9EXv5Yw3xjUCRxGYSlgiZYc+CAuI/z3XwPvLxxa6SKy2LMCD6za7dol7zZ+X3wUZRsqpm8lNwXMYpL7fl2f/WhjLaSu3k8tPuyxtioxqULiQ/Drf7l+zpsAn/NRebjZr6tD2yO8rVbanEJKlQag/0s6GEG4yZG36GYb+zD6kvuujmPchRcalB0yKjwCG0JGqH2/5B8vrUPqi8luC9EurqBSgv+N+B/gdYE6qiZEZyoyLCnnKOlh+VFpPcrXDgrTWVxWsNVH8MvcxwVmbdZYx7SHiEvUl5gshEAFRXX6R+cGomM77jSl2FPVpLDb/Mdfjx92Va8BKgNTZ8Fsdjv2d/sX+pIsixLkgoagcyHTBGZ9WkWmUfTlzemL/m6lpeggQunhcNR8aEyUxRFlnD7FHD3N7j8ryIy+UzMIw2vLGtehPfSwoXRkkXsoVHEcEm6Jilhv6yY4SLzQ7SsRWZL8jkj80AGab3GBSDF25VZOb8GIsoSgxcDOkP+lknbxJ7lR+ZBVyKznUseHokXt3xDXPxq3VlE0wIFQsyw1NBwqoTIfNzWxKzJbzMxD8LLVvIic2+OTL4IcYmyNhmK69txgrkHjJ7MX7YyKbN017/OJeKPMIocAqS1wovjKNYIcOmKSyLc39oHbmEDvkyTmADcpFljHiFCYg7MWkZHTV72TqbBBWmJokh5kkjn33BHZls9MSNmTvo+hkHa1rz4nBfmxmhx2VcWac/RQWwKDk3Syea1iNnO0fX3LzC5u8UAaQFOR+A6YtGIQZFEu0SvLTCqdAyHpsCgO2sTE0hi0DBBrDTf8u96vDGBIVxffEyYOHw9gM12RrJWANT1WQthikSOhrQVCYn5vJbEBG45E/Ndj0NRurjeKHlxeXqfzbVqYYTlIbso2kUFDvwjL8FEaJJsR8gnQKaWI0lMUBGzdHez4/t9e7zbdcl5CVBfHKEviSIvCZochodGYcod6g4yA1SBymRqgM2JkSZv4f5J3ubb/h0rzM7lvAQ+zioHBsxRouJSFqZy7hMGTCBImA8uapHJIkEMd5IwH7Ml0Xzf67Ghnkfp2KsoZRf9E9ZaIiYw3CVlhkjhJSpUXD4N59sK9F8yII3ZrdqTAfAkMUvh+Eb/+qESzCH7G/9FvHtNjEe9nv+xvcr6IoaYRygOdtFNOZgt5utg8Yj5Lw5fa8xqiWAYWHqpxQ5UZu9E5MDgEcTsk1OGxATYgIDEOIVXjP5GfVNadHf7Tq8CULJp559vWDPqq/jkIzTjP5J35ec5QdUU5wUTvQgMqIrEZQeNJ9YDkOEiw8xSJvM2nzLXFw51gEtVQfIvLDGIBqVpGq9gxHEc4o823uS4sFeJn5/EeI5TeAXP4s0pV8G7G7qI/57SMA3Zp4nTNETQrvo8kLTD9cYGL450WsEajXvCIiKfUGSYhaqc5oITs2QSw5cJnK/DboxHQnYXxWB3pv8DeiR+qh769ESrR8b1E/SPp1XjmWEew/ipPdqT6RHvaeSgzeuJ132Vp9Q8+/DmulfFnnn2dR9pldKrkDmRNfISuA4AI3gR1iTZXeOdRkJkao3hxAg3xllwo0SKQRsUNj5iaPh8sf6BdhOpAqOfETGZpPHAdCwwygfQ4/LceZXOzHv6NxdTIy9U+15TOp4YsEiuKMFlf5ACI72XorhGtYqcBUl7vLomZi2IWbpIjOt8+nQYAqb1MemGWgGTjgQmVieyFxc+5ZUrdYXC1MCYX8brn8fQcFH/SA2fZ+T4SPhSMqMEPN+zyguzLdcm2HZgllCfamJkqBTwfgKQoHEKwyaW3l1h6ABb1WTeAow38DJ98+jFV1zUujm93xVbFwYr4gIHBQYsksLLDckSCJKAmF0dK0nHV0hM4BQD+tUBxmCUpgImtHZEbgCmxUuchjDioQ/qqaokLlKvSrV3xzNKJiPmy8h1AZcbCBQYtecoIrtbYoBTSTJwfQsZbu2TBI0S83odLPR1koFX6ALTb5QmAcaz4KUi5npgqMpLqkyyMrVa72JVzXJY3wbFPdGZsi/1VfhRcdQOE3z4MfmKgkSBFBjI86q83Bj3smgJiSnrhSVhlGqJMROjAabXKE0BjB0vMJn0JmA8+twMvWgdL8vP8dxJ+9TvDh1cdpHHAnN8WIVMN1ekfqa4htNTlCkdY5Vy8gN+2SuBmcQeVY4MEKM4vg5mYQIhMYGbjAam1yhNAMyQY1EP8fArgfHqN4uZGNV61B+kPY31y8WtpJtXK1Zn7pXPhJhtPCrz1rU/REckmP6LfOYC44DA1MBkt9mjBjFlvSbFJWa55JllkJhPI4F56lk+mQSY1ZiJvxYYZeZpRy+9+k10pn5VPYnXuVG0IX7tBJUM1usFjg08Rzze8b2QnwIuMOzLvwgkL/tkmsXBww483+gUOTK142MBHiNmGXCJyccCs7qXSdIJzGqVppocHjoL1+ZhaiR0fgqTAG3QU707rctR3anWbz1Ve7pLA7HJYdJ7poXP3U/gRbFIRVRMAQz4MYwYUeyQVBITMGCwmoJJTDkSmB6TawPMKtSPNGx+GdWkK/4m1UsSTdvP1HiGuPM6tDGH+mlS5t7TCEyvi/qs06XqM/X4fvFIiWFuqY8hUtIQmEkcGEkkz+AxWPZZspcSE+AKgR+4mUli9MAwz25zHTADd4V2M2F8tVqT//As0mqhORvZ6797FVAaqejJ6VW+baoXGKpbnvR6LVnf+LnAon5YOPJrgdknkzgw0o2JcJUAOawbIhkwLi6Pm85z0wLzrDdKNsDQvuHpQqSmex3rkmSdJwqbAtUejffk9U7SSjeLsUZ2GqbsWScWqQYjzQ1OrScTv+5sJpsCc5qw5nYH9igiKDFR5cUEzI3Bvc5M2Z4ehdEaJStgTN+j9jpEA0u6oRbhfev9pvrH0AEzUJHbEBM6RJl4+89UY6ie+66iUs2IVb1PThK0SFnWACabtvIAHF8nQokp2Z+ExGCkxIDZGtqU+oDRpBtuB6btwoSNFGHnrVDNLbYBRrEdvcBQzVJlOuBsVLEXbayLDQhI9S2xcntPJMdVHZd9/dHllQJz3Ypjv+MbgZWTEuNLiQFg2DDYpF5gYnIPYFb9pQhdD0d3h+0UJhzQCmWavbaZMuXYRDZQeVUFh9477I1YhMzJC2Rcg20B24sFtQczcb0tujFcYgiU3vku7x2A8r7Av/THSb3AaFy/OwBDTb8OybUmKRZWwlCL0AXml0G33SMdYKRoGoOgEXFSQXBTseA/C4dvNSYE5rAjUxOT7Z2Ch1+1xAhgfiK/jwema5TurTAbFkSrg14NzOqpW7OlBYZ21tDN0+rhoF1VDIlBYsSntpjGklwczKKxrz1uaCgs0m/FxLwwo1Qwc5TteeMKBGMB35Nqy/78of8mGIDp3LrJgRlfKWIFzPCovByqlN6kQzNv6Qz1ZgIsAmuwSDBx60OiALPPyNQCA/meSBR9snDJ9R0OKgPmAyPm2Ft5R43lQt59gelkyKinjs31wGCEvTFgF3ftT6pTPdqUFNp6Ywp5GzLkK4fDNqkkrw52JDIzAcBMU9XQR0yyxybIjGQAjCt2pHphNqnsDcpMwLSN0gRhdSfVQv8pCkNpJ3KXMFPVW1Wv8AZCoOF05fCbPZDLGb/ozOd1FYsUkWJ6YAqoigFgmEeNvhJ3e9dHdGIsgYl7q+TukYexT39OC0z1PlQN3fAffamXgdS0oVzo7vkKrIixbvJZPOjLoEXiLoy7FT6vqFm5h8BwicHnV4BZuGvCTNJP5GI5AanBK50AGKqreaTfGJjK8Xjupu2E4wZWh6Zq8d1K22hCq+Unb9gSrwZTd+DCIDD5V7RI7vTLAqr9k4V3LE4CYHwBzGfwei0VJiQGo3QzMFVc2irFH9HvNQEwdUGM4lRIllfifZLQstHkeagSWrlzvwx/5195sPLxq+LC3MXnFRIj0sgOODFYcrdck59MYVIHGNoSgC8jgdn826Y7OgsvDcNHiT0ztwIDD6eaBWSvAgaRp7aNJtTCGavi6sHPeCDcMLhe4t7b5wWJOUTC5CWOBGaxJhnkesmvlsC0nGDVKE2wWt21Sc9Y12jNzA3AQK/shigfsNFyLX4cYkFmbNk2UGVxjSWYisu0Gcja7bAGJnD/O2n6vHfa7OcTl5gGMH8KYA62CkM0pZIjFIY2Q+NWpqu3IkqUXNO7ALOpazSVxe6G9aQ1MOYqv8YrelbAkDqUMr/bn8nxzHdtOSV+5cLcKUhCYITEFK9O5fV+ZkE2LFjbAtOuilSMkn3FXatNVok6DTWaq9BCZq5XGNrosW7XbkoVSOvVZegy4SFSoyIwHMoY96cJvYFETEmODgem8L8JMKQ4cWA+1MAEReaMAYb25+9vKNGs58b7w9DCM9woPx4YmK64/Zpx2lGzuOXEpc0EXqqr/JgYmB0ESQhM9I2AEU2QDBgsIUZgIg5MYW2SPNqzQjAJMOwlTXXgcWhG5hpg2q/3rA13JDCrSkfk9iAUt4ehcTcDPhKYoVTvsQImxx3tvoHC8LK7jAPDO5Oyr+MUplOpXX3MiYAhA50DoemLeDMwoUjCdR7FPx3/tsS480hzYbT2llcKMDbLRHYLTuL7zoH5Ifg2wJCS18SowHwgI4HpzKj8+kwGzFAvgGFvhdsVBkMyrxeYmCdjjMV+Sv/2KGBSa2DWfGu7+wODxZr7pAFMMhoYz9MapcmAGdi+AT1S734miScL9cCk/PNS42tXLZP3A8ZvAnO3PXS5TUpe+QsF/AQMZ0weRtehKuCYTmE80rObirnv+VqnN45Xq2dz0rYqhDJVxNC6dty7h0k6VsC4/jdSmJIDc+YvtFSAIWNMkt4oTQeMQCYeT8wtiTsaKq8Yk1ZPUjzEqvJFWrW3iJjG6d1BWI2NzlgAVwGT3W9D1BP3es+8ow2BgUMwPvRqWg8w2khpSmD4ZnamvVgGetBGAEOVGhaF0tbmZvHT8E4L8lGyb+AeeRhcfAxawOzua5JkC2SlMIn94iNt3gk1W3U9MLG+MwwWbXq9mWfPm1ZhCOUb9abmriiTdVGS/LRxmzwrYIb6Bk49wCTfCBjeXA3nYIwGpmuUKLVcrR5VaMDzHLF1a9Ttq9UgNalOY4aaJRtrYakEZtKlgQPJ+fFX0E/WAKa4MzDncyJ2F8FOBUO3bC8wygYr0mrfXt6g/foR/Y6aevgmKG9gyMjnqDdspnUDo/kZY7UFj1pVX1ovPkLPgCOBCWpg7p+5Y5ri8A3SJDDH0cC0jFJK7gOMXD8CmXl+mqTNxGLJO+2WFFo6pq122m6nku7lYkv5hQIVDJM6wOzuBgzfjP6sAuP6R3IabZI6RmlzL2AEM91F4j829wFGnUJvlJ9RoVb9xKqAamVZQJXLtQHYRUEAk9zV6xVRkvOqAMPc3p1t14AKTCtSWpE7AqPfu1fzZBO1mWxoq79TiXfMzxg2gNnY9LHZl2hWYVILmPt5vTwP4/IgSQLjJr0CYwSmZZToXYFRPErVDN4HmGoOq776jRQ4s5+hRMg4vowpAh9ufTyQC/d6oUt2sXSr47Du5sRwH8aVFkn4MK/9rf8mk2TcfPY6YDaNuqrWL7+0iQmvVJjNQFtSI3CpFhLtipLDhjtCWwDZhFbm1N2rw48WwcUkp7ZJd0rdfcL6Br8FzMuVwHh0amCGvvexudFtQoWhnXXElUVyra0wnkXEPKaRDZ0Yn58iK9cGMt46dB9geEEMJ3OJJ2QDMEfrZvwWMIYut+uAgXLNeo8h2uch3AgMb60250ZoJxJbWbXvNn0Ym1SvN2K/D+7EcImRTkx2T5uE+/byln/YgAoVxj3nfUuPQybJYJSm6HwMO/tR0qEthSyAqXTK6I10y/3Tvm1OdKZshLmxj6oJ+TuWgTeBSUADsl/v1mnCgDlLgUFgmAtzJFcC43nTApMa96DpAuNdAcyo9lVFxKiVZ9rKw1hs97EZs90HNFcLmxQIr1fYpPsoDKQKHd9pAmPa7moImF6jdF0zPjXue+h1tjS7TmFsdpXTNBRZ6cBz850pWdzeO2zTu9R0YrjESK8Xd7qcfoeYKkhSLJKLm16Z6m+GTFKvUbrOhzGHQXQSYIa3uGvMYvuTpsbFR6/1up4FDqG1CyPKejkw0IYoEr13kxgFGOBlvYQzd847Y+rSDMymL1K6slW2hV/zIAzvF0MPkL3Tq3QaekPOa9ot6DZ+gq6eeE/m7mpa7ZpoN4OXs1MDIyVm+l3ulCAJj5N0Aw4Ms0jJiH16u9+TPqN0ZVgdGnbS87q7InrXARMOlbZ4nbUB1X81BHlP7ckf2vNQMZBWGYBT7cRUwIDbu8/ucYInLl4BLwlYpPWfEFWbsjA2JqnHKF1Z3uDpupV5Fm/TyfRevZZEhwo9Ke2+3+qpad/51ro9d5WtIKg+U/k0wiJxJ6aSmGCZVDbpThLDBeYrejDbJVT7nY8m62cBDPXGANM7tG5tw4voHvVFrwMGknDP5kJPzXbviu8z5LPTxmUrw5eNjt06Hhd3Kpvkbp06sp4+eQd7acL2dtmWAwM+rzPqcIrQFHXYANNXPledl0R1PbKeR8PVdPUwjcNMjFVYrTLNVTW5RuGKiae7Pd2bt+l5JeN6UuGceQ8iAPP5q+LFlFNLTC4sUrFEl9dFnze7FRii7Ty78wFbfZl0O5NUCxm0UNPOLMqZb+wopOx3FHcbk6iyGxLVnmmBlqp9NFP69DS841BrEl+dzKkkRlRQZvfYrJecCgfOeyt+QIFJXDylyWiR7IDRGaXwylNl7U+0oTfU9CoJR2xbU3c1VE9Xa/eahGobSusq2lM7qh6w1Xf422D9d3N14CWrJGatSsxhWomJSAS8ZAQFxnWERTJiaQWMZzy2bZTCDKyBT9U1oKYI+S5A9fp4PYudr73CWdq6qm5wiDd953I91cf5NC+xWXdU4qSz85sjAyX3q+PcaQmyKCPf8d2E/IkxNfaxAT7Hm4Hpbn95CzDUipj0tr6kBuNxWFkK9SDGJ82Zj7TRUyuvatQca854a3wifoZTutJ/W+zipGNUSYyTOUqVw6dJBeYDxEgX7vGiwATOecBRsgNmQ+mECnOwICa1e7+m5EZr5bs+6tWQM2ovXthdNXQSdzzq3OqC5M4rP2WLnz2e1I1DU/q9F/ITLCN9eHPRImFX0kASxhoYjVG66aDzQT+GkpuBGTyPtMetoFd0fVNjs3hMx37zXx327ddJTDKdxGDCh1mk41oVGKe//HsUMN1I6RZghrrx+3vxxyiMZz6uvjcza3praW9ip/87kJKRVV7g9r6S4rOUmKQ+MpgZpWIyXs4oMGt0YBgw6MG8DuWTW1/23gnoGKX0FmCIZ2iThT2FvNsVxvgi8Bq93g8J436p2PTVMPSAFtNrJvPVuZCPi4qY+sjgqfK9F3LBrXl9oS8u7vVxZgKzGwWMafUlnCSsVmdT142v3R1Ks7BotUDTs0uEEUns+tZNfkyJuTdA81opJcQbPZsYWRPyFwFM4CjAJMVuAmJKyYuLDozDBYa5vL+eyBAwNK0OboUTZwwT0Dq9Vba3h2k4PNKwm9zBf4X1/nPxCuMSai6qVc6ZHXi/8kW8dBW3IibzseO4D3jjqlXqDW5AzT9QGK5iHKswrbMyV0hM9HMlMUuFmCnSd0UueQFggJcl5paHXd5RY0MmHhs5AdAlL2+s5037IjI05kXEG8vX8L6oV9EaCKvXUg35dQJQRMybID8sKsfXUd2YG4lhRifzxXnV3N1dokFiAnM82N9R7Sdu3kU65sear5/+4o2Ss/emfL91Ok59dWpJpEeuuYqzzyvcvesbKCBQOp7IZ6i7UyqppiCGyUuRNHhZs38W0wvMPL7hKE4RC6EP5WLRrL27nRh2ZSHWv7GRhUXt2F2CpXZ5cZjv/fc5YMveF8UoyVqqG4kBXDBljDUUyEvCBIaflD0LzPdNTOJcPpLPvcRcESvBNbgmVeR44JvgJfC5QTqX5Xzfv9tRFhfm934sgpqYZYOYsSJziA4cFz8ju0pfnK27wD6oAJrlZoH5zo3Shfx72UNMwqZ3hMgUkI/DjDHsCo/64gMvWc3Li3mZeh7/6gPK4fKcXBRigqZZIpY5vCJiahTxBYbXI9SA4nFvLjQLiDjMd15Pu/mef+eR0oVFShfF8V0EDWKYyFggU+zAdjFc9ntOWQZ72fHTu5LPFS/O5XCa7/n3bpSOWGCrENM0SyzYYSjsDgPaQoosAVySmhe/5kUYpOPswDyCUXrBUFcQwxtol24bGRLpQqbDKdqV+Es4fmIPZTXJ30iUQNYlWODpgD8uFn7lwETz/X4MN+ZYESN2dVg2kUmiHKVkFxWnAsepiD7t+PxHGaclyTKEAnCpeIF6huWcgXmkcYDOxLwmxteJDKRtNfKwizJBi5MVlw8MrAz3mMI9g8RpWm4w8/Jojm/uIDEfVWK6yAA0WcRME/+HoQL53D3QAq7xC98qT+ASiOP6gpmXxxslJNmAmN9/5MT0IrNv/M+ew4LS8+KLLTLRHEGnozgzRcRHLywUm8fjEIMacxH1VDDfYgG7qzIClD3ffBNhKaJMwYXzgvt0LpbycKTLrC8PFlznMKnMtf1YiUylMm1nhhmmDG1T9PeI+zASFRw+HiUJly+X/LmcJJ95ebhQKcdY6aMs2qxVZtFGJpFD/L/rN3Hx+aXBUqbrMkLmBO/jWaVTAjObH6TI4Fj0yEw1sAJTDGCH4xJAYI5XupCu+7mYb/DDjdOBRddgO35n1IiUTLCQyOiYceHYa/i5u1xyZ8cHUwa8sP+X3svLbI4eNR+DXWdHcrj8TnLh/C4X6oBaBbREbu3hABrYEwA/RHlBfCQuyZGQuQDmcR2ZIy+CAZH5LBAJFn0DdQRWpH3u6HJFUnGBer5ZXh6aGObIMJFB5/eHQCCzXJiG4upIxZG4sJi7/Hm+q4/t+kLzPNiRPCfFT3yV2TXJTEdykBZwaOBZ5mqph3dkIoivnWyH8EQf+F6bvrter11FSbRKww0UXxRwkgtGXPN4B2aJHBkyL0f8Y5TwdAyvtYQEnR9owMFgCSMk35W4HOdY+t2IDCKTyOIFERRhgS6G0CoxvC+gSthhvA2wHefSuvczfi45MjjzhOyyRCZdODMYOPMt61yenTlXsHDOohmXd2aXTmCNoJz75QhplIvYoQrzLK5TgeKcz+wfh/9TFc2M6TSYxwMhc+Q9AMlLxHzgU5Q0E72MlTNycpa88FLOOfHyXkNsWDBkzKCAvL5mx+MxesmSCg9ERf7x/PoCtJTHOTB6x6PAuPj4okjLa/L6ej5LXMR/kyS7gLecz57LLDPoj/wjenl5rYVFMUtQQhXxB8453XngOOXCK8mPx5eX7IVpDBsvbBwvuXjEFDuczeORoDnmUY8C5XNMNA/9OJx2Ua6MXTlvDTSPecxjHvOYxzzuNv4fmu+vqRkOq2sAAAAASUVORK5CYII=" alt="NEST360"/>
-  </div>
+      <span class="sidebar-brand-label">Implementation Model</span>
+    </div>
+    <nav class="sidebar-nav">
+      <button class="sidebar-link active" data-page="home">Home</button>
+      <button class="sidebar-link" data-page="model">Implementation Model</button>
+      <button class="sidebar-link" data-page="resources">Resources</button>
+      <button class="sidebar-link" data-page="contact">Contact</button>
+    </nav>
+    <div class="sidebar-foot">
+      <p>An interactive companion to NEST360's implementation model.</p>
+      <a href="https://nest360.org" target="_blank" rel="noopener">nest360.org &#8599;</a>
+    </div>
+  </aside>
+
+  <main class="site-main">
+
+    <section class="page-view active" data-page="home">
+      <div class="content-page">
+        <h1><span class="lead-in">An interactive guide to the</span>NEST360 <span class="hl">Implementation Model</span></h1>
+        <p class="content-lead">NEST360's implementation model explains how evidence-based small and sick newborn care (SSNC) actually took hold in hospitals &mdash; from the barriers on the ground, through the strategies used to address them, to a measurable drop in newborn mortality.</p>
+        <p>This tool unpacks it in layers, so you can explore at whichever depth is useful to you:</p>
+        <ul class="content-list">
+          <li><strong>Overview</strong> &mdash; the five-stage flow at a glance: Implementation Factors &rarr; Intervention &rarr; Strategies &rarr; Mechanisms &rarr; Outcomes &rarr; Impact.</li>
+          <li><strong>Details</strong> &mdash; a general description of each stage, with NEST360's own specific coding (barriers, facilitators, strategies used) available to reveal underneath, one stage at a time.</li>
+        </ul>
+        <button class="cta-button" id="homeCta">Explore the Model &rarr;</button>
+      </div>
+    </section>
+
+    <section class="page-view page" data-page="model">
 
   <header class="hero">
     <p class="eyebrow">NEST360 · Small &amp; Sick Newborn Care</p>
@@ -696,9 +1085,8 @@
     <p class="hero-sub">How NEST360 turned newborn-survival evidence into practice — from the barriers on the ground to a measurable drop in newborn mortality. Click any stage below to go deeper.</p>
 
     <nav class="tier-tabs" role="tablist" aria-label="Model tier">
-      <button class="tab active" role="tab" aria-selected="true" id="tabTier1">Tier 1 — Overview</button>
-      <button class="tab" role="tab" aria-selected="false" id="tabTier2">Tier 2 — Details</button>
-      <button class="tab" role="tab" aria-selected="false" id="tabTier3">Tier 3 — Full detail</button>
+      <button class="tab active" role="tab" aria-selected="true" id="tabOverview">Overview</button>
+      <button class="tab" role="tab" aria-selected="false" id="tabDetails">Details</button>
     </nav>
   </header>
 
@@ -816,14 +1204,57 @@
     </div>
   </div>
 
-  <div class="tier2-frame" id="tier2Frame">
-    <div class="tier2-sections" id="tier2Sections"></div>
+  <div class="tier2-frame" id="detailsFrame">
+    <div class="tier2-sections" id="detailsSections"></div>
   </div>
 
-  <div class="tier2-frame" id="tier3Frame">
-    <div class="tier2-sections" id="tier3Sections"></div>
-  </div>
+    </section>
 
+    <section class="page-view" data-page="resources">
+      <div class="content-page">
+        <p class="eyebrow">Knowledge hub</p>
+        <h1>Resources</h1>
+        <p class="content-lead">Tools, publications, and open-access resources from NEST360's wider knowledge hub — useful if you want to go beyond this model.</p>
+        <div class="resource-list">
+          <a class="resource-card" href="https://nest360.org/resources/" target="_blank" rel="noopener">
+            <h3>Resources hub</h3>
+            <p>Toolkits, posters, education scenarios, and technology landscapes — NEST360's full library of open-access implementation resources.</p>
+            <span class="resource-link">nest360.org/resources ↗</span>
+          </a>
+          <a class="resource-card" href="https://nest360.org/publications/" target="_blank" rel="noopener">
+            <h3>Research publications</h3>
+            <p>Peer-reviewed papers and reports from NEST360's research program on small and sick newborn care.</p>
+            <span class="resource-link">nest360.org/publications ↗</span>
+          </a>
+          <a class="resource-card" href="https://www.newborntoolkit.org" target="_blank" rel="noopener">
+            <h3>Newborn Toolkit</h3>
+            <p>An open-access, online implementation toolkit for small and sick newborn care, co-designed by NEST360 and UNICEF.</p>
+            <span class="resource-link">newborntoolkit.org ↗</span>
+          </a>
+          <a class="resource-card" href="https://nest360.org/evidence-based-care/" target="_blank" rel="noopener">
+            <h3>Evidence-based care</h3>
+            <p>How NEST360 approaches data-driven quality improvement, service readiness, and health facility assessment.</p>
+            <span class="resource-link">nest360.org/evidence-based-care ↗</span>
+          </a>
+        </div>
+        <p class="content-footnote">This is a curated shortlist — the full library, including country-specific resources, lives at <a href="https://nest360.org/resources/" target="_blank" rel="noopener">nest360.org/resources</a>.</p>
+      </div>
+    </section>
+
+    <section class="page-view" data-page="contact">
+      <div class="content-page">
+        <p class="eyebrow">Get in touch</p>
+        <h1>Contact</h1>
+        <p class="content-lead">For questions about NEST360's work, partnerships, or the implementation model itself, reach the NEST360 team directly.</p>
+        <div class="contact-card">
+          <h3>NEST360</h3>
+          <p><a href="mailto:info@nest360.org">info@nest360.org</a></p>
+          <p><a href="https://nest360.org/connect/" target="_blank" rel="noopener">nest360.org/connect ↗</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </div>
 
 <div class="panel-overlay" id="overlay"></div>
@@ -864,7 +1295,14 @@ const DATA = {
     sectionTitle: 'The 12 domains — tap to expand',
     accordion: [
       { name:'Leadership & Governance', items:['National plans and policies for SSNC','Facility level guidelines and protocols for SSNC','Engagement with MOH','Engagement with facility-level leadership','Facility champions','Global and national focus on SSNC and NMR','Integration of SSNC into current policy & funding'] },
-      { name:'Data Systems', items:['Availability of neonatal health forms, registers, and data systems at facility level capturing SSNC-sensitive indicators','SSNC-sensitive indicators at facility and national levels','Data access and utilization','Data quality','Data management and governance','Dedicated neonatal data clerk'] },
+      { name:'Data Systems', items:[
+        { neutral:'Availability of neonatal health forms, registers, and data systems at facility level capturing SSNC-sensitive indicators', context:{ text:'Fragmented neonatal health forms, registers, and data systems at facility level', type:'Barrier', strategies:[3] } },
+        { neutral:'SSNC-sensitive indicators at facility and national levels', context:{ text:'No SSNC sensitive indicators at facility and national levels', type:'Barrier', strategies:[3] } },
+        { neutral:'Data access and utilization', context:{ text:'Poor data access and utilization', type:'Barrier', strategies:[1,2,3] } },
+        { neutral:'Data quality', context:{ text:'Poor data quality', type:'Barrier', strategies:[2,5] } },
+        { neutral:'Data management and governance', context:{ text:'Poor data management and governance', type:'Barrier', strategies:[1,3] } },
+        { neutral:'Dedicated neonatal data clerk', context:{ text:'Lack of dedicated neonatal data clerk', type:'Barrier', strategies:[1,12] } }
+      ] },
       { name:'Human Resources', items:['Health workers\' attitudes/interest in SSNC','Health workers\' competence/confidence in SSNC','Preservice training in SSNC','Training available for SSNC','BMET training','HC provider awareness/knowledge','Supporting staff following IPC guidelines (janitors, guards, support runners)','Available BMETs','Adequate number of health workers','Little to no staff rotation or turnover'] },
       { name:'Quality Improvement', items:['Consistent QI knowledge at national, regional, and facility levels','Active hospital and ward improvement teams','Consistent QI training','Consistent availability of QI documentation tools','Documentation completeness','Consistent auditing of care quality (e.g. MPDSA)','National and regional QI structures and resources include SSNC-focused guidance'] },
       { name:'Equipment & Commodities', items:['Availability of functional equipment and supplies at facilities','Strong procurement system','Technology fit for purpose','Skill labs/skill stations available and used','Affordable technology','No or infrequent stockouts','No or infrequent power outages'] },
@@ -899,23 +1337,23 @@ const DATA = {
     summary: 'Every one of the 13 strategies has its own mechanism statement — the causal logic for why that activity should work. Grouped here the same way as Strategies, so you can trace each one straight across.',
     groups: [
       { icon:'tech', name:'Life saving technology', items:[
-        '<strong>8 · Appropriate & functional SSNC medical devices</strong> — Ensuring appropriate, functional technology is available at the right level of care enables providers to deliver life-saving interventions safely and effectively, promoting feasibility and adoption of EBIs, and reducing gaps in SSNC delivery.',
-        '<strong>9 · Identify & qualify appropriate technology</strong> — Identifying, testing, and sharing results of devices that can function in rugged settings increases the feasibility of their use to provide SSNC, preventing device graveyards and increasing the adoption of SSNC EBIs because devices remain functional and available.',
-        '<strong>10 · Hatch Technologies</strong> — Reliable, context-appropriate technology distribution channels improve equitable access to devices, reduce downtime from broken or missing equipment, and promote sustainability of SSNC infrastructure in low-resource settings.',
-        '<strong>13 · Tailoring local infrastructure</strong> — Tailoring local infrastructure creates safer, more efficient care environments, improving feasibility, quality, and sustainability of SSNC services.'
+        '<strong>Appropriate & functional SSNC medical devices</strong> — Ensuring appropriate, functional technology is available at the right level of care enables providers to deliver life-saving interventions safely and effectively, promoting feasibility and adoption of EBIs, and reducing gaps in SSNC delivery.',
+        '<strong>Identify & qualify appropriate technology</strong> — Identifying, testing, and sharing results of devices that can function in rugged settings increases the feasibility of their use to provide SSNC, preventing device graveyards and increasing the adoption of SSNC EBIs because devices remain functional and available.',
+        '<strong>Hatch Technologies</strong> — Reliable, context-appropriate technology distribution channels improve equitable access to devices, reduce downtime from broken or missing equipment, and promote sustainability of SSNC infrastructure in low-resource settings.',
+        '<strong>Tailoring local infrastructure</strong> — Tailoring local infrastructure creates safer, more efficient care environments, improving feasibility, quality, and sustainability of SSNC services.'
       ]},
       { icon:'book', name:'Education ecosystem', items:[
-        '<strong>4 · Design & distribute clinical and biomedical educational materials</strong> — Providing standardized, accessible educational resources ensures consistent messaging, improves provider knowledge, which can increase adoption and fidelity to EBIs, and supports long-term adherence to clinical guidelines.',
-        '<strong>5 · Training & mentorship</strong> — Training and ongoing mentorship builds provider competence, confidence, and accountability, improving fidelity to protocols, retention of knowledge, increased adoption of EBIs, and sustainability of SSNC practices.',
-        '<strong>6 · Interprofessional collaboration & teamwork</strong> — Strengthening collaboration across cadres enhances communication, shared ownership, and problem solving, promoting fidelity to standards of care, increasing adoption of EBIs across cadres, and improving continuity of SSNC delivery.',
-        '<strong>7 · Motivate staff and foster collaboration between cadres</strong> — Recognition, supportive supervision, and empowerment of staff increases acceptability, motivation, and engagement, leading to greater accountability, reduced burnout, and higher quality care delivery.'
+        '<strong>Design & distribute clinical and biomedical educational materials</strong> — Providing standardized, accessible educational resources ensures consistent messaging, improves provider knowledge, which can increase adoption and fidelity to EBIs, and supports long-term adherence to clinical guidelines.',
+        '<strong>Training & mentorship</strong> — Training and ongoing mentorship builds provider competence, confidence, and accountability, improving fidelity to protocols, retention of knowledge, increased adoption of EBIs, and sustainability of SSNC practices.',
+        '<strong>Interprofessional collaboration & teamwork</strong> — Strengthening collaboration across cadres enhances communication, shared ownership, and problem solving, promoting fidelity to standards of care, increasing adoption of EBIs across cadres, and improving continuity of SSNC delivery.',
+        '<strong>Motivate staff and foster collaboration between cadres</strong> — Recognition, supportive supervision, and empowerment of staff increases acceptability, motivation, and engagement, leading to greater accountability, reduced burnout, and higher quality care delivery.'
       ]},
       { icon:'data', name:'Data-driven action', items:[
-        '<strong>1 · Engage policy makers & leadership</strong> — Policy-maker and leadership engagement fosters alignment of SSNC with national health priorities, promotes long-term commitment, and ensures integration of SSNC into broader health system goals.',
-        '<strong>2 · Quality improvement (QI) activities</strong> — Routine data-driven QI cycles build a culture of learning and accountability, enabling timely identification of gaps and driving sustainable improvements in SSNC coverage and quality.',
-        '<strong>3 · Develop data systems & feedback loops</strong> — Robust, context-appropriate data systems enable real-time monitoring, feedback, and course correction, supporting transparency and improving responsiveness to local needs.',
-        '<strong>11 · Engage family members in care & follow-up</strong> — Actively involving families in care builds trust, increases caregiver competence and adherence to recommended practices, and promotes continuity of care after discharge, improving neonatal survival.',
-        '<strong>12 · Ensure adequate funding</strong> — Securing and sustaining funding streams enables consistent procurement of supplies, maintenance of infrastructure, and retention of staff capacity, ensuring sustainability of SSNC services.'
+        '<strong>Engage policy makers & leadership</strong> — Policy-maker and leadership engagement fosters alignment of SSNC with national health priorities, promotes long-term commitment, and ensures integration of SSNC into broader health system goals.',
+        '<strong>Quality improvement (QI) activities</strong> — Routine data-driven QI cycles build a culture of learning and accountability, enabling timely identification of gaps and driving sustainable improvements in SSNC coverage and quality.',
+        '<strong>Develop data systems & feedback loops</strong> — Robust, context-appropriate data systems enable real-time monitoring, feedback, and course correction, supporting transparency and improving responsiveness to local needs.',
+        '<strong>Engage family members in care & follow-up</strong> — Actively involving families in care builds trust, increases caregiver competence and adherence to recommended practices, and promotes continuity of care after discharge, improving neonatal survival.',
+        '<strong>Ensure adequate funding</strong> — Securing and sustaining funding streams enables consistent procurement of supplies, maintenance of infrastructure, and retention of staff capacity, ensuring sustainability of SSNC services.'
       ]}
     ],
     footnote: '<strong>In Tier 3:</strong> how each mechanism plays out at the global, country, and hospital level specifically.'
@@ -1070,23 +1508,23 @@ const TIER3_DATA = {
     summary: 'The 13 strategies from Tier 2, now broken open to show every discrete activity carried out under each one — still organized into the same three buckets.',
     nestedGroups: [
       { icon:'tech', name:'Life saving technology', items:[
-        { name:'8 · Appropriate & functional SSNC medical devices', activities:['Providing devices to support hospitals','Providing consumables and spare parts','Providing toolkits for biomeds','Consumables forecasting tool for facility level','Development of novel SSNC devices (Celsi warmer, monitor, biliDx, Pumani)','Development of costing tool'] },
-        { name:'9 · Identify & qualify appropriate technology', activities:['Development/refinement of Target Product Profiles (TPPs)','Development/refinement of innovations landscape and newborn/maternal tech landscape','NEST360 engagement/collaboration with UNICEF/WHO','Development of qualification/usability testing process','Formation of NEST360-qualified technologies for SSNC','Establishing budgets for tech management'] },
-        { name:'10 · Hatch Technologies (device distribution)', activities:['Ensure consistent supply','Financing mechanism','Support for maintenance training'] },
-        { name:'13 · Tailoring local infrastructure', activities:['Developing floor plans','Small start-up grants to redesign flow/floor space','Infrastructure fund (e.g. backup power supply, running water)'] }
+        { num:8, name:'Appropriate & functional SSNC medical devices', activities:['Providing devices to support hospitals','Providing consumables and spare parts','Providing toolkits for biomeds','Consumables forecasting tool for facility level','Development of novel SSNC devices (Celsi warmer, monitor, biliDx, Pumani)','Development of costing tool'] },
+        { num:9, name:'Identify & qualify appropriate technology', activities:['Development/refinement of Target Product Profiles (TPPs)','Development/refinement of innovations landscape and newborn/maternal tech landscape','NEST360 engagement/collaboration with UNICEF/WHO','Development of qualification/usability testing process','Formation of NEST360-qualified technologies for SSNC','Establishing budgets for tech management'] },
+        { num:10, name:'Hatch Technologies (device distribution)', activities:['Ensure consistent supply','Financing mechanism','Support for maintenance training'] },
+        { num:13, name:'Tailoring local infrastructure', activities:['Developing floor plans','Small start-up grants to redesign flow/floor space','Infrastructure fund (e.g. backup power supply, running water)'] }
       ]},
       { icon:'book', name:'Education ecosystem', items:[
-        { name:'4 · Design & distribute clinical and biomedical educational materials', activities:['Job aids','Training manuals','Guidelines (decommissioning, workshop, SSNC, referral management, follow-up, installation trainings)','Training videos','GIC','Case scenarios','WASH/HH/IPC educational resources'] },
-        { name:'5 · Training & mentorship', activities:['Virtual data review meetings','Program-wide data review meetings (e.g. KIT)','Data-driven country implementation review meetings','QI and data interpretation trainings','Clinical care training (nationally approved SSNC courses)','BMET training (nationally approved)','Facility-level mentorship (clinical coaching)','Virtual/webinar CM/NES','Pre-service training (integrated SSNC content in clinical/BMET curricula + skills labs)','In-service training (BMETs and clinicians)','Off-site, pre-installation, on-site low-dose-high-frequency, and on-site induction training','Virtual training','Peer-to-peer mentorship process','Communities of learning via WhatsApp','PM/RM guidelines, decommissioning guidelines'] },
-        { name:'6 · Interprofessional collaboration & teamwork', activities:['Fostering collaboration between clinicians, biomeds, data officers, and hospital leadership at facility level','Cross-team meetings at program level (KMC working groups, KITs, Pause/Reflect/Act)','Collaboration with MOH technical working groups (QI, BMET, newborn)','Engagement of BMETs and labor unit in facility-level QI','Multidisciplinary training across cadres','SSNC Learning Toolkit (global)','National pediatric associations (country)','Inclusion of BMETs in communities of practice (program)'] },
-        { name:'7 · Motivate staff and foster collaboration between cadres', activities:['Identifying and training SSNC champions','Fostering collaboration between BMETs, clinicians (labor and newborn), and leadership'] }
+        { num:4, name:'Design & distribute clinical and biomedical educational materials', activities:['Job aids','Training manuals','Guidelines (decommissioning, workshop, SSNC, referral management, follow-up, installation trainings)','Training videos','GIC','Case scenarios','WASH/HH/IPC educational resources'] },
+        { num:5, name:'Training & mentorship', activities:['Virtual data review meetings','Program-wide data review meetings (e.g. KIT)','Data-driven country implementation review meetings','QI and data interpretation trainings','Clinical care training (nationally approved SSNC courses)','BMET training (nationally approved)','Facility-level mentorship (clinical coaching)','Virtual/webinar CM/NES','Pre-service training (integrated SSNC content in clinical/BMET curricula + skills labs)','In-service training (BMETs and clinicians)','Off-site, pre-installation, on-site low-dose-high-frequency, and on-site induction training','Virtual training','Peer-to-peer mentorship process','Communities of learning via WhatsApp','PM/RM guidelines, decommissioning guidelines'] },
+        { num:6, name:'Interprofessional collaboration & teamwork', activities:['Fostering collaboration between clinicians, biomeds, data officers, and hospital leadership at facility level','Cross-team meetings at program level (KMC working groups, KITs, Pause/Reflect/Act)','Collaboration with MOH technical working groups (QI, BMET, newborn)','Engagement of BMETs and labor unit in facility-level QI','Multidisciplinary training across cadres','SSNC Learning Toolkit (global)','National pediatric associations (country)','Inclusion of BMETs in communities of practice (program)'] },
+        { num:7, name:'Motivate staff and foster collaboration between cadres', activities:['Identifying and training SSNC champions','Fostering collaboration between BMETs, clinicians (labor and newborn), and leadership'] }
       ]},
       { icon:'data', name:'Data-driven action', items:[
-        { name:'1 · Engage policy makers & leadership', activities:['Obtaining buy-in for improving SSNC','Advocate for funding/additional investment','Advocate for additional staff support and end mandatory staff rotations','Advocate for official recognition of neonatal nursing as a specialty','Advocate for strengthened BMET workshops','Development of standard, costed neonatal unit floor plans','Advocate for hiring a dedicated neonatal data clerk','National TV/newspaper/announcements (public communication)','Policy briefs','Strengthen SSNC policies/guidelines/national targets (SDG, ENGAP, national commitments)','Identify/engage local supply chains & MOH medical supplies division','Inclusion of ACS in national supply catalogues','Engage global SSNC players (Beginnings Fund, mMamas, UNICEF, WHO, VAN)','Collaboration with regulatory agencies'] },
-        { name:'2 · Quality improvement (QI) activities', activities:['Coordinate national/regional leadership to incorporate SSNC into existing QI structures','Developed training materials','Integration of clinical & QI mentorship/training','Development of standardized QI documentation/tools','Development & dissemination of the change package','Performed QI training','Developed guide for setting up QIST/WITs where absent','QI coaching visits (in-person/virtual) where inactive','Communities of learning via WhatsApp','QoC tools','Recognition of positive staff performance','Support standardized clinical audit processes at facility level','Cross-country QI meetings','Program/national QI capacity building within leadership','Foster QI projects with active program-team feedback','Incorporate improvement-research tools/methods to accelerate spread','Communities of practice'] },
-        { name:'3 · Develop data systems & feedback loops', activities:['Service readiness checklist','Health facility assessment','NID','Context tracker','Hadli','NEST-IT','Patient capture tools (admission forms, registers, etc.)','Developed data-use guidelines','Support integration of standard neonatal variables into national HMIS','Utilize data clerks','Identify/use SSNC-relevant indicators (facility, regional, national, program)','M&E reviews to inform programmatic decisions'] },
-        { name:'11 · Engage family members in care & follow-up', activities:['Training on providing parents with counseling','Facilitating an enabling environment (culture, space, equipment)','Developed educational resources for parents (NICU orientation video, IPC, KMC, discharge, breastfeeding education)','Encourage zero separation between mother and newborn'] },
-        { name:'12 · Ensure adequate funding', activities:['Supporting country teams in funding grants','Identifying additional funding mechanisms (global/national)','Country-level costing and investment cases','Encouraging facilities/MOHs to include SSNC/BMET budget lines (infrastructure, HR, running costs, health insurance)'] }
+        { num:1, name:'Engage policy makers & leadership', activities:['Obtaining buy-in for improving SSNC','Advocate for funding/additional investment','Advocate for additional staff support and end mandatory staff rotations','Advocate for official recognition of neonatal nursing as a specialty','Advocate for strengthened BMET workshops','Development of standard, costed neonatal unit floor plans','Advocate for hiring a dedicated neonatal data clerk','National TV/newspaper/announcements (public communication)','Policy briefs','Strengthen SSNC policies/guidelines/national targets (SDG, ENGAP, national commitments)','Identify/engage local supply chains & MOH medical supplies division','Inclusion of ACS in national supply catalogues','Engage global SSNC players (Beginnings Fund, mMamas, UNICEF, WHO, VAN)','Collaboration with regulatory agencies'] },
+        { num:2, name:'Quality improvement (QI) activities', activities:['Coordinate national/regional leadership to incorporate SSNC into existing QI structures','Developed training materials','Integration of clinical & QI mentorship/training','Development of standardized QI documentation/tools','Development & dissemination of the change package','Performed QI training','Developed guide for setting up QIST/WITs where absent','QI coaching visits (in-person/virtual) where inactive','Communities of learning via WhatsApp','QoC tools','Recognition of positive staff performance','Support standardized clinical audit processes at facility level','Cross-country QI meetings','Program/national QI capacity building within leadership','Foster QI projects with active program-team feedback','Incorporate improvement-research tools/methods to accelerate spread','Communities of practice'] },
+        { num:3, name:'Develop data systems & feedback loops', activities:['Service readiness checklist','Health facility assessment','NID','Context tracker','Hadli','NEST-IT','Patient capture tools (admission forms, registers, etc.)','Developed data-use guidelines','Support integration of standard neonatal variables into national HMIS','Utilize data clerks','Identify/use SSNC-relevant indicators (facility, regional, national, program)','M&E reviews to inform programmatic decisions'] },
+        { num:11, name:'Engage family members in care & follow-up', activities:['Training on providing parents with counseling','Facilitating an enabling environment (culture, space, equipment)','Developed educational resources for parents (NICU orientation video, IPC, KMC, discharge, breastfeeding education)','Encourage zero separation between mother and newborn'] },
+        { num:12, name:'Ensure adequate funding', activities:['Supporting country teams in funding grants','Identifying additional funding mechanisms (global/national)','Country-level costing and investment cases','Encouraging facilities/MOHs to include SSNC/BMET budget lines (infrastructure, HR, running costs, health insurance)'] }
       ]}
     ],
     footnote: '<strong>Flagged for review:</strong> the grouping above is a first-pass mapping of the 13 strategies into these three buckets — the source material doesn\'t spell this out explicitly, so please sanity-check it.'
@@ -1110,6 +1548,26 @@ const TIER3_DATA = {
   impact: DATA.impact
 };
 
+/* Lookup map so any "S#" chip can find its strategy's name + activities + bucket, for the reference popover */
+const STRATEGY_LOOKUP = {};
+TIER3_DATA.strategies.nestedGroups.forEach(g => {
+  g.items.forEach(s => {
+    STRATEGY_LOOKUP[s.num] = { name: s.name, activities: s.activities, bucketName: g.name, bucketIcon: g.icon };
+  });
+});
+
+/* External NEST360 project pages — activity text (exact match) -> real URL. Experimental, Data Systems only for now. */
+const RESOURCE_LINKS = {
+  'NID': 'https://nest360.org/project/nid/',
+  'NEST-IT': 'https://nest360.org/project/nest-it-dashboard/',
+  'Identify/use SSNC-relevant indicators (facility, regional, national, program)': 'https://nest360.org/project/nest-it-dashboard/'
+};
+function linkifyActivity(text){
+  const url = RESOURCE_LINKS[text];
+  if(!url) return text;
+  return `<a href="${url}" target="_blank" rel="noopener" class="activity-link">${text} <span class="ext-icon">↗</span></a>`;
+}
+
 const flow = document.getElementById('flow');
 const overlay = document.getElementById('overlay');
 const panel = document.getElementById('panel');
@@ -1129,7 +1587,30 @@ function buildDetailBody(d){
     html += `<p class="panel-section-title">${d.sectionTitle}</p><div class="accordion-list">`;
     d.accordion.forEach(a => {
       html += `<details class="accordion-item"><summary style="color:${d.accent}">${a.name}</summary><ul>`;
-      a.items.forEach(it => html += `<li>${it}</li>`);
+      a.items.forEach(it => {
+        if(typeof it === 'string'){
+          html += `<li>${it}</li>`;
+        } else {
+          const c = it.context;
+          const typeClass = c.type === 'Barrier' ? 'bf-barrier' : (c.type === 'Facilitator' ? 'bf-facilitator' : 'bf-both');
+          const typeLabel = c.type === 'Both' ? 'Both facilitator and barrier' : c.type;
+          const chips = c.strategies && c.strategies.length
+            ? `<span class="strategy-chip-label">Strategies:</span>` + c.strategies.map(s => `<button type="button" class="strategy-chip strategy-chip-link" data-strategy-num="${s}">S${s}</button>`).join('')
+            : `<span class="strategy-chip-label">No strategy linked in source</span>`;
+          html += `<li class="factor-item-linked">
+            <div class="factor-neutral-row">${it.neutral}</div>
+            <button type="button" class="nest-context-toggle" style="color:${d.accent}">See NEST360's context &amp; strategies <span class="nest-context-arrow">→</span></button>
+            <div class="nest-context-reveal" hidden style="border-left-color:${d.accent}">
+              <p class="nest-context-label" style="color:${d.accent}">NEST360 context <span class="nest-context-sub">· Contextual Factor</span></p>
+              <div class="factor-row-top">
+                <span class="factor-text">${c.text}</span>
+                <span class="bf-badge ${typeClass}">${typeLabel}</span>
+              </div>
+              <div class="strategy-chip-row">${chips}</div>
+            </div>
+          </li>`;
+        }
+      });
       html += `</ul>`;
       if(a.note){ html += `<p class="accordion-note">${a.note}</p>`; }
       html += `</details>`;
@@ -1143,13 +1624,14 @@ function buildDetailBody(d){
       html += `<details class="accordion-item"><summary style="color:${d.accent}">${a.name}</summary><ul>`;
       a.factors.forEach(f => {
         const typeClass = f.type === 'Barrier' ? 'bf-barrier' : (f.type === 'Facilitator' ? 'bf-facilitator' : 'bf-both');
+        const typeLabel = f.type === 'Both' ? 'Both facilitator and barrier' : f.type;
         const chips = f.strategies && f.strategies.length
-          ? `<span class="strategy-chip-label">Strategies:</span>` + f.strategies.map(s => `<span class="strategy-chip">S${s}</span>`).join('')
+          ? `<span class="strategy-chip-label">Strategies:</span>` + f.strategies.map(s => `<button type="button" class="strategy-chip strategy-chip-link" data-strategy-num="${s}">S${s}</button>`).join('')
           : `<span class="strategy-chip-label">No strategy linked in source</span>`;
         html += `<li class="factor-row">
           <div class="factor-row-top">
             <span class="factor-text">${f.text}</span>
-            <span class="bf-badge ${typeClass}">${f.type}</span>
+            <span class="bf-badge ${typeClass}">${typeLabel}</span>
           </div>
           <div class="strategy-chip-row">${chips}</div>
         </li>`;
@@ -1175,8 +1657,8 @@ function buildDetailBody(d){
     d.nestedGroups.forEach(g => {
       html += `<div class="group-block"><h3 style="color:${d.accent}">${ICONS[g.icon] || ''} ${g.name}</h3><div class="accordion-list">`;
       g.items.forEach(s => {
-        html += `<details class="accordion-item"><summary style="color:${d.accent}">${s.name}</summary><ul>`;
-        s.activities.forEach(act => html += `<li>${act}</li>`);
+        html += `<details class="accordion-item" id="strategy-detail-${s.num}"><summary style="color:${d.accent}">${s.name}</summary><ul>`;
+        s.activities.forEach(act => html += `<li>${linkifyActivity(act)}</li>`);
         html += `</ul></details>`;
       });
       html += `</div></div>`;
@@ -1203,6 +1685,7 @@ function renderPanel(key){
 
 function openPanel(key){
   renderPanel(key);
+  panel.classList.remove('panel-compact');
   panel.classList.add('open');
   overlay.classList.add('open');
   panel.setAttribute('aria-hidden','false');
@@ -1211,6 +1694,28 @@ function closePanel(){
   panel.classList.remove('open');
   overlay.classList.remove('open');
   panel.setAttribute('aria-hidden','true');
+}
+
+function openStrategyReference(num){
+  const s = STRATEGY_LOOKUP[num];
+  if(!s) return;
+  const html = `
+    <div class="ref-header">
+      <div class="ref-icon" style="color:var(--strategies-accent)">${ICONS[s.bucketIcon] || ''}</div>
+      <div>
+        <p class="panel-eyebrow" style="color:var(--strategies-accent)">Strategy reference · ${s.bucketName}</p>
+        <h2>${s.name}</h2>
+      </div>
+    </div>
+    <p class="panel-section-title">What this strategy involves</p>
+    <ul class="ref-activity-list">${s.activities.map(a => `<li>${linkifyActivity(a)}</li>`).join('')}</ul>
+    <div class="panel-footnote">Quick reference for Strategy ${num} only. <a href="#" class="ref-jump-link" data-strategy-num="${num}">See it in the full Strategies breakdown →</a></div>
+  `;
+  panelContent.innerHTML = html;
+  panel.classList.add('panel-compact');
+  panel.classList.add('open');
+  overlay.classList.add('open');
+  panel.setAttribute('aria-hidden','false');
 }
 
 flow.addEventListener('click', (e) => {
@@ -1222,6 +1727,36 @@ flow.addEventListener('click', (e) => {
 overlay.addEventListener('click', closePanel);
 panelClose.addEventListener('click', closePanel);
 document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closePanel(); });
+
+/* Event delegation: strategy chip references can appear inside Tier 1 panels, Tier 2, and Tier 3 sections */
+document.addEventListener('click', (e) => {
+  const chip = e.target.closest('.strategy-chip-link');
+  if(chip){
+    openStrategyReference(chip.dataset.strategyNum);
+    return;
+  }
+  const jump = e.target.closest('.ref-jump-link');
+  if(jump){
+    e.preventDefault();
+    closePanel();
+    if(typeof showTier3Strategy === 'function'){
+      showTier3Strategy(jump.dataset.strategyNum);
+    }
+    return;
+  }
+  const ctxToggle = e.target.closest('.nest-context-toggle');
+  if(ctxToggle){
+    const reveal = ctxToggle.nextElementSibling;
+    const isHidden = reveal.hasAttribute('hidden');
+    if(isHidden){
+      reveal.removeAttribute('hidden');
+      ctxToggle.innerHTML = `Hide NEST360's context &amp; strategies <span class="nest-context-arrow up">→</span>`;
+    } else {
+      reveal.setAttribute('hidden','');
+      ctxToggle.innerHTML = `See NEST360's context &amp; strategies <span class="nest-context-arrow">→</span>`;
+    }
+  }
+});
 
 /* Position the intervention banner to span Strategies + Mechanisms on desktop */
 function layoutInterventionBanner(){
@@ -1274,75 +1809,135 @@ function tier2IconHTML(key){
   return iconEl ? iconEl.outerHTML : '';
 }
 
-function renderTierSections(containerId, dataObj){
-  const container = document.getElementById(containerId);
+/* Keys where Tier 3 has no additional depth beyond Tier 2 - no toggle needed for these */
+const NO_TIER3_TOGGLE = ['intervention', 'impact'];
+
+function renderDetailsSections(){
+  const container = document.getElementById('detailsSections');
   if(container.dataset.rendered === 'true') return;
   let html = '';
   TIER2_ORDER.forEach((key, i) => {
-    const d = dataObj[key];
+    const d2 = DATA[key];
+    const d3 = TIER3_DATA[key];
+    const showToggle = !NO_TIER3_TOGGLE.includes(key);
     html += `
       <div class="tier2-section">
         <div class="tier2-head tier2-head-${key}">
           <span class="tier2-index">${String(i+1).padStart(2,'0')} · ${NODE_LABELS[key]}</span>
           <div class="tier2-icon">${tier2IconHTML(key)}</div>
-          <h2>${d.title}</h2>
-          <p class="tier2-tagline">${d.tagline}</p>
+          <h2>${d2.title}</h2>
+          <p class="tier2-tagline">${d2.tagline}</p>
         </div>
         <div class="tier2-body">
-          <p class="tier-body-title" style="color:${d.accent}">${NODE_LABELS[key]}</p>
-          ${buildDetailBody(d)}
+          <p class="tier-body-title" style="color:${d2.accent}">${NODE_LABELS[key]}</p>
+          ${buildDetailBody(d2)}
+          ${showToggle ? `
+            <button type="button" class="tier3-toggle" data-key="${key}" style="border-color:${d2.accent}; color:${d2.accent}">
+              Show NEST360's Tier 3 detail <span class="tier3-toggle-arrow">▾</span>
+            </button>
+            <div class="tier3-reveal" id="tier3-reveal-${key}" hidden>
+              <p class="tier3-reveal-label" style="color:${d3.accent}">NEST360's Tier 3 detail</p>
+              ${buildDetailBody(d3)}
+            </div>
+          ` : ''}
         </div>
       </div>
     `;
   });
   container.innerHTML = html;
   container.dataset.rendered = 'true';
+
+  container.querySelectorAll('.tier3-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.key;
+      const reveal = document.getElementById(`tier3-reveal-${key}`);
+      const isHidden = reveal.hasAttribute('hidden');
+      if(isHidden){
+        reveal.removeAttribute('hidden');
+        btn.innerHTML = `Hide NEST360's Tier 3 detail <span class="tier3-toggle-arrow up">▾</span>`;
+      } else {
+        reveal.setAttribute('hidden','');
+        btn.innerHTML = `Show NEST360's Tier 3 detail <span class="tier3-toggle-arrow">▾</span>`;
+      }
+    });
+  });
 }
 
-const tabTier1 = document.getElementById('tabTier1');
-const tabTier2 = document.getElementById('tabTier2');
-const tabTier3 = document.getElementById('tabTier3');
+/* Jump from a strategy chip reference straight into the Strategies section's Tier 3 detail, open at that exact strategy */
+function showTier3Strategy(num){
+  showDetails();
+  renderDetailsSections();
+  const reveal = document.getElementById('tier3-reveal-strategies');
+  const btn = document.querySelector('.tier3-toggle[data-key="strategies"]');
+  if(reveal && reveal.hasAttribute('hidden')){
+    reveal.removeAttribute('hidden');
+    if(btn){ btn.innerHTML = `Hide NEST360's Tier 3 detail <span class="tier3-toggle-arrow up">▾</span>`; }
+  }
+  requestAnimationFrame(() => {
+    const target = document.getElementById(`strategy-detail-${num}`);
+    if(target){
+      target.setAttribute('open','');
+      target.scrollIntoView({ behavior:'smooth', block:'center' });
+      target.classList.add('flash-highlight');
+      setTimeout(() => target.classList.remove('flash-highlight'), 1600);
+    }
+  });
+}
+
+const tabOverview = document.getElementById('tabOverview');
+const tabDetails = document.getElementById('tabDetails');
 const flowFrame = document.getElementById('flowFrame');
-const tier2Frame = document.getElementById('tier2Frame');
-const tier3Frame = document.getElementById('tier3Frame');
+const detailsFrame = document.getElementById('detailsFrame');
 
 function deactivateAllTabs(){
-  [tabTier1, tabTier2, tabTier3].forEach(t => {
+  [tabOverview, tabDetails].forEach(t => {
     t.classList.remove('active');
     t.setAttribute('aria-selected','false');
   });
   flowFrame.classList.add('hidden');
-  tier2Frame.classList.remove('visible');
-  tier3Frame.classList.remove('visible');
+  detailsFrame.classList.remove('visible');
 }
 
-function showTier1(){
+function showOverview(){
   deactivateAllTabs();
   flowFrame.classList.remove('hidden');
-  tabTier1.classList.add('active');
-  tabTier1.setAttribute('aria-selected','true');
+  tabOverview.classList.add('active');
+  tabOverview.setAttribute('aria-selected','true');
   layoutInterventionBanner();
 }
 
-function showTier2(){
-  renderTierSections('tier2Sections', DATA);
+function showDetails(){
+  renderDetailsSections();
   deactivateAllTabs();
-  tier2Frame.classList.add('visible');
-  tabTier2.classList.add('active');
-  tabTier2.setAttribute('aria-selected','true');
+  detailsFrame.classList.add('visible');
+  tabDetails.classList.add('active');
+  tabDetails.setAttribute('aria-selected','true');
 }
 
-function showTier3(){
-  renderTierSections('tier3Sections', TIER3_DATA);
-  deactivateAllTabs();
-  tier3Frame.classList.add('visible');
-  tabTier3.classList.add('active');
-  tabTier3.setAttribute('aria-selected','true');
+tabOverview.addEventListener('click', showOverview);
+tabDetails.addEventListener('click', showDetails);
+
+/* ---------- SITE-LEVEL PAGE NAVIGATION (Home / NEST360 / Model / Resources / Contact) ---------- */
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+const pageViews = document.querySelectorAll('.page-view');
+
+function showPage(pageName){
+  pageViews.forEach(v => v.classList.toggle('active', v.dataset.page === pageName));
+  sidebarLinks.forEach(l => l.classList.toggle('active', l.dataset.page === pageName));
+  window.scrollTo(0, 0);
+  if(pageName === 'model'){
+    layoutInterventionBanner();
+  }
 }
 
-tabTier1.addEventListener('click', showTier1);
-tabTier2.addEventListener('click', showTier2);
-tabTier3.addEventListener('click', showTier3);
+sidebarLinks.forEach(link => {
+  link.addEventListener('click', () => showPage(link.dataset.page));
+});
+
+const homeCta = document.getElementById('homeCta');
+if(homeCta){
+  homeCta.addEventListener('click', () => showPage('model'));
+}
 </script>
 
 </body>
