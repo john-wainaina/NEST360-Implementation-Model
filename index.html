@@ -462,8 +462,9 @@
   }
 
   .factors-node{ background:var(--factors-bg); color:var(--factors-ink); }
-  .factors-wrap{ justify-content:center; }
+  .factors-wrap{ padding-top:105px; }
   .impact-wrap{ justify-content:center; }
+  .outcomes-wrap{ padding-top:105px; }
   .mechanisms-node{ background:var(--mechanisms-bg); color:var(--mechanisms-ink); }
   .impact-node{ background:var(--impact-bg); color:var(--impact-ink); }
 
@@ -1021,6 +1022,8 @@
     @keyframes pulse-flow-v{ 0%{ top:-40%; } 100%{ top:100%; } }
     .strategies-wrap{ padding-top:0; }
     .mechanisms-wrap{ padding-top:0; }
+    .factors-wrap{ padding-top:0; }
+    .outcomes-wrap{ padding-top:0; }
     .intervention-banner{
       position:static;
       width:100%;
@@ -1162,7 +1165,7 @@
       </div>
 
       <!-- OUTCOMES -->
-      <div class="node-wrap">
+      <div class="node-wrap outcomes-wrap">
         <button class="node outcomes-node" data-key="outcomes">
           <svg class="node-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="24" cy="24" r="16"/>
