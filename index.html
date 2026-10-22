@@ -1032,6 +1032,16 @@
   .panel{ box-shadow:none; }
   .panel.open{ box-shadow:-20px 0 60px -20px rgba(21,34,41,0.35); }
   .node-hint{ letter-spacing:0.05em; }
+  .sidebar-sub{ display:none; flex-direction:column; gap:1px; margin:0 0 6px 18px; padding-left:10px; border-left:2px solid var(--line, #dfe6e8); }
+  .sidebar-sub.open{ display:flex; }
+  .sidebar-sublink{ all:unset; cursor:pointer; padding:7px 10px; border-radius:8px; font-family:'Public Sans', sans-serif; font-weight:500; font-size:13px; color:var(--ink-soft); transition:background .15s ease, color .15s ease; }
+  .sidebar-sublink:hover{ background:var(--paper); color:var(--ink); }
+  .sidebar-sublink.current{ color:var(--brand-navy); font-weight:700; background:var(--paper); }
+  .sidebar-sublink:focus-visible{ outline:2px solid var(--brand-teal); outline-offset:1px; }
+  .tier2-section{ scroll-margin-top:20px; }
+  @keyframes sectionFlash{ 0%{ box-shadow:0 0 0 3px var(--brand-teal); } 100%{ box-shadow:0 0 0 3px transparent; } }
+  .tier2-section.section-flash{ animation:sectionFlash 1.4s ease-out; }
+  @media (max-width: 880px){ .sidebar-sub, .sidebar-sub.open{ display:none; } }
 </style>
 </head>
 <body>
@@ -1046,6 +1056,14 @@
     <nav class="sidebar-nav">
       <button class="sidebar-link active" data-page="home">Home</button>
       <button class="sidebar-link" data-page="model">Implementation Model</button>
+      <div class="sidebar-sub" id="sidebarSub" aria-label="Model stages">
+        <button class="sidebar-sublink" data-section="factors">Implementation Factors</button>
+        <button class="sidebar-sublink" data-section="intervention">Intervention</button>
+        <button class="sidebar-sublink" data-section="strategies">Strategies used</button>
+        <button class="sidebar-sublink" data-section="mechanisms">Mechanisms</button>
+        <button class="sidebar-sublink" data-section="outcomes">Outcomes</button>
+        <button class="sidebar-sublink" data-section="impact">Impact</button>
+      </div>
       <button class="sidebar-link" data-page="resources">Resources</button>
       <button class="sidebar-link" data-page="downloads">Downloads</button>
       <button class="sidebar-link" data-page="contact">Contact</button>
@@ -1756,7 +1774,7 @@ function renderDetailsSections(){
   TIER2_ORDER.forEach((key, i) => {
     const d = DATA[key];
     html += `
-      <div class="tier2-section">
+      <div class="tier2-section" id="section-${key}" data-section="${key}">
         <div class="tier2-head tier2-head-${key}">
           <span class="tier2-index">${String(i+1).padStart(2,'0')} · ${NODE_LABELS[key]}</span>
           <div class="tier2-icon">${tier2IconHTML(key)}</div>
@@ -1837,10 +1855,39 @@ function showPage(pageName){
   pageViews.forEach(v => v.classList.toggle('active', v.dataset.page === pageName));
   sidebarLinks.forEach(l => l.classList.toggle('active', l.dataset.page === pageName));
   window.scrollTo(0, 0);
+  document.getElementById('sidebarSub').classList.toggle('open', pageName === 'model');
   if(pageName === 'model'){
     layoutInterventionBanner();
   }
 }
+
+/* Sidebar sub-links: jump to a stage within Details */
+const sidebarSubLinks = document.querySelectorAll('.sidebar-sublink');
+function goToSection(key){
+  showPage('model');
+  showDetails();
+  requestAnimationFrame(() => {
+    const el = document.getElementById('section-' + key);
+    if(!el) return;
+    el.scrollIntoView({ behavior:'smooth', block:'start' });
+    el.classList.remove('section-flash'); void el.offsetWidth; el.classList.add('section-flash');
+    setCurrentSection(key);
+  });
+}
+function setCurrentSection(key){
+  sidebarSubLinks.forEach(b => b.classList.toggle('current', b.dataset.section === key));
+}
+sidebarSubLinks.forEach(b => b.addEventListener('click', () => goToSection(b.dataset.section)));
+
+/* Highlight the stage in view while scrolling Details */
+window.addEventListener('scroll', () => {
+  if(!detailsFrame.classList.contains('visible')){ setCurrentSection(null); return; }
+  let cur = null;
+  document.querySelectorAll('.tier2-section').forEach(s => {
+    if(s.getBoundingClientRect().top <= window.innerHeight * 0.35) cur = s.dataset.section;
+  });
+  setCurrentSection(cur);
+}, { passive:true });
 
 sidebarLinks.forEach(link => {
   link.addEventListener('click', () => showPage(link.dataset.page));
