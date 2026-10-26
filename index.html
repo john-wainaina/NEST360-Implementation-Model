@@ -1042,6 +1042,10 @@
   @keyframes sectionFlash{ 0%{ box-shadow:0 0 0 3px var(--brand-teal); } 100%{ box-shadow:0 0 0 3px transparent; } }
   .tier2-section.section-flash{ animation:sectionFlash 1.4s ease-out; }
   @media (max-width: 880px){ .sidebar-sub, .sidebar-sub.open{ display:none; } }
+  .strategy-tip{ position:fixed; z-index:80; max-width:280px; padding:9px 12px; border-radius:10px; background:var(--brand-navy); color:#fff; font-family:'Public Sans', sans-serif; font-size:13px; line-height:1.4; box-shadow:0 8px 24px -8px rgba(21,34,41,0.45); pointer-events:none; opacity:0; transform:translateY(4px); transition:opacity .12s ease, transform .12s ease; }
+  .strategy-tip.show{ opacity:1; transform:translateY(0); }
+  .strategy-tip b{ display:block; font-weight:700; }
+  .strategy-tip span{ display:block; margin-top:3px; font-size:12px; opacity:.8; }
 </style>
 </head>
 <body>
@@ -1897,6 +1901,34 @@ const homeCta = document.getElementById('homeCta');
 if(homeCta){
   homeCta.addEventListener('click', () => showPage('model'));
 }
+
+/* Hover/focus tooltip on strategy chips (S1…S13): shows the strategy name; click still opens the reference panel */
+(function(){
+  if(!window.matchMedia('(hover: hover)').matches) return;
+  const tip = document.createElement('div');
+  tip.className = 'strategy-tip'; tip.setAttribute('role','tooltip');
+  document.body.appendChild(tip);
+  function show(chip){
+    const s = STRATEGY_LOOKUP[chip.dataset.strategyNum];
+    if(!s) return;
+    tip.innerHTML = `<b>S${chip.dataset.strategyNum} · ${s.name}</b><span>Click to see activities</span>`;
+    const r = chip.getBoundingClientRect();
+    tip.style.left = '0px'; tip.style.top = '0px';
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    let x = Math.min(Math.max(8, r.left + r.width/2 - w/2), window.innerWidth - w - 8);
+    let y = r.top - h - 8; if(y < 8) y = r.bottom + 8;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+    tip.classList.add('show');
+  }
+  function hide(){ tip.classList.remove('show'); }
+  document.addEventListener('mouseover', e => { const c = e.target.closest('.strategy-chip-link'); if(c) show(c); });
+  document.addEventListener('mouseout', e => { if(e.target.closest('.strategy-chip-link')) hide(); });
+  document.addEventListener('focusin', e => { const c = e.target.closest && e.target.closest('.strategy-chip-link'); if(c) show(c); });
+  document.addEventListener('focusout', hide);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') hide(); });
+  document.addEventListener('click', hide);
+  window.addEventListener('scroll', hide, { passive:true });
+})();
 </script>
 
 </body>
