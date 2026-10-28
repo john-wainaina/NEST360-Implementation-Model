@@ -1046,6 +1046,10 @@
   .strategy-tip.show{ opacity:1; transform:translateY(0); }
   .strategy-tip b{ display:block; font-weight:700; }
   .strategy-tip span{ display:block; margin-top:3px; font-size:12px; opacity:.8; }
+  .outcome-sub{ margin:4px 0 14px; }
+  .outcome-sub h4{ margin:0 0 6px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .outcome-sub ul{ margin:0; }
+  .outcome-note{ margin:2px 0 10px; }
 </style>
 </head>
 <body>
@@ -1186,18 +1190,10 @@
           </svg>
           <span class="node-label">Outcomes</span>
           <div class="substack">
-            <div class="subitem">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.7 5.7 3.7 9s-1.3 6.4-3.7 9c-2.4-2.6-3.7-5.7-3.7-9S9.6 5.6 12 3Z"/></svg>
-              Global
-            </div>
-            <div class="subitem">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.2"/></svg>
-              National / Country
-            </div>
-            <div class="subitem">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="13" rx="1.5"/><path d="M9 21v-5h6v5M12 3v5M9.5 5.5h5"/></svg>
-              Hospital
-            </div>
+            <div class="subitem">Implementation outcomes</div>
+            <div class="subitem">Coverage and quality outcomes</div>
+            <div class="subitem">Health system outcomes</div>
+            <div class="subitem">Effectiveness outcomes</div>
           </div>
           <span class="node-hint">Tap to explore →</span>
         </button>
@@ -1498,20 +1494,230 @@ const DATA = {
     eyebrow: 'Outcomes',
     title: 'What NEST360 measured to know it was working',
     tagline: 'The indicators used to assess how well SSNC was implemented into practice',
-    summary: 'Outcomes are tracked at three levels — global, national/country, and hospital.',
-    groups: [
-      { icon:'globe', name:'Leadership & Governance', items:['National-level: SSNC and biomed allocations in annual budget'] },
-      { icon:'data', name:'Data Systems', items:['Global-level: # of Ministry of Health (MOH) NEST360 Implementation Tracker (NEST-IT) logins','National-level: % of countries logging into NEST360 Implementation Tracker (NEST-IT) monthly','Hospital-level: Data entry delays and data validity'] },
-      { icon:'pin', name:'Human Resources', items:['Global-level: # of clinicians who have received NEST SSNC training','National-level: % of hospitals with SSNC-trained staff','Hospital-level: Trained biomed at the hospital (Y/N)'] },
-      { icon:'domain', name:'Linkage to Maternal Care', items:[] },
-      { icon:'domain', name:'Family Centered Care', items:[] },
-      { icon:'domain', name:'Post-Discharge Follow-Up', items:[] },
-      { icon:'domain', name:'Quality Improvement', items:[] },
-      { icon:'domain', name:'Equipment & Commodities', items:[] },
-      { icon:'domain', name:'Referral Process', items:[] },
-      { icon:'domain', name:'Infrastructure', items:[] },
-      { icon:'domain', name:'Financing', items:[] }
+    summary: 'Outcomes are organised into four groupings: implementation outcomes, coverage and quality outcomes, health system outcomes, and effectiveness outcomes.',
+    outcomeGroups: [
+ {
+  "name": "Implementation outcomes",
+  "kind": "strategy",
+  "note": "Grouped by the strategy each indicator tracks.",
+  "subgroups": [
+   {
+    "strategy": 1,
+    "items": [
+     "% of NEST360 country team members engaging in national Ministry of Health (MOH) neonatal technical working groups",
+     "% of countries with national Healthcare Technology Management (HTM) policies in place",
+     "# of countries with one or more changes in policy related to SSNC and related areas (devices, staffing)"
     ]
+   },
+   {
+    "strategy": 12,
+    "items": [
+     "% of countries with national or sub-national budget allocation for SSNC",
+     "% of countries with national or sub-national budget allocation for Healthcare Technology Management (HTM)",
+     "% of countries with SSNC spare parts and consumables in the government catalogue"
+    ]
+   },
+   {
+    "strategy": 3,
+    "items": [
+     "Average % of hospitals with a monthly login rate to the NEST360 Implementation Tracker (NEST-IT)",
+     "% of countries with a country or sub-national Ministry of Health (MOH) employee logging into NEST-IT",
+     "Documented NEST-IT data utilization in NEST360-supported hospitals",
+     "Mean number of days between a newborn's discharge and data entry into the registry, across all NEST360-supported hospitals",
+     "Average % of eligible newborn records with a recorded value for each specified variable, calculated by averaging hospital-level completeness percentages",
+     "Average % of recorded values that meet predefined validity criteria for each tracked variable (discharge date, birthweight, lowest temperature, lowest oxygen saturation), calculated by averaging hospital-level validity percentages"
+    ]
+   },
+   {
+    "strategy": 4,
+    "items": [
+     "Type and # of educational materials developed at program level",
+     "# of people (website clicks) accessing resources at program level",
+     "% of countries that incorporated NEST360-developed education in national or sub-national guidance/documentation"
+    ]
+   },
+   {
+    "strategy": 5,
+    "items": [
+     "# of clinicians and Biomedical Engineering Technicians (BMETs) receiving NEST360 training at program level",
+     "% of NEST360-installed hospitals with at least one nurse trained on the neonatal providers course, per the most recent monthly context tracker",
+     "% of NEST360-installed hospitals with at least one Biomedical Engineering Technician (BMET) trained on the neonatal device course, per the most recent monthly context tracker (country, program)",
+     "# of individuals trained or certified in the Generic Instructor Course (GIC) at program level",
+     "# of Quality Improvement (QI) trainings occurring (country level)",
+     "% of countries with technologies for Level 2 care integrated into national standard newborn provider courses (in-service)",
+     "% of countries with technologies for Level 2 care integrated into national standard Biomedical Engineering Technician (BMET) courses (in-service)",
+     "% of countries with SSNC pre-service curricula implemented in learning institutions",
+     "# of skills labs developed, and their utilization statistics (program, country)"
+    ]
+   },
+   {
+    "strategy": 2,
+    "items": [
+     "# of new Quality Improvement (QI) projects implemented to address quality gaps",
+     "% of NEST360-supported hospitals with active QI projects",
+     "% of hospitals with QI coaching"
+    ]
+   },
+   {
+    "strategy": 6,
+    "items": [
+     "Documentation of biomedical and maternal involvement in QI projects",
+     "Whether a change idea explicitly involves collaboration between two or more professional groups to improve newborn care",
+     "% of countries with biomedical expertise included in the Ministry of Health (MOH) after engagement with NEST360"
+    ]
+   },
+   {
+    "strategy": 7,
+    "items": [
+     "% of hospitals that have access to their data via NEST-IT",
+     "% of hospitals with an identified clinical care champion (country, hospital)",
+     "Opportunities for hospital-level staff to present within country, across countries at alliance meetings, or internationally"
+    ]
+   },
+   {
+    "strategy": 11,
+    "items": [
+     "Documented QI projects with family engagement change ideas, with examples"
+    ]
+   },
+   {
+    "strategy": 13,
+    "items": [
+     "Infrastructure fund used (Y/N), and for what",
+     "% of hospitals with reliable power (comparison pre/post implementation)",
+     "% of hospitals with a dedicated newborn unit (comparison pre/post implementation)"
+    ]
+   },
+   {
+    "strategy": 9,
+    "items": [
+     "# of Target Product Profiles (TPPs) identified, developed or updated for Level 2+ SSNC, immediate Kangaroo Mother Care (iKMC) support, transport, maternal care, and transition to Level 3 SSNC",
+     "# of devices tested",
+     "# of technologies qualified for SSNC and Maternal, Newborn and Child Health (MNCH) (program)",
+     "Hadli device usage data (program, country)"
+    ]
+   },
+   {
+    "strategy": 8,
+    "items": [
+     "% of NEST360-installed facilities meeting the 90% functionality target for devices (Continuous Positive Airway Pressure (CPAP), pulse oximeters, oxygen concentrators, phototherapy machines, radiant warmers)",
+     "% device functionality (90% uptime) for target devices (CPAP, pulse oximeters, glucometers, oxygen concentrators, phototherapy machines, radiant warmers) across all NEST360-supported hospitals",
+     "Planned Preventive Maintenance (PPM) performed in categories: PPM in fewer than 3 of 6 categories; PPM in 3–4 of 6 categories; PPM in 5–6 of 6 categories (average of all NEST360-supported hospitals)"
+    ]
+   },
+   {
+    "strategy": 10,
+    "items": [
+     "Amount of direct financial support Hatch requires from NEST360 (for independence and measuring sustainability)",
+     "# of Hatch-supported countries",
+     "Total # of products distributed",
+     "# of Hatch-equipped Neonatal Intensive Care Units (NICUs)",
+     "Mean time to resolve a device issue/ticket (days)"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Coverage and quality outcomes",
+  "kind": "plain",
+  "note": "Select coverage indicators, grouped by intervention.",
+  "subgroups": [
+   {
+    "label": "Continuous Positive Airway Pressure (CPAP) for eligible newborns",
+    "items": [
+     "% CPAP use for babies 1000–1499 g and babies 1500–1999 g with Respiratory Distress Syndrome (RDS) and hypoxia at Phase 1 sites"
+    ]
+   },
+   {
+    "label": "Kangaroo Mother Care (KMC), 1000–1999 grams",
+    "items": [
+     "% of eligible newborns who receive KMC at Phase 1 facilities"
+    ]
+   },
+   {
+    "label": "Not hypothermic at admission",
+    "items": [
+     "% of admitted newborns who are non-hypothermic on admission at Phase 1 facilities"
+    ]
+   },
+   {
+    "label": "Not hypothermic at any time during admission",
+    "items": [
+     "% of admitted newborns with a documented body temperature ≥ 36.5 °C at any time during their neonatal unit stay, excluding temperature at admission"
+    ]
+   },
+   {
+    "label": "Phototherapy",
+    "items": [
+     "% of eligible newborns who receive phototherapy treatment at Phase 1 facilities"
+    ]
+   },
+   {
+    "label": "Pulse oximetry",
+    "items": [
+     "% of admitted newborns who have a pulse oximeter reading taken on admission at Phase 1 facilities"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Health system outcomes",
+  "kind": "plain",
+  "note": "",
+  "subgroups": [
+   {
+    "label": "Clinical care",
+    "items": [
+     "Time to Continuous Positive Airway Pressure (CPAP) initiation (from birth): time from birth to CPAP initiation among newborns weighing 1000–1999 g who received CPAP, categorized as ≤1 hour, 1–4 hours, 4–12 hours, 12–24 hours, or >24 hours",
+     "Time to CPAP initiation (from admission): time from admission to CPAP initiation among newborns weighing 1000–1999 g who received CPAP, categorized as ≤1 hour, 1–4 hours, 4–12 hours, 12–24 hours, or >24 hours",
+     "Time to Kangaroo Mother Care (KMC) initiation: among newborns who received KMC, categorized as same day, early (1–3 days), delayed (3–7 days), or late (>7 days)",
+     "Breast milk at birth: % of babies who received breast milk on their day of birth",
+     "Breastfeeding at discharge: % of babies who were exclusively on breast milk at discharge"
+    ]
+   },
+   {
+    "label": "Guidelines and policies",
+    "items": [
+     "National newborn guidelines: % of countries with newborn care guidelines integrated into national standards of care",
+     "National newborn technology guidelines: % of countries with technologies for Level 2+ care integrated into national standard newborn provider courses (in-service)",
+     "Policies discouraging staff rotation: % of NEST360-supported hospitals with policies in place to discourage rotation of trained staff"
+    ]
+   },
+   {
+    "label": "Supply availability",
+    "items": [
+     "Aggregate medicine availability: number of facilities in each medicine availability category (not available in any medicine category throughout the year; limited supplies reported; all medicine categories available throughout the year)",
+     "Aggregate consumable availability: availability status of consumables in each consumable/device category (stockout in any category; no stockout; limited supplies reported; all categories available; missing data)"
+    ]
+   },
+   {
+    "label": "Power",
+    "items": [
+     "Power outages: % of NEST360-supported hospitals within each predefined outage-duration category (≤1 hour, 1–5 hours, 5–10 hours, >10 hours), based on the total hours of power outages recorded at each hospital during the month, plus median monthly outage frequency",
+     "Share of monitored weeks with one or more outages (average of all NEST360-supported hospitals)",
+     "Monthly % of facilities with one or more power outages, on average",
+     "Average annualized powered-care days lost per hospital"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Effectiveness outcomes",
+  "kind": "plain",
+  "note": "",
+  "subgroups": [
+   {
+    "label": "Mortality",
+    "items": [
+     {
+      "text": "Newborn mortality (NEST360 interim results)",
+      "url": "https://nest360.org/project/nest360-mortality-interim-results-for-africas-newborns/"
+     }
+    ]
+   }
+  ]
+ }
+],
   },
   impact: {
     accent: 'var(--impact-accent)',
@@ -1606,6 +1812,32 @@ function buildDetailBody(d){
       g.items.forEach(it => html += `<li>${it}</li>`);
       html += `</ul></div>`;
     });
+  }
+
+  if(d.outcomeGroups){
+    html += `<p class="panel-section-title">Outcome groupings</p><div class="accordion-list">`;
+    d.outcomeGroups.forEach(g => {
+      html += `<details class="accordion-item"><summary style="color:${d.accent}">${g.name}</summary>`;
+      if(g.note){ html += `<p class="accordion-note outcome-note">${g.note}</p>`; }
+      g.subgroups.forEach(s => {
+        let head;
+        if(s.strategy){
+          const st = STRATEGY_LOOKUP[s.strategy];
+          head = `<button type="button" class="strategy-chip strategy-chip-link" data-strategy-num="${s.strategy}">S${s.strategy}</button> <span>${st ? st.name : ''}</span>`;
+        } else {
+          head = `<span>${s.label}</span>`;
+        }
+        html += `<div class="outcome-sub"><h4 style="color:${d.accent}">${head}</h4><ul>`;
+        s.items.forEach(it => {
+          html += typeof it === 'string'
+            ? `<li>${it}</li>`
+            : `<li><a href="${it.url}" target="_blank" rel="noopener" class="activity-link">${it.text} <span class="ext-icon">↗</span></a></li>`;
+        });
+        html += `</ul></div>`;
+      });
+      html += `</details>`;
+    });
+    html += `</div>`;
   }
 
   if(d.cascadeGroups){
