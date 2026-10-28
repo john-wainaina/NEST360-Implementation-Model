@@ -1050,6 +1050,16 @@
   .outcome-sub h4{ margin:0 0 6px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
   .outcome-sub ul{ margin:0; }
   .outcome-note{ margin:2px 0 10px; }
+  .info-popup-link{ all:unset; cursor:pointer; color:var(--outcomes-accent); font-weight:600; text-decoration:underline; text-underline-offset:3px; }
+  .info-popup-link:hover{ color:var(--brand-navy); }
+  .info-popup-link:focus-visible{ outline:2px solid var(--brand-teal); outline-offset:2px; }
+  .info-title{ font-family:'Fraunces', serif; font-size:24px; line-height:1.25; margin:6px 0 4px; color:var(--ink); }
+  .info-sub{ font-size:13px; color:var(--ink-soft); margin:0 0 16px; }
+  .info-body{ font-size:15px; line-height:1.6; margin:0 0 14px; color:var(--ink); }
+  .info-links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  .info-btn{ display:inline-block; padding:10px 16px; border-radius:10px; border:1.5px solid var(--brand-navy); color:var(--brand-navy); font-weight:600; font-size:14px; text-decoration:none; }
+  .info-btn.primary{ background:var(--brand-navy); color:#fff; }
+  .info-btn:hover{ opacity:.88; }
 </style>
 </head>
 <body>
@@ -1709,10 +1719,7 @@ const DATA = {
    {
     "label": "Mortality",
     "items": [
-     {
-      "text": "Newborn mortality (NEST360 interim results)",
-      "url": "https://nest360.org/project/nest360-mortality-interim-results-for-africas-newborns/"
-     }
+     { "text": "Newborn mortality (NEST360 interim results)", "popup": "mortality" }
     ]
    }
   ]
@@ -1831,6 +1838,8 @@ function buildDetailBody(d){
         s.items.forEach(it => {
           html += typeof it === 'string'
             ? `<li>${it}</li>`
+            : it.popup
+            ? `<li><button type="button" class="info-popup-link" data-popup="${it.popup}">${it.text} <span class="ext-icon">→</span></button></li>`
             : `<li><a href="${it.url}" target="_blank" rel="noopener" class="activity-link">${it.text} <span class="ext-icon">↗</span></a></li>`;
         });
         html += `</ul></div>`;
@@ -1889,6 +1898,37 @@ function closePanel(){
   panel.setAttribute('aria-hidden','true');
 }
 
+const INFO_POPUPS = {
+  mortality: {
+    eyebrow: 'Effectiveness outcome · Mortality',
+    title: 'NEST360 Impact: Mortality Interim Results for Africa’s Newborns',
+    sub: 'Updated May 2026',
+    body: [
+      'NEST360’s interim mortality results to September 2025 show a statistically significant mortality reduction for admitted newborns across 65 hospitals in Kenya, Malawi, Nigeria, and Tanzania. These data strengthen confidence in how coverage and quality improvements, especially for Continuous Positive Airway Pressure (CPAP) and Kangaroo Mother Care (KMC), reduce neonatal inpatient mortality.',
+      'Partnerships will be key for all of us to go faster together for survival, especially across Africa, with urgency to reduce over a million annual preventable neonatal deaths on the continent.'
+    ],
+    links: [
+      { label: 'Download the resource', url: 'https://bit.ly/4wtif4r', primary: true },
+      { label: 'View the full flyer (PDF)', url: 'https://nest360.org/wp-content/uploads/2026/05/NEST360-Mortality-Impact-Flyer_5.5.26.pdf' }
+    ]
+  }
+};
+function openInfoPopup(key){
+  const c = INFO_POPUPS[key];
+  if(!c) return;
+  panelContent.innerHTML = `
+    <p class="panel-eyebrow" style="color:var(--outcomes-accent)">${c.eyebrow}</p>
+    <h2 class="info-title">${c.title}</h2>
+    <p class="info-sub">${c.sub}</p>
+    ${c.body.map(b => `<p class="info-body">${b}</p>`).join('')}
+    <div class="info-links">${c.links.map(l => `<a class="info-btn${l.primary ? ' primary' : ''}" href="${l.url}" target="_blank" rel="noopener">${l.label} <span class="ext-icon">↗</span></a>`).join('')}</div>
+  `;
+  panel.classList.add('panel-compact');
+  panel.classList.add('open');
+  overlay.classList.add('open');
+  panel.setAttribute('aria-hidden','false');
+}
+
 function openStrategyReference(num){
   const s = STRATEGY_LOOKUP[num];
   if(!s) return;
@@ -1923,6 +1963,11 @@ document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closePanel(
 
 /* Event delegation: strategy chip references can appear inside the Overview panel and Details sections */
 document.addEventListener('click', (e) => {
+  const infoBtn = e.target.closest('.info-popup-link');
+  if(infoBtn){
+    openInfoPopup(infoBtn.dataset.popup);
+    return;
+  }
   const chip = e.target.closest('.strategy-chip-link');
   if(chip){
     openStrategyReference(chip.dataset.strategyNum);
