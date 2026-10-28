@@ -1060,6 +1060,10 @@
   .info-btn{ display:inline-block; padding:10px 16px; border-radius:10px; border:1.5px solid var(--brand-navy); color:var(--brand-navy); font-weight:600; font-size:14px; text-decoration:none; }
   .info-btn.primary{ background:var(--brand-navy); color:#fff; }
   .info-btn:hover{ opacity:.88; }
+  .chip-popup{ cursor:pointer; text-decoration:none; font-weight:600; }
+  .chip-popup:hover{ text-decoration:underline; text-underline-offset:3px; }
+  .info-popup-link.chip-popup{ display:inline-block; padding:7px 14px; border:1.5px solid var(--impact-accent); border-radius:999px; text-decoration:none; font-size:14px; }
+  .info-popup-link.chip-popup:hover{ background:var(--paper); text-decoration:none; }
 </style>
 </head>
 <body>
@@ -1733,7 +1737,7 @@ const DATA = {
     tagline: 'The ultimate measure of success',
     summary: 'Everything upstream — the factors addressed, the strategies deployed, the mechanisms triggered, the outcomes tracked — builds toward one goal: more newborns surviving and thriving in NEST360-supported hospitals.',
     sectionTitle: 'Measured through',
-    chips: ['Coverage rates', 'Mortality change']
+    chips: [{ text:'Mortality change', popup:'mortality', eyebrow:'Impact · Mortality change' }]
   }
 };
 
@@ -1773,7 +1777,7 @@ function buildDetailBody(d){
 
   if(d.chips){
     html += `<p class="panel-section-title">${d.sectionTitle}</p><div class="chip-grid">`;
-    d.chips.forEach(c => html += `<span class="chip">${c}</span>`);
+    d.chips.forEach(c => html += typeof c === 'string' ? `<span class="chip">${c}</span>` : `<button type="button" class="chip chip-popup info-popup-link" data-popup="${c.popup}"${c.eyebrow ? ` data-eyebrow="${c.eyebrow}"` : ''}>${c.text} <span class="ext-icon">→</span></button>`);
     html += `</div>`;
   }
 
@@ -1913,11 +1917,11 @@ const INFO_POPUPS = {
     ]
   }
 };
-function openInfoPopup(key){
+function openInfoPopup(key, eyebrow){
   const c = INFO_POPUPS[key];
   if(!c) return;
   panelContent.innerHTML = `
-    <p class="panel-eyebrow" style="color:var(--outcomes-accent)">${c.eyebrow}</p>
+    <p class="panel-eyebrow" style="color:var(--${eyebrow ? 'impact' : 'outcomes'}-accent)">${eyebrow || c.eyebrow}</p>
     <h2 class="info-title">${c.title}</h2>
     <p class="info-sub">${c.sub}</p>
     ${c.body.map(b => `<p class="info-body">${b}</p>`).join('')}
@@ -1965,7 +1969,7 @@ document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closePanel(
 document.addEventListener('click', (e) => {
   const infoBtn = e.target.closest('.info-popup-link');
   if(infoBtn){
-    openInfoPopup(infoBtn.dataset.popup);
+    openInfoPopup(infoBtn.dataset.popup, infoBtn.dataset.eyebrow);
     return;
   }
   const chip = e.target.closest('.strategy-chip-link');
