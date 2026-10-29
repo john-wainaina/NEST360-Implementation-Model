@@ -1064,6 +1064,140 @@
   .chip-popup:hover{ text-decoration:underline; text-underline-offset:3px; }
   .info-popup-link.chip-popup{ display:inline-block; padding:7px 14px; border:1.5px solid var(--impact-accent); border-radius:999px; text-decoration:none; font-size:14px; }
   .info-popup-link.chip-popup:hover{ background:var(--paper); text-decoration:none; }
+/* ---------- Strategies v2 (sample) ---------- */
+:root{
+  --lv-p:#2563B0; --lv-p-bg:#DCE8F7; --lv-p-ink:#153F7A;
+  --lv-n:#0E8F6B; --lv-n-bg:#D3F0E4; --lv-n-ink:#0A5E47;
+  --lv-h:#D9780F; --lv-h-bg:#FDE6C9; --lv-h-ink:#7F4308;
+}
+.intro-box{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:18px 20px;margin:0 0 22px}
+.intro-box h3{font-family:'Fraunces',serif;font-size:18px;margin:0 0 6px}
+.intro-box p{margin:0 0 10px;font-size:15px}
+.nav-steps{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:8px;counter-reset:s}
+.nav-steps li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.nav-steps li::before{content:counter(s);flex:0 0 24px;height:24px;border-radius:50%;background:var(--strategies-accent);color:#fff;font:700 13px/24px 'Public Sans',sans-serif;text-align:center;margin-top:1px}
+.lv-key{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.lv{font:600 13px 'Public Sans',system-ui,sans-serif;padding:3px 11px;border-radius:999px;white-space:nowrap}
+.lv.Program{color:var(--lv-p-ink);background:var(--lv-p-bg);box-shadow:inset 0 0 0 1.5px var(--lv-p)}
+.lv.National{color:var(--lv-n-ink);background:var(--lv-n-bg);box-shadow:inset 0 0 0 1.5px var(--lv-n)}
+.lv.Hospital{color:var(--lv-h-ink);background:var(--lv-h-bg);box-shadow:inset 0 0 0 1.5px var(--lv-h)}
+.pane[hidden]{display:none}
+.matrix-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;background:var(--paper-raised)}
+table.matrix{border-collapse:collapse;width:100%;min-width:640px}
+.matrix th,.matrix td{padding:0;text-align:center}
+.matrix thead th{padding:10px 6px;border-bottom:1px solid var(--rule);font:600 13px 'Public Sans',system-ui,sans-serif;color:var(--ink-soft);vertical-align:bottom}
+.matrix thead th:first-child{text-align:left;padding-left:16px}
+.lvhead{all:unset;cursor:pointer;display:inline-block;padding:5px 12px;border-radius:999px;font:700 13px 'Public Sans',system-ui,sans-serif}
+.lvhead.Program{color:#fff;background:var(--lv-p)} .lvhead.National{color:#fff;background:var(--lv-n)} .lvhead.Hospital{color:#fff;background:var(--lv-h)}
+.lvhead:hover{filter:brightness(1.1)} .lvhead:focus-visible,.cell:focus-visible,.gbtn:focus-visible{outline:2px solid var(--brand-teal);outline-offset:2px}
+.matrix tbody th{text-align:left;padding:5px 10px 5px 16px;border-bottom:1px solid var(--rule);font-weight:600;font-size:14.5px}
+.gbtn{all:unset;cursor:pointer;line-height:1.3;color:var(--strategies-accent)}
+.gbtn:hover{text-decoration:underline;text-underline-offset:3px}
+.matrix td{border-bottom:1px solid var(--rule);width:96px}
+.cell{all:unset;cursor:pointer;display:block;margin:4px 6px;padding:7px 0;border-radius:9px;font-weight:700;font-size:15px;text-align:center;min-width:56px}
+.cell[data-n="0"]{cursor:default;color:var(--ink-soft);opacity:.4;font-weight:500}
+.cell:not([data-n="0"]):hover{box-shadow:0 0 0 2px var(--ink)}
+.cell.active{box-shadow:0 0 0 3px var(--ink)}
+.incl{all:unset;cursor:pointer;display:block;margin:4px 8px;padding:7px 4px;font-weight:700;color:var(--ink);border-radius:9px;min-width:60px}
+.incl:hover{background:var(--paper)} .incl:focus-visible{outline:2px solid var(--brand-teal)}
+.matrix thead th.inclh{width:120px;line-height:1.25}
+tr.expand td{padding:0;background:var(--strategies-bg);border-bottom:1px solid var(--rule);text-align:left}
+.expand-inner{padding:14px 16px 8px}
+.expand-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:6px}
+.expand-title{font-weight:700;color:var(--strategies-ink);font-size:15px}
+.expand-hint{font-size:13.5px;color:var(--ink-soft);margin:2px 0 8px}
+.xclose{all:unset;cursor:pointer;font-weight:600;font-size:13.5px;color:var(--brand-navy);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+details.strat{background:var(--paper-raised);border:1px solid var(--rule);border-radius:10px;margin:0 0 8px}
+details.strat>summary{list-style:none;cursor:pointer;padding:10px 12px;display:grid;gap:6px}
+details.strat>summary::-webkit-details-marker{display:none}
+.sname{font-weight:600;font-size:15px;display:flex;gap:8px;align-items:flex-start;line-height:1.4}
+.sname::before{content:"›";color:var(--strategies-accent);font-weight:700;transition:transform .15s}
+details.strat[open]>summary .sname::before{transform:rotate(90deg)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-left:18px}
+.ar{font:500 12.5px 'IBM Plex Mono',monospace;color:var(--ink-soft)}
+.ar::before{content:"#";opacity:.6}
+.sgroup{font-size:13px;color:var(--ink-soft);padding-left:18px}
+.sdetail{margin:0 12px 12px 30px;padding:11px 14px;border-left:3px solid var(--strategies-accent);background:var(--paper);border-radius:0 10px 10px 0}
+.sdetail p{margin:0 0 6px;font-size:15px}
+.sdetail p.none{color:var(--ink-soft);font-style:italic}
+.res{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.res a{color:var(--brand-navy);font-weight:600;font-size:14px;text-decoration:underline;text-underline-offset:3px;word-break:break-all}
+.bottom-intro{margin-top:22px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:16px 20px}
+.bottom-intro h3{font-family:'Fraunces',serif;font-size:18px;margin:0 0 4px}
+.bottom-intro p{margin:0;font-size:15px;max-width:560px}
+.go{all:unset;cursor:pointer;background:var(--brand-navy);color:#fff;font-weight:600;font-size:14.5px;padding:11px 18px;border-radius:999px}
+.go:hover{filter:brightness(1.15)} .go:focus-visible{outline:2px solid var(--brand-teal);outline-offset:2px}
+.filters{display:grid;gap:14px;background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:16px}
+.frow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flabel{font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);min-width:110px}
+.seg button,.areachip{all:unset;cursor:pointer;padding:7px 14px;border-radius:999px;border:1.5px solid var(--rule);font-weight:600;font-size:14px;color:var(--ink-soft);background:var(--paper-raised)}
+.seg button:hover,.areachip:hover{border-color:var(--strategies-accent);color:var(--ink)}
+.seg button[aria-pressed="true"],.areachip[aria-pressed="true"]{background:var(--brand-navy);border-color:var(--brand-navy);color:#fff}
+.seg button.Program[aria-pressed="true"]{background:var(--lv-p);border-color:var(--lv-p)}
+.seg button.National[aria-pressed="true"]{background:var(--lv-n);border-color:var(--lv-n)}
+.seg button.Hospital[aria-pressed="true"]{background:var(--lv-h);border-color:var(--lv-h)}
+.seg button:focus-visible,.areachip:focus-visible,.search:focus-visible{outline:2px solid var(--brand-teal);outline-offset:2px}
+.search{padding:9px 14px;border:1.5px solid var(--rule);border-radius:10px;font:500 15px 'Public Sans',system-ui,sans-serif;background:var(--paper-raised);color:var(--ink);width:100%;max-width:380px}
+.status{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 2px 10px;font-size:14px;color:var(--ink-soft)}
+.clear{all:unset;cursor:pointer;color:var(--brand-navy);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.empty{padding:26px;text-align:center;color:var(--ink-soft);border:1px dashed var(--rule);border-radius:12px}
+.rg{border:1px solid var(--rule);border-radius:12px;margin:0 0 10px;overflow:hidden;background:var(--paper-raised)}
+.rg-head{all:unset;cursor:pointer;display:flex;align-items:center;gap:12px;padding:13px 16px;width:100%;box-sizing:border-box}
+.rg-head:hover{background:var(--paper)} .rg-head:focus-visible{outline:2px solid var(--brand-teal);outline-offset:-2px}
+.rg-name{flex:1;font-weight:700;color:var(--strategies-accent);font-size:15.5px}
+.rg-count{font-size:13.5px;color:var(--ink-soft);white-space:nowrap}
+.rg-plus{width:18px;text-align:center;font-size:20px;color:var(--ink-soft)}
+.rg-plus::before{content:"+"} .rg.open .rg-plus::before{content:"–"}
+.rg.open .rg-head{background:var(--strategies-bg);border-bottom:1px solid var(--rule)}
+.rg-body{padding:12px 14px 6px;background:var(--strategies-bg)}
+.rg-body[hidden]{display:none}
+.backlink{all:unset;cursor:pointer;color:var(--brand-navy);font-weight:600;font-size:14.5px;text-decoration:underline;text-underline-offset:3px;display:inline-block;margin:0 0 14px}
+.backlink:focus-visible{outline:2px solid var(--brand-teal);outline-offset:2px}
+.float-close{all:unset;cursor:pointer;position:fixed;right:22px;top:50%;margin-top:-22px;z-index:60;display:flex;align-items:center;gap:10px;background:var(--brand-navy);color:#fff;font:600 14.5px "Public Sans",system-ui,sans-serif;padding:12px 18px;border-radius:999px;box-shadow:0 10px 28px -8px rgba(1,65,103,.55)}
+.float-close[hidden]{display:none}
+.float-close span{font:500 11.5px "IBM Plex Mono",monospace;background:rgba(255,255,255,.18);padding:2px 7px;border-radius:6px}
+.float-close:hover{filter:brightness(1.15)}
+.float-close:focus-visible{outline:3px solid var(--brand-teal);outline-offset:2px}
+@media (max-width:880px){ .float-close{ right:12px; top:auto; bottom:18px; margin-top:0; } .float-close span{display:none} }
+@media (max-width:880px){ .site-main, .page-view.page{ max-width:100vw; min-width:0; } .tier2-section{ max-width:100%; } .tier2-body{ min-width:0; max-width:100%; } .matrix-wrap{ max-width:100%; } }
+@media (max-width:640px){.flabel{min-width:100%}}
+
+/* Strategies side panel */
+.s-overlay{position:fixed;inset:0;background:rgba(21,34,41,.38);opacity:0;pointer-events:none;transition:opacity .2s;z-index:70}
+.s-overlay.open{opacity:1;pointer-events:auto}
+.s-panel{position:fixed;top:0;right:0;bottom:0;width:min(540px,100vw);background:var(--paper-raised);z-index:71;transform:translateX(100%);transition:transform .28s cubic-bezier(.2,.8,.25,1);display:flex;flex-direction:column;outline:none}
+.s-panel.open{transform:none;box-shadow:-20px 0 60px -20px rgba(21,34,41,.4)}
+.s-close{all:unset;cursor:pointer;position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;text-align:center;line-height:34px;font-size:24px;color:var(--ink-soft);border:1px solid var(--rule);background:var(--paper-raised)}
+.s-close:hover{background:var(--paper);color:var(--ink)} .s-close:focus-visible,.s-btn:focus-visible,.s-item:focus-visible{outline:2px solid var(--brand-teal);outline-offset:2px}
+.s-head{padding:22px 64px 14px 24px;background:var(--strategies-bg);border-bottom:1px solid var(--rule)}
+.s-eyebrow{font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--strategies-accent);margin:0 0 6px}
+.s-head h2{font-family:'Fraunces',serif;font-size:21px;line-height:1.25;margin:0;color:var(--strategies-ink)}
+.s-body{flex:1;overflow-y:auto;padding:16px 20px 28px}
+.s-hint{font-size:14px;color:var(--ink-soft);margin:0 0 12px}
+.s-item{all:unset;cursor:pointer;display:block;width:100%;box-sizing:border-box;background:var(--paper-raised);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.s-item:hover{border-color:var(--strategies-accent);background:var(--paper)}
+.s-item .sname::before{content:none}
+.s-item .tags{padding-left:0;margin-top:7px}
+.s-back{all:unset;cursor:pointer;color:var(--brand-navy);font-weight:600;font-size:14.5px;text-decoration:underline;text-underline-offset:3px;display:inline-block;margin:0 0 14px}
+.s-back:focus-visible{outline:2px solid var(--brand-teal);outline-offset:2px}
+.s-detail h3{font-family:'Fraunces',serif;font-size:21px;line-height:1.3;margin:0 0 10px}
+.s-detail .tags{padding-left:0;margin-bottom:14px}
+.s-detail .desc{font-size:16px;line-height:1.6;margin:0 0 14px}
+.s-detail .desc.none{color:var(--ink-soft);font-style:italic}
+.s-detail .rlabel{font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:16px 0 6px}
+.s-detail .res a{font-size:14.5px}
+.s-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:22px;padding-top:16px;border-top:1px solid var(--rule)}
+.s-btn{all:unset;cursor:pointer;padding:9px 16px;border-radius:999px;border:1.5px solid var(--brand-navy);color:var(--brand-navy);font-weight:600;font-size:14px}
+.s-btn:hover{background:var(--paper)} .s-btn[disabled]{opacity:.35;cursor:default}
+.s-pos{font-size:13.5px;color:var(--ink-soft)}
+.s-tip{position:fixed;z-index:80;max-width:260px;padding:8px 11px;border-radius:9px;background:var(--brand-navy);color:#fff;font:500 13px/1.4 'Public Sans',system-ui,sans-serif;pointer-events:none;opacity:0;transition:opacity .12s}
+.s-tip.show{opacity:1}
+.rg-head .rg-plus::before{content:"›"} .rg-head .rg-plus{font-size:22px}
+@media (max-width:640px){.s-panel{width:100vw}}
+.res-card{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:16px 18px}
+.res-or{font-size:13.5px;color:var(--ink-soft);margin:14px 0 8px}
+.s-grp{font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--strategies-accent);margin:16px 0 8px}
+.s-grp:first-of-type{margin-top:4px}
 </style>
 </head>
 <body>
@@ -1451,7 +1585,8 @@ const DATA = {
     eyebrow: 'Strategies used by NEST360',
     title: 'Multi-level, sustainable systems change',
     tagline: 'The activities NEST360 used to overcome barriers, leverage facilitators, and implement SSNC',
-    summary: '13 discrete strategy groups, organized here into three overarching approaches. Together they reach from global policy engagement down to the equipment on a hospital ward. Tap into any strategy to see the specific activities NEST360 carried out.',
+    strategyApp: true,
+    summary: 'The groups of actions NEST360 used to put SSNC into practice, from engaging policy makers down to the equipment on a hospital ward. Open the full view to see each group, the levels it targeted, and every specific strategy.',
     sectionTitle: 'Breakdown',
     cascadeGroups: [
       { icon:'tech', name:'Life saving technology', items:[
@@ -1772,7 +1907,13 @@ const panel = document.getElementById('panel');
 const panelContent = document.getElementById('panelContent');
 const panelClose = document.getElementById('panelClose');
 
-function buildDetailBody(d){
+function buildDetailBody(d, ctx){
+  if(d.strategyApp){
+    if(ctx === 'panel'){
+      return `<p class="panel-summary">${d.summary}</p><button type="button" class="go sx-open-details">Open the full Strategies view →</button>`;
+    }
+    return '<div class="sx-root" id="sxRoot"></div>';
+  }
   let html = `<p class="panel-summary">${d.summary}</p>`;
 
   if(d.chips){
@@ -1885,7 +2026,7 @@ function renderPanel(key){
     <h2>${d.title}</h2>
     <p class="panel-tagline">${d.tagline}</p>
   `;
-  html += buildDetailBody(d);
+  html += buildDetailBody(d, 'panel');
   panelContent.innerHTML = html;
 }
 
@@ -1946,7 +2087,7 @@ function openStrategyReference(num){
     </div>
     <p class="panel-section-title">What this strategy involves</p>
     <ul class="ref-activity-list">${s.activities.map(a => `<li>${linkifyActivity(a)}</li>`).join('')}</ul>
-    <div class="panel-footnote">Quick reference for Strategy ${num} only. <a href="#" class="ref-jump-link" data-strategy-num="${num}">See it in the full Strategies breakdown →</a></div>
+    <div class="panel-footnote">Quick reference for Strategy ${num} only. <a href="#" class="ref-jump-link" data-strategy-num="${num}">See the full Strategies view →</a></div>
   `;
   panelContent.innerHTML = html;
   panel.classList.add('panel-compact');
@@ -2075,28 +2216,12 @@ function renderDetailsSections(){
   });
   container.innerHTML = html;
   container.dataset.rendered = 'true';
+  initStrategiesApp();
 }
 
 /* Jump from a strategy reference popover straight to that exact strategy's cascade item within Strategies */
 function jumpToStrategy(num){
-  showDetails();
-  renderDetailsSections();
-  requestAnimationFrame(() => {
-    const item = document.getElementById(`strategy-cascade-${num}`);
-    if(!item) return;
-    const reveal = item.querySelector('.nest-context-reveal');
-    const toggle = item.querySelector('.nest-context-toggle');
-    if(reveal && reveal.hasAttribute('hidden')){
-      reveal.removeAttribute('hidden');
-      if(toggle){
-        const label = toggle.dataset.label || 'activities';
-        toggle.innerHTML = `Hide NEST360's ${label} <span class="nest-context-arrow up">→</span>`;
-      }
-    }
-    item.scrollIntoView({ behavior:'smooth', block:'center' });
-    item.classList.add('flash-highlight');
-    setTimeout(() => item.classList.remove('flash-highlight'), 1600);
-  });
+  goToSection('strategies');
 }
 
 const tabOverview = document.getElementById('tabOverview');
@@ -2209,6 +2334,253 @@ if(homeCta){
   document.addEventListener('keydown', e => { if(e.key === 'Escape') hide(); });
   document.addEventListener('click', hide);
   window.addEventListener('scroll', hide, { passive:true });
+})();
+
+/* ================= Strategies view (from NEST360 Appendix Table 1S) ================= */
+const STRATEGY_TABLE = [{"group": "Engage policy makers and leadership", "name": "Obtain buy-in for improving SSNC", "levels": ["Program", "National"], "areas": ["Policy", "Support"], "desc": "Engage government, health system, and program leaders to raise awareness of SSNC needs, establish shared priorities, and generate commitment to strengthening Level 2+ newborn care.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Advocate for funding and additional investment as needed", "levels": ["Program", "National", "Hospital"], "areas": ["Funding"], "desc": "Use identified gaps, program data, and implementation priorities to advocate for increased investment in the resources required to deliver and sustain SSNC.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Advocate for additional staff support and end mandatory staff rotations", "levels": ["National", "Hospital"], "areas": ["HR"], "desc": "Engage national and hospital leadership and share program specific close to real time data to advocate for adequate neonatal staffing and greater continuity of trained staff within newborn units.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Advocating for official recognition of neonatal nursing as a specialized training", "levels": ["National"], "areas": ["HR"], "desc": "Work with national stakeholders to advance formal recognition and development of neonatal nursing as a specialized area of clinical training and practice.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Advocate for strengthened workshops for Biomedical Engineering Technicians (BMETs)", "levels": ["National", "Hospital"], "areas": ["Infrastructure"], "desc": "A designated space for Biomedical Engineering Technicians (BMETs) to perform preventive maintenance, troubleshooting, and repair of newborn care technologies.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Advocate for the hiring of a dedicated neonatal data clerk", "levels": ["National", "Hospital"], "areas": ["HR"], "desc": "Encourage hospitals and health systems (and leveraged NEST data) to dedicate personnel to neonatal data collection, management, quality assurance, reporting, and use.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Development of standard, costed, neonatal unit floor plans", "levels": ["National"], "areas": ["Infrastructure"], "desc": "Standardized neonatal unit designs that specify recommended space and design, and associated costs for delivering Level 2+ care.", "links": ["https://newborntoolkit.org/webinars/infrastructure-implementation-toolkit-seminar-series", "https://newborntoolkit.org/tools/tanzania-regional-hospital-neonatal-floor-plan"]}, {"group": "Engage policy makers and leadership", "name": "National television, newspaper articles, announcements surrounding NEST and NEST personnel (communication strategies for reaching the wider public)", "levels": ["National"], "areas": ["Advocacy"], "desc": "Use national media and public communication channels to increase awareness of newborn health, SSNC, and ongoing efforts to strengthen newborn care.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Develop Policy briefs", "levels": ["National"], "areas": ["Policy"], "desc": "Synthesized evidence, program findings, and implementation priorities reported in a concise policy briefs to support decision-making and advocacy.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Strengthen as needed SSNC policies and guidelines, national SSNC targets (Sustainable Development Goals (SDG) and Every Woman Every Newborn Everywhere (EWENE) targets and national commitments)", "levels": ["National"], "areas": ["Policy and guidelines"], "desc": "Provided examples and expert insight into the development and/or revision of national guidelines", "links": []}, {"group": "Engage policy makers and leadership", "name": "Strengthen supply chains including engage medical supplies division of Ministry of Health (MOH)", "levels": ["Program", "National"], "areas": ["Supplies"], "desc": "Engage government procurement and medical supply systems to strengthen forecasting, procurement, distribution, and availability of essential SSNC commodities.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Advocated for the inclusion of accessories, consumables, and spare parts in national supply catalogues", "levels": ["National"], "areas": ["Supplies"], "desc": "Essential device accessories, consumables, and spare parts to be incorporated into national procurement catalogues and routine supply systems.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Coordinate national and regional leadership to incorporate SSNC into existing Quality Improvement (QI) structures (MOH quality directorates and policy frameworks)", "levels": ["National"], "areas": [], "desc": "Work with Ministry of Health quality directorates and other leadership structures to embed SSNC within existing national and regional Quality Improvement (QI) systems and policies.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Engage with other key players in global SSNC (e.g. Beginnings Fund, Mobilizing Maternal Health (m-mama), United Nations Children’s Fund (UNICEF), World Health Organization (WHO), Vermont Oxford Network (VON))", "levels": ["Program", "National"], "areas": ["Advocacy"], "desc": "Coordinate with global newborn health organizations and initiatives to align activities, share implementation learning, and advance common SSNC priorities.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Advocate for update of Medical Device Policies and Guidelines", "levels": ["National", "Hospital"], "areas": ["Policy"], "desc": "Work with national and hospital stakeholders to strengthen policies and guidance governing procurement, management, maintenance, and replacement of medical devices.", "links": []}, {"group": "Engage policy makers and leadership", "name": "Established minimum requirements for sites to be involved in the NEST360 program and determine when installation and implementation occurred", "levels": ["Program", "National", "Hospital"], "areas": ["Infrastructure"], "desc": "Developed and used pre-installation checklists to drive site selection prior to beginning implementation work. These minimum requirements included things such as available running water, to ensure there was a baseline of service readiness before NEST360 implementation", "links": []}, {"group": "Ensure adequate funding", "name": "Supporting country teams in funding grants", "levels": ["National"], "areas": ["Funding"], "desc": "Identify funding opportunities and develop proposals for resources needed to strengthen and sustain SSNC for NEST360 country teams and hospitals", "links": []}, {"group": "Ensure adequate funding", "name": "Identifying additional funding mechanisms globally and nationally", "levels": ["Program", "National"], "areas": ["Funding"], "desc": "Explore complementary domestic and external financing mechanisms to support continued implementation and scale-up of SSNC.", "links": []}, {"group": "Ensure adequate funding", "name": "Conduct country-level costing and investment cases", "levels": ["National"], "areas": ["Funding"], "desc": "Country-specific estimates of the resources required for SSNC and investment cases to inform government and partner planning and financing decisions.", "links": ["https://newborntoolkit.org/reading/investment-case-for-small-and-sick-newborn-care-in-tanzania-systematic-analyses", "https://newborntoolkit.org/tools/kenya-newborn-investment-case-2025-2030"]}, {"group": "Ensure adequate funding", "name": "Encouraging facilities and Ministries of Health (MOHs) to include budget lines on SSNC and Biomedical Engineering Technicians (BMETs) (i.e., including infrastructure costs, human resources, running costs, and health insurance)", "levels": ["National", "Hospital"], "areas": ["Funding"], "desc": "Share data on costing and encouraged governments and hospitals to incorporate dedicated SSNC and biomedical engineering costs into routine budgets, including infrastructure, workforce, operating, and service costs.", "links": []}, {"group": "Ensure adequate funding", "name": "Establishing budgets for tech management (lobbying to include accessories, consumables, and spare parts as a budget line in national and hospital budgeting)", "levels": ["National", "Hospital"], "areas": ["Funding"], "desc": "Advocate for dedicated national and hospital funding for the full technology lifecycle, including accessories, consumables, spare parts, preventive maintenance, and repair.", "links": []}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Hospital readiness checklist", "levels": ["Hospital"], "areas": ["Infrastructure", "HR"], "desc": "Developed and used pre-installation checklists to drive site selection prior to beginning implementation work. These minimum requirements included things such as available running water, to ensure there was a baseline of service readiness before NEST360 implementation", "links": []}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Health facility assessment (HFA)", "levels": ["Hospital"], "areas": ["Infrastructure", "HR"], "desc": "A tool to assess service readiness for small and sick newborn care co-developed with United Nations Children’s Fund (UNICEF) building on existing resources", "links": ["https://nest360.org/project/hfa/"]}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Neonatal inpatient dataset (NID)", "levels": ["Program", "National", "Hospital"], "areas": ["Data use"], "desc": "A dataset co-designed with governments at an individual level for each newborn admitted to a neonatal ward to capture coverage of high-impact care and impact. The NID informs quality improvement, measures impact, and enables actionable insights into neonatal units. It is designed to integrate with existing routine data systems", "links": ["https://nest360.org/project/nid/"]}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Context tracker", "levels": ["Hospital"], "areas": ["Infrastructure", "HR"], "desc": "A tool developed to document changing facility conditions that could influence implementation and care outcomes in order to be able to track their influence and address those challenges", "links": []}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Developed and implemented NEST-Implementation Tracker (NEST-IT)", "levels": ["Program", "National", "Hospital"], "areas": ["Data use"], "desc": "A dashboard (open-source data platform) designed to support the improvement of care for small and sick newborns by turning routine clinical and hospital data into actionable insights for decision-makers at every level of the health system", "links": ["https://nest360qidashboard.lshtm.ac.uk/NESTIT/"]}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Hadli", "levels": ["National", "Hospital"], "areas": ["Equipment"], "desc": "A electronic device that provides tracking into device utilization and facility power quality to assist biomedical engineers to maintain the medical devices deployed in the NEST360 program. Linked into NEST360 Implementation Tracker (NEST-IT) dashboard to for facility to access and use the data", "links": ["https://portal.hadli.com/Account/LogonOV?ReturnUrl=/"]}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Developed and/or supported the update of paper tools to capture data (Admission forms, registers etc.)", "levels": ["National", "Hospital"], "areas": ["Equipment"], "desc": "Supported adaptation and development of national forms to ensure standardized admission forms, registers, and other source documents needed for routine collection of neonatal clinical and service-delivery data", "links": []}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Support integration of standard neonatal variables into national Health Management Information System (HMIS)", "levels": ["National"], "areas": ["Data use"], "desc": "Work with governments to incorporate priority SSNC indicators into national routine health information systems to support long-term monitoring beyond NEST360", "links": []}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Support the presence and use of hospital-level data clerks", "levels": ["Hospital"], "areas": ["Data use", "HR"], "desc": "Funded data clerk positions in select hospitals to improve the completeness, quality, management, and timely availability of neonatal data", "links": []}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Identify, develop, and use SSNC relevant indicators", "levels": ["National", "Hospital"], "areas": ["Data use"], "desc": "Define and routinely reviewed priority indicators based on available NID data that reflect service readiness, coverage, quality, and outcomes of SSNC", "links": []}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Conduct program wide data review meetings", "levels": ["Program"], "areas": ["Data use"], "desc": "NEST360-wide reviews of implementation and outcome data to identify cross-country trends, emerging challenges, and priorities for adaptation", "links": []}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Virtual data review meetings", "levels": ["National", "Hospital"], "areas": ["Data use"], "desc": "Convene NEST360 country teams virtually to review neonatal data, identify performance gaps, and determine priorities for action", "links": []}, {"group": "Develop data systems to capture and feedback data and support routine SSNC data collection and use", "name": "Develop guidelines for the use of data within NEST360", "levels": ["Program", "National", "Hospital"], "areas": ["Data use"], "desc": "Standardized expectations and processes for communicating and disseminating routine data from NEST360 implementation", "links": ["https://nest360.org/wp-content/uploads/2026/07/NEST-IT-Indicators-Guide-2026-07-23.pdf"]}, {"group": "Design and distribute clinical and biomedical educational materials", "name": "Developed educational resources to support clinicians", "levels": ["Program", "National", "Hospital"], "areas": ["HR"], "desc": "Developed and updated job aides; modules; training manuals on how to provide Level 2+ SSNC; training videos; guidelines (such as for follow-up, referral management); case scenarios; and other educational resources", "links": ["https://nest360.org/project/clinical-job-aids/", "https://nest360.org/resources/", "https://nest360.org/project/clinical-scenarios/", "https://nest360.org/project/ipc-ward-posters/"]}, {"group": "Design and distribute clinical and biomedical educational materials", "name": "Developed educational resources to support Biomedical Engineering Technicians (BMETs)", "levels": ["Program", "National", "Hospital"], "areas": ["HR"], "desc": "Developed and updated job aides; modules; training manuals on corrective maintenance and planned preventative maintenance; training videos; guidelines (such as for workshops); case scenarios; and other educational resources", "links": ["https://nest360.org/project/clinical-job-aids/", "https://nest360.org/resources/", "https://nest360.org/project/clinical-scenarios/"]}, {"group": "Design and distribute clinical and biomedical educational materials", "name": "Developed General instructor course (GIC)", "levels": ["Program", "National", "Hospital"], "areas": ["HR"], "desc": "Course to train potential instructors in how to teach providers' course material", "links": ["https://nest360.org/project/gic-tot/"]}, {"group": "Design and distribute clinical and biomedical educational materials", "name": "Developed and shared clinical mentorship guidelines and checklists", "levels": ["National", "Hospital"], "areas": ["HR"], "desc": "Standardized mentorship processes and expectations including structured guidance for mentors and participating hospitals", "links": []}, {"group": "Training and mentorship", "name": "Data driven country implementation review meetings", "levels": ["National"], "areas": ["Data use", "QI processes"], "desc": "Use NEST360 country-specific implementation and outcome data to review progress, identify gaps, and guide subsequent implementation activities", "links": []}, {"group": "Training and mentorship", "name": "Provide Quality Improvement (QI) and data interpretation training", "levels": ["National", "Hospital"], "areas": ["HR"], "desc": "Ability to understand routine neonatal data, identify care gaps, and translate findings into Quality Improvement (QI) priorities and actions", "links": []}, {"group": "Training and mentorship", "name": "Clinical care training (nationally approved in-depth SSNC courses for clinicians)", "levels": ["National", "Hospital"], "areas": ["HR"], "desc": "Deliver nationally approved, competency-focused SSNC courses to strengthen clinician knowledge and skills in level 2+ SSNC", "links": []}, {"group": "Training and mentorship", "name": "Biomedical Engineering Technician (BMET) training (nationally approved in-depth courses)", "levels": ["National", "Hospital"], "areas": ["HR"], "desc": "Deliver nationally approved biomedical engineering courses focused on installation, preventive maintenance, troubleshooting, repair and documentation of activities for essential newborn technologies", "links": []}, {"group": "Training and mentorship", "name": "Developed Quality Improvement (QI) training materials", "levels": ["Program", "National", "Hospital"], "areas": ["HR"], "desc": "Develop standardized educational materials to build knowledge and practical skills in Quality Improvement (QI) methods for newborn care", "links": []}, {"group": "Training and mentorship", "name": "Integration of clinical and Quality Improvement (QI) mentorship and training", "levels": ["Program", "National", "Hospital"], "areas": ["HR"], "desc": "Combine clinical mentorship with Quality Improvement (QI) coaching so that improvements in clinical skills were linked to identifying and addressing local care-delivery gaps.", "links": []}, {"group": "Training and mentorship", "name": "Performed Quality Improvement (QI) training (H) (When absent developed a guide for how to set up Quality Improvement Support Teams (QIST) and Ward Improvement Teams (WITs)/ When inactive and routinely QI coaching visits (in person and virtual zoom meeting)", "levels": ["Hospital"], "areas": ["HR"], "desc": "Establish or strengthened facility Quality Improvement (QI) teams and ward improvement teams and provide ongoing in-person and virtual coaching to support local QI projects.", "links": []}, {"group": "Training and mentorship", "name": "Provide hospital-level leadership mentorship (clinical coaching)", "levels": ["Hospital"], "areas": ["HR"], "desc": "Resources and encouragement to hospital/clinical leaders to provide ongoing practice-based coaching within their newborn units to reinforce training, address gaps, and support translation of knowledge into routine care", "links": []}, {"group": "Training and mentorship", "name": "Host virtual/webinar Clinical Mentors (CM)/Nurse Educators (NEs)", "levels": ["Program", "National", "Hospital"], "areas": ["HR"], "desc": "Virtual continuing education and learning sessions that reinforce knowledge and extend training across NEST360 supported hospitals", "links": []}, {"group": "Training and mentorship", "name": "Pre-service training (Integrated SSNC content in the clinical and Biomedical Engineering Technician (BMET) curricula, and ensure skills labs are set up for hands-on instruction)", "levels": ["National"], "areas": [], "desc": "Work with governments to integrate SSNC into clinical and biomedical engineering curricula and establish skills laboratories for hands on training before entry into practice. NEST360 also facilitated several pre-service trainings", "links": []}, {"group": "Training and mentorship", "name": "Conduct trainings with hospital staff", "levels": ["National", "Hospital"], "areas": ["HR"], "desc": "Trainings were to teach and reinforce learnings related to Level 2+ SSNC; Trainings included inservice, offsite, pre-installation training, on-site low-dose high-frequency training, onsite induction course for new staff, virtual training)", "links": []}, {"group": "Training and mentorship", "name": "Developed and launched the process for peer-to-peer mentorship", "levels": ["Program", "Hospital"], "areas": ["HR"], "desc": "Structured process through which trained clinicians and technical staff can mentor peers and disseminate skills within and between facilities", "links": []}, {"group": "Training and mentorship", "name": "Utilize WhatsApp for communities of learning", "levels": ["Hospital"], "areas": ["HR"], "desc": "Maintain virtual peer-learning networks that enabled participants to ask questions, share experiences, and receive continued support between formal training and mentorship encounters", "links": []}, {"group": "Training and mentorship", "name": "Identifying and training SSNC champions", "levels": ["Hospital"], "areas": ["HR"], "desc": "Identify motivated hospital staff and develop their skills to champion SSNC, engage colleagues, and sustain high quality care on their unit", "links": []}, {"group": "Motivate and empower staff", "name": "Fostering collaborating between Biomedical Engineering Technicians (BMETs), clinicians (labor and newborn, leadership)", "levels": ["Hospital"], "areas": ["HR"], "desc": "Create opportunities for biomedical, clinical (both maternal and newborn), and leadership to come together to solve problems and promote care improvement", "links": []}, {"group": "Motivate and empower staff", "name": "Access to data to use for advocacy and quality improvement", "levels": ["Hospital"], "areas": ["HR"], "desc": "Provide hospital staff with locally relevant performance data (through NEST360 Implementation Tracker (NEST-IT)) that can be used to demonstrate needs, advocate for resources, and identify and motivate quality improvement", "links": []}, {"group": "Motivate and empower staff", "name": "Supportive supervision including staff motivation", "levels": ["Hospital"], "areas": ["HR"], "desc": "Reinforce good practice, troubleshoot challenges, provide feedback, and maintain staff engagement", "links": []}, {"group": "Supporting IQ activities at the facility, subnational and national levels", "name": "Development of standardized Quality Improvement (QI) documentation and tools", "levels": ["Hospital"], "areas": ["QI processes"], "desc": "Standardized tools for documenting Quality Improvement (QI) priorities, activities, progress, and results within newborn units.", "links": []}, {"group": "Supporting IQ activities at the facility, subnational and national levels", "name": "Development and dissemination of change package etc.", "levels": ["Program", "Hospital"], "areas": ["QI processes"], "desc": "A practical clinical document containing successful changes that hospitals can adapt to improve priority SSNC practices.", "links": ["https://nest360.org/project/nest360-change-package/"]}, {"group": "Supporting IQ activities at the facility, subnational and national levels", "name": "Development of communities of learning via WhatsApp", "levels": ["Hospital"], "areas": ["Knowledge dissemination", "HR"], "desc": "WhatsApp-based learning communities that facilitate peer exchange, problem-solving, sharing of resources, and continue Quality Improvement (QI) support between formal mentorship activities.", "links": []}, {"group": "Supporting IQ activities at the facility, subnational and national levels", "name": "Adapt and implement Quality of Care (QoC) tools", "levels": ["Program", "Hospital"], "areas": ["QI processes"], "desc": "Quality-of-care assessment and improvement tools for that can be used by hospital-level newborn units", "links": ["https://docs.google.com/forms/d/e/1FAIpQLScPM_DZdVFz3PJrKnVxCK7j9ZiwpR_NcP6fvAgFUwwEpKKmog/viewform"]}, {"group": "Supporting IQ activities at the facility, subnational and national levels", "name": "Recognition of positive staff performance", "levels": ["Hospital"], "areas": ["HR"], "desc": "Recognize staff and teams demonstrating improvements in care or Quality Improvement (QI) performance to reinforce engagement and continued improvement.", "links": []}, {"group": "Supporting IQ activities at the facility, subnational and national levels", "name": "Supporting the establishment of standardized clinical audit processes at the hospital level", "levels": ["Hospital"], "areas": ["QI processes"], "desc": "Structured clinical audit process to identify care gaps, review performance, and guide improvement activities", "links": []}, {"group": "Supporting improving quality activities at the facility, subnational and national levels", "name": "Convene cross-country Quality Improvement (QI) meetings", "levels": ["National"], "areas": ["HR", "QI processes"], "desc": "Meetings where Quality Improvement (QI) teams across countries review progress, exchange implementation experiences, and identify transferable solutions.", "links": []}, {"group": "Supporting improving quality activities at the facility, subnational and national levels", "name": "Program and national Quality Improvement (QI) capacity building within program leadership", "levels": ["National"], "areas": ["HR"], "desc": "NEST360 Quality Improvement (QI) program leads build the skills of country QI leads and other program leaders to independently guide, coach, and sustain SSNC improvement activities.", "links": []}, {"group": "Supporting IQ activities at the facility, subnational and national levels", "name": "Provided coaching for Quality Improvement (QI) projects through active feedback and engagement from program team", "levels": ["Hospital"], "areas": ["HR"], "desc": "Support facility-led Quality Improvement (QI) projects through regular review of progress, feedback, problem-solving, and technical assistance from the program team", "links": []}, {"group": "Supporting IQ activities at the facility, subnational and national levels", "name": "Incorporating implementation research tools and methods to accelerate the spread of change and develop generalizable learnings", "levels": ["National", "Hospital"], "areas": [], "desc": "Apply implementation research methods to understand why changes succeeded or failed, guide adaptation, and identify approaches that could be spread across settings.", "links": ["https://qualitysafety.bmj.com/content/35/2/83", "https://pmc.ncbi.nlm.nih.gov/articles/PMC12317598/"]}, {"group": "Supporting improving quality activities at the facility, subnational and national levels", "name": "Establish communities of practice", "levels": ["Program", "National"], "areas": [], "desc": "Networks of implementers and technical experts that share knowledge, troubleshoot common challenges, and accelerate learning across sites and countries.", "links": []}, {"group": "Supporting improving quality activities at the facility, subnational and national levels", "name": "Fostering collaboration between clinicians, Biomedical Engineering Technicians (BMETs), data officers, and hospital leadership at the hospital level", "levels": ["Hospital"], "areas": ["HR"], "desc": "Bring together clinicians, Biomedical Engineering Technicians (BMETs), data personnel, and hospital leaders together to jointly identify and address interconnected clinical, biomedical and operational barriers to SSNC", "links": []}, {"group": "Supporting improving quality activities at the facility, subnational and national levels", "name": "Convene cross-team meetings at the program level (ex. Kangaroo Mother Care (KMC) working groups, Key Interventions Working Group meetings (KIT) and former Pause, Reflect, Act meetings)", "levels": ["Program", "National", "Hospital"], "areas": ["Data use", "HR"], "desc": "Working groups and structured learning meetings that include multidisciplinary program and country teams to review implementation, coordinate activities, and adapt approaches", "links": []}, {"group": "Interprofessional collaboration and teamwork", "name": "Collaboration with technical working groups (QI, Biomedical Engineering Technician (BMET), newborn) within Ministry of Health (MOH) at the country and regional/sub-regional levels to align NEST360 activities with national and subnational systems", "levels": ["Program", "National"], "areas": ["Advocacy"], "desc": "NEST360 country team members were members of Ministry of Health technical working groups for newborn health, Quality Improvement (QI), and biomedical engineering", "links": []}, {"group": "Interprofessional collaboration and teamwork", "name": "Engagement of Biomedical Engineering Technicians (BMETs) and labor unit in Quality Improvement (QI) at the facility level", "levels": ["Hospital"], "areas": ["HR"], "desc": "Expand hospital quality improvement activities beyond newborn unit clinicians by involving Biomedical Engineering Technicians (BMETs) and maternity/labor teams in improvement activities to strengthen newborn care", "links": []}, {"group": "Interprofessional collaboration and teamwork", "name": "Multidisciplinary training across cadres (doctors, Biomedical Engineering Technicians (BMETs), nurses) at the facility level", "levels": ["Hospital"], "areas": ["HR"], "desc": "Include nurses, physicians, Biomedical Engineering Technicians (BMETs), and other relevant cadres in trainings together to strengthen shared understanding and coordination of SSNC", "links": []}, {"group": "Interprofessional collaboration and teamwork", "name": "Developed the SSNC Newborn Toolkit at the global level", "levels": ["Program"], "areas": ["Advocacy", "HR"], "desc": "A learning community, which facilitates educational opportunities via webinars, and shares implementation resources and learning through a global SSNC platform to support knowledge exchange beyond NEST360-supported settings", "links": ["https://www.newborntoolkit.org/"]}, {"group": "Interprofessional collaboration and teamwork", "name": "Supported and collaborated with national pediatric associations at the country level", "levels": ["National"], "areas": ["Advocacy"], "desc": "Engage professional pediatric organizations to strengthen clinical leadership, dissemination, professional engagement, and national ownership of SSNC", "links": []}, {"group": "Interprofessional collaboration and teamwork", "name": "Strengthened and collaborated with Biomedical Engineering Technician (BMET) Professional Associations", "levels": ["National"], "areas": ["Advocacy"], "desc": "Collaborate with biomedical engineering professional associations to strengthen professional networks, technical capacity, and elevate the role of the biomed in sustaining newborn devices and ensuring high quality care", "links": []}, {"group": "Interprofessional collaboration and teamwork", "name": "Engaging clinical and ancillary staff (janitors, runners etc.) in improving knowledge of and adherence to Infection Prevention and Control (IPC) guidelines", "levels": ["Hospital"], "areas": ["HR"], "desc": "Ancillary staff are included in Infection Prevention and Control (IPC) trainings to ensure all staff are upholding IPC guidelines", "links": []}, {"group": "Engage family members in care process and follow up actions", "name": "Training for staff on how to provide counseling to parents", "levels": ["Hospital"], "areas": ["HR"], "desc": "Training opportunities focused on how health workers can effectively counsel and engage parents and caregivers in their newborn's care, needs, and transition home", "links": []}, {"group": "Engage family members in care process and follow up actions", "name": "Facilitating an enabling environment (culture, space, equipment etc.) for parental engagement in care", "levels": ["Hospital"], "areas": ["Family-centered care", "Infrastructure"], "desc": "Address physical space, equipment, and care processes needed to enable parents to remain with and participate in care of their newborns. Examples included procuring additional Kangaroo Mother Care (KMC) chairs and hanging curtains around beds to increase privacy.", "links": []}, {"group": "Engage family members in care process and follow up actions", "name": "Developed educational resources for parents", "levels": ["Program", "National", "Hospital"], "areas": ["Family-centered care"], "desc": "Open-access family-facing resources covering orientation to the newborn unit for those with children in the newborn units", "links": ["https://www.youtube.com/watch?v=fc4_SfD9BS4"]}, {"group": "Engage family members in care process and follow up actions", "name": "Encourage zero separation between the mother and newborn", "levels": ["Program", "National", "Hospital"], "areas": ["Advocacy"], "desc": "Promote policies, environments, and clinical practices that enable mothers and newborns to remain together whenever clinically appropriate, including during small and sick newborn care", "links": []}, {"group": "Tailoring local infrastructure", "name": "Setting up a hospital-level infrastructure fund", "levels": ["Hospital"], "areas": ["Infrastructure"], "desc": "Targeted resources to address hospital-specific infrastructure gaps that prevented safe or effective delivery of Level 2+ newborn care. The investment funds came from grants and philanthropic gifts and were matched by the hospitals receiving the funds.", "links": ["https://nest360.org/infrastructure-fund/"]}, {"group": "Tailoring local infrastructure", "name": "Using NEST360 Implementation Tracker (NEST-IT) data to support hospital renovations", "levels": ["National", "Hospital"], "areas": ["Infrastructure", "HR"], "desc": "Routinely collected programmatic, Human Resources (HR), and infrastructure data to identify infrastructure deficiencies, prioritize renovations, and guide investment. The data was used as evidence to lobby for changes and funds.", "links": []}, {"group": "Identify and qualify appropriate technology", "name": "Development and continued refinement of Target Product Profiles (TPPs)", "levels": ["Program"], "areas": ["Advocacy", "Equipment"], "desc": "Lists of proposed set of performance and operational characteristics for newborn products", "links": ["https://nest360.org/project/target-product-profiles/"]}, {"group": "Identify and qualify appropriate technology", "name": "Development and continued refinement of the innovations landscape and the newborn and maternal technology landscape", "levels": ["Program"], "areas": ["Advocacy"], "desc": "A summary highlighting commercially available and close-to-market newborn care technologies to guide strategic health procurement and investments. This document features African innovators that solve local healthcare challenges, and the landscape is a resource for investors interested in supporting high rising leaders in Africa", "links": ["https://nest360.org/project/innovation-landscape/"]}, {"group": "Identify and qualify appropriate technology", "name": "NEST360 engagement and collaboration with United Nations Children’s Fund (UNICEF)/World Health Organization (WHO) related to newborn device innovation", "levels": ["Program"], "areas": ["Advocacy"], "desc": "Collaborate with global technical partners to align newborn technology development and qualification with broader standards and priorities", "links": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC10443725/", "https://www.who.int/news/item/06-08-2025-who-releases-new-tpp-for-diagnostic-tests-to-detect-serious-bacterial-infections-in-young-infants", "https://www.who.int/publications/i/item/9789240113015", "https://pubmed.ncbi.nlm.nih.gov/37968603/"]}, {"group": "Identify and qualify appropriate technology", "name": "Development and implementation of the tech qualification process (including environmental and usability testing among others)", "levels": ["Program"], "areas": ["Equipment"], "desc": "A standardized qualification process, including technical, environmental, and usability assessment, to determine whether devices are appropriate for newborn care in resource-constrained environments", "links": ["https://nest360.org/technology/", "https://nest360.org/wp-content/uploads/2025/11/NEST360-Qualified-Technologies_2025-11.pdf"]}, {"group": "Identify and qualify appropriate technology", "name": "Engage with regulatory agencies for device licensing", "levels": ["Program", "National"], "areas": ["Equipment"], "desc": "Work with relevant national authorities to support regulatory review, registration, and licensing of qualified newborn technologies", "links": []}, {"group": "Identify and qualify appropriate technology", "name": "Providing devices to support hospital", "levels": ["Hospital"], "areas": ["Equipment"], "desc": "All newborn care devices, accessories, consumables, and spare parts for Phase 1 NEST360-supported hospitals", "links": ["https://nest360.org/what-we-do/"]}, {"group": "Identify and qualify appropriate technology", "name": "Providing consumables and accessories", "levels": ["Hospital"], "areas": ["Equipment"], "desc": "Accessories and consumables required for installed device to be consistently used and maintained during Phase 1 activities", "links": ["https://nest360.org/what-we-do/"]}, {"group": "Ensure the availability of appropriate functional SSNC medical devices", "name": "Provide warranty services and ensure availability of spare parts for hospitals to reduce device downtime and enable timely repair (H)", "levels": ["Hospital"], "areas": ["Equipment"], "desc": "Establish access to warranty support and spare parts", "links": []}, {"group": "Ensure the availability of appropriate functional SSNC medical devices", "name": "Providing tool kits for Biomedical Engineering Technicians (BMETs)", "levels": ["Hospital"], "areas": ["Equipment"], "desc": "Standardized kits that include the needed tools (e.g., wrenches) needed to perform routine inspection, preventive maintenance, troubleshooting, and repair of newborn technologies", "links": []}, {"group": "Ensure the availability of appropriate functional SSNC medical devices", "name": "Support upgrades to Biomedical Engineering Technician (BMET) Workshops", "levels": ["National", "Hospital"], "areas": ["Infrastructure"], "desc": "", "links": []}, {"group": "Ensure the availability of appropriate functional SSNC medical devices", "name": "Development of templates for hospitals to improve Healthcare Technology Management (HTM) documentation systems", "levels": ["National", "Hospital"], "areas": ["Data use"], "desc": "Standardized templates to document equipment inventories, preventive maintenance repairs, spare parts, and other health technology management activities", "links": []}, {"group": "Ensure the availability of appropriate functional SSNC medical devices", "name": "Development of novel SSNC devices (Celsi warmer, monitor, BiliDx, Pumani)", "levels": ["Program"], "areas": ["Equipment"], "desc": "Support development and refinement of technologies designed specifically to address unmet needs in newborn care in resource-constrained settings", "links": ["https://nest360.org/technology/"]}, {"group": "Ensure the availability of appropriate functional SSNC medical devices", "name": "Development of costing tool", "levels": ["National", "Hospital"], "areas": ["Equipment"], "desc": "A resource that estimates the costs of newborn technologies as well as the consumables, spare parts, and supplies that are needed for these devices to support sustainable procurement, budgeting, maintenance, and replacement plans", "links": ["https://newborntoolkit.org/tools/abc-neonatal-devices-planning-and-costing-tool"]}, {"group": "Ensure the availability of appropriate functional SSNC medical devices", "name": "See also Hatch and policy strategies for sustainability", "levels": ["Program"], "areas": ["Equipment", "HR"], "desc": "Hatch Technologies was developed in order to support the consistent availability of newborn devices", "links": ["https://hatch-tech.org/"]}, {"group": "Formed Hatch technologies", "name": "Ensure consistent supply of medical devices during and post-NEST360 work", "levels": ["National", "Hospital"], "areas": ["Equipment"], "desc": "Standardized training and educational materials, as well as facilitating trainings for hospital staff", "links": ["https://hatch-tech.org/"]}, {"group": "Formed Hatch technologies", "name": "Provide financing mechanisms for distributors, manufacturers, and purchasers", "levels": ["National"], "areas": ["Equipment"], "desc": "", "links": ["https://hatch-tech.org/"]}, {"group": "Formed Hatch technologies", "name": "Support for maintenance training to maintain and repair newborn technologies and sustain device functionality over time", "levels": ["National"], "areas": ["HR"], "desc": "", "links": ["https://hatch-tech.org/"]}];
+
+function initStrategiesApp(){
+  const root = document.getElementById('sxRoot');
+  if(!root) return;
+  if(window.__sxCleanup){ window.__sxCleanup(); window.__sxCleanup = null; }
+  ['sOverlay','sPanel','sTip','sxFloat'].forEach(id => { const o = document.getElementById(id); if(o) o.remove(); });
+  root.innerHTML = `<div class="intro-box">
+          <h3>What are strategies?</h3>
+          <p>Strategies are the groups of actions NEST360 used to put small and sick newborn care (SSNC) into practice and to work around the barriers in the way. Each group holds specific strategies, the actual things NEST360 did. Each specific strategy was aimed at one or more levels:</p>
+          <div class="lv-key"><span class="lv Program">Program · NEST360-wide</span><span class="lv National">National · ministries and national bodies</span><span class="lv Hospital">Hospital · facility level</span></div>
+          <h3 style="margin-top:16px">How to navigate</h3>
+          <ol class="nav-steps">
+            <li><span>Read the grid below. Each row is a strategy group, and the numbers show how many specific strategies it ran at each level.</span></li>
+            <li><span>Click a number to open a panel on the right with the strategies a group aimed at that level. Click the group name, or its number under Included strategies, to see all of them.</span></li>
+            <li><span>In the panel, click a strategy to read its description and open any resources linked to it. Use the arrows to move to the next one, or Back to return to the list.</span></li>
+            <li><span>Click a level name at the top of the grid (Program, National or Hospital) to see every strategy at that level, across all groups.</span></li>
+          </ol>
+        </div>
+
+        <div class="pane" id="sx_paneGlance">
+          <div class="matrix-wrap"><table class="matrix" id="sx_matrix"></table></div>
+          <div class="bottom-intro">
+            <div>
+              <h3>Find what fits your setting</h3>
+              <p>Working in a particular kind of setting? Filter every strategy by the level it targeted (Program, National or Hospital) and by target area such as HR, equipment or data use, or search by keyword.</p>
+            </div>
+            <button class="go" id="sx_goFind">Open Find what fits your setting →</button>
+          </div>
+        </div>
+
+        <div class="pane" id="sx_paneFind" hidden>
+          <button class="backlink" id="sx_backGlance">← Back to Strategies at a glance</button>
+          <div class="filters">
+            <div class="frow seg" id="sx_levelSeg"><span class="flabel">Level targeted</span></div>
+            <div class="frow" id="sx_areaRow"><span class="flabel">Target area</span></div>
+            <div class="frow"><span class="flabel">Search</span><input class="search" id="sx_q" type="search" placeholder="e.g. mentorship, data clerk, NEST-IT" aria-label="Search strategies"></div>
+          </div>
+          <div class="status"><span id="sx_count"></span><button class="clear" id="sx_clear" hidden>Clear filters</button></div>
+                    <div id="sx_results"></div>
+        </div>
+      `;
+  document.body.insertAdjacentHTML('beforeend', `<div class="s-overlay" id="sOverlay"></div>
+<aside class="s-panel" id="sPanel" role="dialog" aria-modal="true" aria-labelledby="sPanelTitle" aria-hidden="true" tabindex="-1">
+  <button class="s-close" id="sClose" aria-label="Close panel">&times;</button>
+  <div class="s-head"><p class="s-eyebrow" id="sEyebrow"></p><h2 id="sPanelTitle"></h2></div>
+  <div class="s-body" id="sBody"></div>
+</aside>
+<div class="s-tip" id="sTip" role="tooltip"></div>`);
+const cleanups = [];
+
+const ROWS = STRATEGY_TABLE;
+const LEVELS = ['Program','National','Hospital'];
+const LV = {Program:'p',National:'n',Hospital:'h'};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const groups = [...new Set(ROWS.map(r => r.group))];
+const areas = [...new Set(ROWS.flatMap(r => r.areas))].sort((a,b) => ROWS.filter(r=>r.areas.includes(b)).length - ROWS.filter(r=>r.areas.includes(a)).length);
+const linkLabel = u => u.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,'');
+const state = { level:null, areas:new Set(), q:'' };
+const $ = id => document.getElementById(id);
+const panel = $('sPanel'), overlay = $('sOverlay'), body = $('sBody');
+let P = { eyebrow:'', title:'', rows:[], idx:null, scroll:0, trigger:null, showGroup:false };
+
+const tagsHTML = r => `<span class="tags">${r.levels.map(l=>`<span class="lv ${l}">${l}</span>`).join('')}${r.areas.map(a=>`<span class="ar">${esc(a)}</span>`).join('')}</span>`;
+
+function renderList(){
+  $('sEyebrow').textContent = P.eyebrow; $('sPanelTitle').textContent = P.title;
+  let lastG = null;
+  body.innerHTML = `<p class="s-hint">Click a strategy to read its description.</p>` + P.rows.map((r,i) => { const head = (P.showGroup && r.group!==lastG) ? `<p class="s-grp">${esc(r.group)}</p>` : ''; lastG = r.group; return head + `<button class="s-item" data-i="${i}"><span class="sname">${esc(r.name)}</span>${tagsHTML(r)}</button>`; }).join('');
+  body.scrollTop = P.scroll || 0;
+}
+function renderDetail(i){
+  P.scroll = body.scrollTop; P.idx = i;
+  const r = P.rows[i];
+  $('sEyebrow').textContent = r.group;
+  $('sPanelTitle').textContent = 'Strategy';
+  body.innerHTML = `<div class="s-detail"><button class="s-back" data-back>← Back to the list</button>
+    <h3>${esc(r.name)}</h3>${tagsHTML(r)}
+    ${r.desc ? `<p class="desc">${esc(r.desc)}</p>` : `<p class="desc none">Description to come.</p>`}
+    ${r.links.length ? `<p class="rlabel">Resources</p><div class="res">${r.links.map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(linkLabel(u))} ↗</a>`).join('')}</div>` : ''}
+    <div class="s-nav"><button class="s-btn" data-prev ${i===0?'disabled':''}>← Previous</button><span class="s-pos">${i+1} of ${P.rows.length}</span><button class="s-btn" data-next ${i===P.rows.length-1?'disabled':''}>Next →</button></div></div>`;
+  body.scrollTop = 0;
+}
+function openPanel(eyebrow, title, rows, trigger, showGroup){
+  P = { eyebrow, title, rows, idx:null, scroll:0, trigger, showGroup:!!showGroup };
+  renderList();
+  panel.classList.add('open'); overlay.classList.add('open'); panel.setAttribute('aria-hidden','false');
+  setTimeout(() => $('sClose').focus(), 60);
+}
+function closePanel(){
+  panel.classList.remove('open'); overlay.classList.remove('open'); panel.setAttribute('aria-hidden','true');
+  if(P.trigger && document.contains(P.trigger)) P.trigger.focus();
+}
+function openGroup(gi, lvl, trigger){
+  const g = groups[gi];
+  const rows = ROWS.filter(r => r.group===g && (lvl==='all' || r.levels.includes(lvl)));
+  const n = rows.length;
+  openPanel(g, (lvl==='all' ? 'All levels' : lvl+' level') + ' · ' + n + (n===1?' strategy':' strategies'), rows, trigger);
+}
+
+function renderMatrix(){
+  const counts = groups.map(g => LEVELS.map(l => ROWS.filter(r => r.group===g && r.levels.includes(l)).length));
+  const max = Math.max(...counts.flat());
+  let h = '<thead><tr><th>Strategy group</th>'+LEVELS.map(l=>`<th><button class="lvhead ${l}" data-lvhead="${l}" data-tip="See every ${l} strategy, across all groups">${l}</button></th>`).join('')+'<th class="inclh">Included strategies</th></tr></thead><tbody>';
+  groups.forEach((g,gi) => {
+    const total = ROWS.filter(r=>r.group===g).length;
+    h += `<tr data-row="${gi}"><th scope="row"><button class="gbtn" data-gi="${gi}" data-lvl="all" data-tip="Open all ${total} strategies in this group">${esc(g)}</button></th>`;
+    LEVELS.forEach((l,li) => {
+      const n = counts[gi][li];
+      const a = n ? (0.22 + 0.68*n/max) : 0;
+      h += `<td><button class="cell" data-n="${n}" ${n?`data-gi="${gi}" data-lvl="${l}" data-tip="${n} ${l.toLowerCase()}-level ${n===1?'strategy':'strategies'}. Click to open."`:'disabled'} style="${n?`background:color-mix(in srgb, var(--lv-${LV[l]}) ${Math.round(a*100)}%, white);color:${a>.5?'#fff':'var(--ink)'}`:''}" aria-label="${esc(g)}, ${l}: ${n} strategies">${n||'·'}</button></td>`;
+    });
+    h += `<td><button class="incl" data-gi="${gi}" data-lvl="all" data-tip="Open all ${total} strategies in this group" aria-label="${esc(g)}: ${total} included strategies">${total}</button></td></tr>`;
+  });
+  $('sx_matrix').innerHTML = h+'</tbody>';
+}
+
+function matches(r){
+  if(state.level && !r.levels.includes(state.level)) return false;
+  if(state.areas.size && !r.areas.some(a => state.areas.has(a))) return false;
+  if(state.q){
+    const hay = (r.name+' '+r.desc+' '+r.group+' '+r.areas.join(' ')).toLowerCase();
+    if(!state.q.toLowerCase().split(/\s+/).every(w => hay.includes(w))) return false;
+  }
+  return true;
+}
+$('sx_levelSeg').insertAdjacentHTML('beforeend', ['All'].concat(LEVELS).map(l => `<button class="${l}" data-level="${l}" aria-pressed="false">${l}</button>`).join(''));
+$('sx_areaRow').insertAdjacentHTML('beforeend', areas.map(a => `<button class="areachip" data-area="${esc(a)}" aria-pressed="false">${esc(a)}</button>`).join(''));
+
+function renderResults(){
+  const filtered = !!(state.level || state.areas.size || state.q);
+  document.querySelectorAll('#sx_levelSeg button').forEach(b => b.setAttribute('aria-pressed', String((b.dataset.level==='All'&&!state.level)||b.dataset.level===state.level)));
+  document.querySelectorAll('#sx_areaRow .areachip').forEach(b => b.setAttribute('aria-pressed', String(state.areas.has(b.dataset.area))));
+  $('sx_clear').hidden = !filtered;
+  const box = $('sx_results');
+  if(!filtered){
+    $('sx_count').textContent = '';
+    box.innerHTML = '<div class="empty">Pick a level, a target area, or type a keyword to see the matching strategies. Nothing opens until you choose.</div>';
+    return;
+  }
+  const rows = ROWS.filter(matches);
+  const gs = groups.map((g,gi) => ({g,gi,rows:rows.filter(r=>r.group===g)})).filter(x => x.rows.length);
+  const desc = [state.level ? state.level+' level' : null, state.areas.size ? [...state.areas].join(', ') : null, state.q ? '“'+state.q+'”' : null].filter(Boolean).join(' · ');
+  $('sx_count').textContent = rows.length ? `${rows.length} matching ${rows.length===1?'strategy':'strategies'} in ${gs.length} ${gs.length===1?'group':'groups'}` : '';
+  box.innerHTML = rows.length ? `<div class="res-card"><button class="go" data-openall>Open all ${rows.length} matching ${rows.length===1?'strategy':'strategies'} →</button>
+      <p class="res-or">The panel groups them by strategy group, so you can scroll through them or step through one by one.</p></div>`
+    : '<div class="empty">No strategies match these filters. Try clearing one.</div>';
+}
+function showTab(which){
+  const find = which==='find';
+  $('sx_paneGlance').hidden = find; $('sx_paneFind').hidden = !find;
+  if(find) renderResults();
+}
+
+const onClick = e => {
+  const t = e.target.closest('button'); if(!t || !(t.closest('#sxRoot') || t.closest('#sPanel'))) return;
+  if(t.id==='sClose' || t.id==='sOverlay') return closePanel();
+  if(t.classList.contains('s-item')) return renderDetail(+t.dataset.i);
+  if(t.dataset.back!==undefined){ renderList(); return; }
+  if(t.dataset.prev!==undefined) return renderDetail(P.idx-1);
+  if(t.dataset.next!==undefined) return renderDetail(P.idx+1);
+  if(t.id==='sx_backGlance'){ showTab('glance'); $('sx_paneGlance').scrollIntoView({behavior:'smooth',block:'start'}); }
+  else if(t.id==='sx_goFind'){ showTab('find'); $('sx_paneFind').scrollIntoView({behavior:'smooth',block:'start'}); }
+  else if(t.dataset.lvhead){ state.level=t.dataset.lvhead; state.areas.clear(); state.q=''; $('sx_q').value=''; showTab('find'); $('sx_paneFind').scrollIntoView({behavior:'smooth',block:'start'}); }
+  else if(t.dataset.gi!==undefined && t.dataset.lvl && !t.disabled) openGroup(+t.dataset.gi, t.dataset.lvl, t);
+  else if(t.dataset.openall!==undefined){
+    const rows = ROWS.filter(matches);
+    const f = [state.level ? state.level+' level' : null, state.areas.size ? [...state.areas].join(', ') : null, state.q ? '“'+state.q+'”' : null].filter(Boolean).join(' · ');
+    openPanel('Find what fits your setting', rows.length + (rows.length===1?' strategy':' strategies') + (f ? ' · ' + f : ''), rows, t, true);
+  }
+  else if(t.dataset.rgi!==undefined){
+    const g = groups[+t.dataset.rgi]; const rows = ROWS.filter(r => r.group===g && matches(r));
+    openPanel(g, 'Matching your filters · ' + rows.length + (rows.length===1?' strategy':' strategies'), rows, t, false);
+  }
+  else if(t.dataset.level){ state.level = t.dataset.level==='All' ? null : t.dataset.level; renderResults(); }
+  else if(t.dataset.area){ state.areas.has(t.dataset.area) ? state.areas.delete(t.dataset.area) : state.areas.add(t.dataset.area); renderResults(); }
+  else if(t.id==='sx_clear'){ state.level=null; state.areas.clear(); state.q=''; $('sx_q').value=''; renderResults(); }
+};
+document.addEventListener('click', onClick);
+overlay.onclick = closePanel;
+const onKey = e => {
+  if(!panel.classList.contains('open')) return;
+  if(e.key==='Escape') closePanel();
+  if(P.idx!==null && e.key==='ArrowRight' && P.idx<P.rows.length-1) renderDetail(P.idx+1);
+  if(P.idx!==null && e.key==='ArrowLeft' && P.idx>0) renderDetail(P.idx-1);
+};
+document.addEventListener('keydown', onKey);
+$('sx_q').oninput = e => { state.q = e.target.value.trim(); renderResults(); };
+
+/* hover preview on grid */
+if(window.matchMedia('(hover: hover)').matches){
+  const tip = $('sTip');
+  const show = el => { tip.textContent = el.dataset.tip; const r = el.getBoundingClientRect(); tip.style.left='0px'; tip.style.top='0px'; const w=tip.offsetWidth,h=tip.offsetHeight; tip.style.left=Math.min(Math.max(8,r.left+r.width/2-w/2),innerWidth-w-8)+'px'; tip.style.top=(r.top-h-8<8 ? r.bottom+8 : r.top-h-8)+'px'; tip.classList.add('show'); };
+  const onOver = e => { const el = e.target.closest('#sxRoot [data-tip]'); if(el) show(el); };
+  const onOut = e => { if(e.target.closest('#sxRoot [data-tip]')) tip.classList.remove('show'); };
+  const onTipClick = () => tip.classList.remove('show');
+  document.addEventListener('mouseover', onOver); document.addEventListener('mouseout', onOut); document.addEventListener('click', onTipClick);
+  cleanups.push(()=>{document.removeEventListener('mouseover',onOver);document.removeEventListener('mouseout',onOut);document.removeEventListener('click',onTipClick);});
+}
+renderMatrix(); renderResults();
+window.__sxCleanup = () => { document.removeEventListener('click', onClick); document.removeEventListener('keydown', onKey); cleanups.forEach(f=>f()); };
+
+}
+
+/* Overview slide-over for Strategies: short pointer to the full view in Details */
+document.addEventListener('click', e => {
+  const b = e.target.closest('.sx-open-details');
+  if(!b) return;
+  closePanel();
+  goToSection('strategies');
+});
+
+/* Floating "Close open section": for long accordions in Details (Factors, Outcomes, ...), so you don't have to scroll back up to the heading */
+(function(){
+  const btn = document.createElement('button');
+  btn.className = 'float-close'; btn.id = 'accFloat'; btn.hidden = true;
+  btn.setAttribute('aria-label','Close the open section and return to the list');
+  btn.innerHTML = '✕ Close open section<span>Esc</span>';
+  document.body.appendChild(btn);
+  let target = null;
+  function findTarget(){
+    const items = document.querySelectorAll('#detailsFrame.visible details.accordion-item[open]');
+    for(const d of items){
+      const s = d.querySelector('summary').getBoundingClientRect();
+      const r = d.getBoundingClientRect();
+      if(s.bottom < 0 && r.bottom > 120) return d;
+    }
+    return null;
+  }
+  function update(){ target = findTarget(); btn.hidden = !target; }
+  function closeTarget(){
+    if(!target) return;
+    const d = target, s = d.querySelector('summary');
+    d.open = false;
+    s.scrollIntoView({ behavior:'smooth', block:'center' });
+    setTimeout(update, 60);
+  }
+  window.addEventListener('scroll', update, { passive:true });
+  window.addEventListener('resize', update);
+  document.addEventListener('toggle', update, true);
+  btn.addEventListener('click', closeTarget);
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && !btn.hidden && !document.getElementById('panel').classList.contains('open')) closeTarget();
+  });
 })();
 </script>
 
