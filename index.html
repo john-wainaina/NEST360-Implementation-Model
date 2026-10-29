@@ -1480,103 +1480,109 @@ const DATA = {
     summary: 'The conditions that shaped how well small and sick newborn care (SSNC) could take hold in Level 2+ neonatal units — organized into 12 domains. This list stays neutral by design; tap into any factor to see NEST360\'s own context and the strategies used to address it.',
     sectionTitle: 'The 12 domains — tap to expand',
     accordion: [
-      { name:'Leadership & Governance', items:[
+      { name:'Vision, political commitment, leadership, national plan', items:[
         { neutral:'National plans and policies for SSNC', context:{ text:'Absence of national plans and policies for SSNC', type:'Barrier', strategies:[1,4] } },
         { neutral:'Facility level guidelines and protocols for SSNC', context:{ text:'Inconsistent facility level guidelines and protocols for SSNC', type:'Barrier', strategies:[1,4,13] } },
-        { neutral:'Engagement with Ministry of Health (MOH)', context:{ text:'Engagement with Ministry of Health (MOH)', type:'Facilitator', strategies:[1,6] } },
-        { neutral:'Engagement with facility-level leadership', context:{ text:'Engagement with facility-level leadership', type:'Facilitator', strategies:[1,6,13] } },
-        { neutral:'Facility champions', context:{ text:'Inadequate facility-level champions', type:'Barrier', strategies:[2,5,6,7] } },
+        'Facility level guidelines and protocols for Health technology and management (HTM)',
+        { neutral:'Ministry of Health (MoH) support for SSNC', context:{ text:'Engagement with Ministry of Health (MoH)', type:'Facilitator', strategies:[1,6] } },
+        { neutral:'Hospital-level leadership support for SSNC', context:{ text:'Engagement with facility-level leadership', type:'Facilitator', strategies:[1,6,13] } },
+        { neutral:'Facility-level champions', context:{ text:'Inadequate facility-level champions', type:'Barrier', strategies:[2,5,6,7] } },
         { neutral:'Global and national focus on SSNC and Neonatal Mortality Rate (NMR)', context:{ text:'Global and national focus on SSNC and Neonatal Mortality Rate (NMR)', type:'Facilitator', strategies:[1] } },
-        { neutral:'Integration of SSNC into current policy & funding', context:{ text:'Poor integration of SSNC into current policy & funding', type:'Barrier', strategies:[1,6] } }
+        { neutral:'Integration of SSNC into current policy & funding', context:{ text:'Integration of SSNC into current policy & funding', type:'Facilitator', strategies:[1,6] } }
       ] },
-      { name:'Data Systems', items:[
-        { neutral:'Availability of neonatal health forms, registers, and data systems at facility level capturing SSNC-sensitive indicators', context:{ text:'Fragmented neonatal health forms, registers, and data systems at facility level', type:'Barrier', strategies:[3] } },
+      { name:'Robust data systems and Quality Improvement (QI)', items:[
+        { neutral:'Neonatal health forms, registers, and data systems at facility level capturing SSNC-sensitive indicators', context:{ text:'Fragmented neonatal health forms, registers, and data systems at facility level', type:'Barrier', strategies:[3] } },
         { neutral:'SSNC-sensitive indicators at facility and national levels', context:{ text:'No SSNC sensitive indicators at facility and national levels', type:'Barrier', strategies:[3] } },
         { neutral:'Data access and utilization', context:{ text:'Poor data access and utilization', type:'Barrier', strategies:[1,2,3] } },
         { neutral:'Data quality', context:{ text:'Poor data quality', type:'Barrier', strategies:[2,5] } },
         { neutral:'Data management and governance', context:{ text:'Poor data management and governance', type:'Barrier', strategies:[1,3] } },
-        { neutral:'Dedicated neonatal data clerk', context:{ text:'Lack of dedicated neonatal data clerk', type:'Barrier', strategies:[1,12] } }
-      ] },
-      { name:'Human Resources', items:[
-        { neutral:'Health workers\' attitudes/interest in SSNC', context:{ text:'Poor health worker attitudes/interest in SSNC', type:'Barrier', strategies:[1,5,6,7] } },
-        { neutral:'Health workers\' competence/confidence in SSNC', context:{ text:'Poor health workers competence/confidence in SSNC', type:'Barrier', strategies:[1,5,6,7] } },
-        { neutral:'Preservice training in SSNC', context:{ text:'Inconsistent preservice training in SSNC', type:'Barrier', strategies:[1] } },
-        { neutral:'Training available for SSNC', context:{ text:'Training available for SSNC', type:'Both', strategies:[5] } },
-        { neutral:'Biomedical Engineering Technician (BMET) training', context:{ text:'Inconsistent Biomedical Engineering Technician (BMET) training', type:'Barrier', strategies:[5] } },
-        { neutral:'Healthcare provider awareness/knowledge', context:{ text:'Healthcare provider awareness/knowledge', type:'Both', strategies:[2,4,5,6] } },
-        { neutral:'Supporting staff following Infection Prevention and Control (IPC) guidelines (janitors, guards, support runners)', context:{ text:'Supporting staff not following Infection Prevention and Control (IPC) guidelines (janitors, guards, support runners)', type:'Barrier', strategies:[2,5,6] } },
-        { neutral:'Available Biomedical Engineering Technicians (BMETs)', context:{ text:'Biomedical Engineering Technicians (BMETs) unavailable', type:'Barrier', strategies:[3,5] } },
-        { neutral:'Adequate number of health workers', context:{ text:'Inadequate number of health workers', type:'Barrier', strategies:[3,5] } },
-        { neutral:'Little to no staff rotation or turnover', context:{ text:'Rotating staff and staff turnover', type:'Barrier', strategies:[1] } }
-      ] },
-      { name:'Quality Improvement', items:[
-        { neutral:'Consistent Quality Improvement (QI) knowledge at national, regional, and facility levels', context:{ text:'Inconsistent Quality Improvement (QI) knowledge at national, regional, and facility levels', type:'Barrier', strategies:[1,2,4,5] } },
-        { neutral:'Active hospital and ward improvement teams', context:{ text:'Absent or inactive hospital and ward improvement teams', type:'Barrier', strategies:[1,2,4,5,6] } },
-        { neutral:'Consistent Quality Improvement (QI) training', context:{ text:'Inconsistent Quality Improvement (QI) training', type:'Barrier', strategies:[1,4] } },
-        { neutral:'Consistent availability of Quality Improvement (QI) documentation tools', context:{ text:'Inconsistent availability of Quality Improvement (QI) documentation tools', type:'Barrier', strategies:[1,2,3] } },
+        { neutral:'Dedicated neonatal data clerk', context:{ text:'Lack of dedicated neonatal data clerk', type:'Barrier', strategies:[1,12] } },
+        { neutral:'Quality Improvement (QI) knowledge at national, regional, and facility levels', context:{ text:'Inconsistent Quality Improvement (QI) knowledge at national, regional, and facility levels', type:'Barrier', strategies:[1,2,4,5] } },
+        { neutral:'Hospital and ward improvement teams availability and functionality', context:{ text:'Absent or inactive hospital and ward improvement teams', type:'Barrier', strategies:[1,2,4,5,6] } },
+        { neutral:'Quality Improvement (QI) training availability', context:{ text:'Inconsistent Quality Improvement (QI) training', type:'Barrier', strategies:[1,4] } },
+        { neutral:'Availability of Quality Improvement (QI) documentation tools', context:{ text:'Inconsistent availability of Quality Improvement (QI) documentation tools', type:'Barrier', strategies:[1,2,3] } },
         { neutral:'Documentation completeness', context:{ text:'Gaps in documentation completeness', type:'Barrier', strategies:[1,2,3] } },
-        { neutral:'Consistent auditing of care quality, e.g. Maternal and Perinatal Death Surveillance and Response (MPDSR)', context:{ text:'Absent or inconsistent auditing of care quality, e.g. Maternal and Perinatal Death Surveillance and Response (MPDSR)', type:'Barrier', strategies:[2,3,4,5] } },
-        { neutral:'National and regional Quality Improvement (QI) structures and resources include SSNC-focused guidance', context:{ text:'National/regional Quality Improvement (QI) structures showed variability in SSNC-focused guidance', type:'Barrier', strategies:[1,3] } }
+        { neutral:'Auditing of care quality, e.g. Maternal and Perinatal Death Surveillance and Response (MPDSR)', context:{ text:'Absent or inconsistent auditing of care quality, e.g. Maternal and Perinatal Death Surveillance and Response (MPDSR)', type:'Barrier', strategies:[2,3,4,5] } },
+        { neutral:'National and regional Quality Improvement (QI) structures and resources including newborn care focus and guidance', context:{ text:'National/regional Quality Improvement (QI) structures showed variability in SSNC-focused guidance', type:'Barrier', strategies:[1,3] } }
       ] },
-      { name:'Equipment & Commodities', items:[
-        { neutral:'Availability of functional equipment and supplies at facilities', context:{ text:'Unavailability of functional equipment and supplies at facilities', type:'Barrier', strategies:[5,8,9,10] } },
-        { neutral:'Strong procurement system', context:{ text:'No strong procurement system', type:'Barrier', strategies:[10] } },
+      { name:'Human resources', items:[
+        { neutral:'Health worker attitudes and interest in SSNC', context:{ text:'Poor health worker attitudes/interest in SSNC', type:'Barrier', strategies:[1,5,6,7] } },
+        { neutral:'Health worker competence and confidence in SSNC', context:{ text:'Poor health workers competence/confidence in SSNC', type:'Barrier', strategies:[1,5,6,7] } },
+        { neutral:'Preservice training in SSNC', context:{ text:'Inconsistent preservice training in SSNC', type:'Barrier', strategies:[1] } },
+        { neutral:'Training available for clinicians on newborn care', context:{ text:'Training available for clinicians on newborn care', type:'Both', strategies:[5] } },
+        { neutral:'Training available for biomedical engineers/clinicians', context:{ text:'Inconsistent Biomedical Engineering Technician (BMET) training', type:'Barrier', strategies:[5] } },
+        { neutral:'Number of health workers available', context:{ text:'Inadequate number of health workers', type:'Barrier', strategies:[3,5] } },
+        { neutral:'Number of Biomedical Engineering Technicians (BMETs) available', context:{ text:'Biomedical Engineering Technicians (BMETs) unavailable', type:'Barrier', strategies:[3,5] } },
+        { neutral:'Staff rotation and staffing policies', context:{ text:'Rotating staff and staff turnover', type:'Barrier', strategies:[1] } },
+        { neutral:'Staff knowledge of Infection Prevention and Control (IPC) guidelines', context:{ text:'Healthcare provider awareness/knowledge', type:'Barrier', strategies:[2,4,5,6] } },
+        'Staff strikes'
+      ] },
+      { name:'Equipment and commodities', items:[
+        { neutral:'Functional equipment and supplies at facilities', context:{ text:'Unavailability of functional equipment and supplies at facilities', type:'Barrier', strategies:[5,8,9,10] } },
+        { neutral:'Procurement and distribution systems', context:{ text:'No strong procurement system', type:'Barrier', strategies:[10] } },
         { neutral:'Technology fit for purpose', context:{ text:'Technology not fit for purpose', type:'Barrier', strategies:[9] } },
-        { neutral:'Skill labs/skill stations available and used', context:{ text:'Skills labs/skills stations unavailable or underused', type:'Barrier', strategies:[5,6,7] } },
-        { neutral:'Affordable technology', context:{ text:'Expensive technology', type:'Barrier', strategies:[8,10,12] } },
-        { neutral:'No or infrequent stockouts', context:{ text:'Stockouts', type:'Barrier', strategies:[] } },
-        { neutral:'No or infrequent power outages', context:{ text:'Power outages', type:'Barrier', strategies:[] } },
-        { neutral:'Availability of toolkits', context:{ text:'Toolkits rarely available', type:'Barrier', strategies:[] } }
+        { neutral:'Skills labs/skills stations available', context:{ text:'Skills labs/skills stations unavailable or underused', type:'Barrier', strategies:[5,6,7] } },
+        { neutral:'Toolkits available', context:{ text:'Toolkits rarely available', type:'Barrier', strategies:[] } },
+        'Biomedical Engineering Technician (BMET) workshops available',
+        { neutral:'Available consumables', context:{ text:'Stockouts', type:'Barrier', strategies:[] } },
+        { neutral:'Cost of technology/devices', context:{ text:'Expensive technology', type:'Barrier', strategies:[8,10,12] } },
+        'Tracking and documentation of device maintenance',
+        { neutral:'Consistent/reliable power source', context:{ text:'Power outages', type:'Barrier', strategies:[] } }
       ] },
-      { name:'Referral Process', items:[
+      { name:'Functional referral systems', items:[
         { neutral:'Adherence to referral guidelines', context:{ text:'Poor adherence to referral guidelines', type:'Barrier', strategies:[2,5,6] } },
-        { neutral:'Strong pre- and during-referral communication and consultations', context:{ text:'Poor pre- and during-referral communication and consultations', type:'Barrier', strategies:[1,11] } },
-        { neutral:'Strong referral feedback mechanism', context:{ text:'Poor referral feedback mechanisms', type:'Barrier', strategies:[1,11] } },
+        { neutral:'Pre and during referral communication and consultations', context:{ text:'Poor pre- and during-referral communication and consultations', type:'Barrier', strategies:[1,11] } },
+        { neutral:'Referral feedback mechanisms', context:{ text:'Poor referral feedback mechanisms', type:'Barrier', strategies:[1,11] } },
         { neutral:'Appropriate transportation for referrals', context:{ text:'Lack of appropriate transportation for referrals', type:'Barrier', strategies:[1] } }
       ] },
-      { name:'Linkage to Maternal Care', items:[
-        { neutral:'Policies that facilitate/enable zero separation', context:{ text:'Policies that do not facilitate/enable zero separation', type:'Barrier', strategies:[1,11] } },
-        { neutral:'Integrated antenatal, delivery, postnatal, and SSNC care', context:{ text:'Siloed antenatal, delivery, postnatal, and SSNC', type:'Barrier', strategies:[1,11] } },
-        { neutral:'Women staying in the hospital with their newborns', context:{ text:'Women leaving the hospital early due to competing demands at home', type:'Barrier', strategies:[1,4,11] } }
+      { name:'Linkage to maternal and newborn care', items:[
+        { neutral:'Policies that facilitate or enable zero separation', context:{ text:'Policies that do not facilitate/enable zero separation', type:'Barrier', strategies:[1,11] } },
+        { neutral:'Interconnected antenatal, delivery, postnatal, and SSNC', context:{ text:'Siloed antenatal, delivery, postnatal, and SSNC', type:'Barrier', strategies:[1,11] } },
+        { neutral:'Women remaining at the hospital for the duration of newborn hospitalization', context:{ text:'Women leaving the hospital early due to competing demands at home', type:'Barrier', strategies:[1,4,11] } }
       ] },
-      { name:'Family Centered Care', items:[
-        { neutral:'Training and policies to support parental involvement', context:{ text:'Lack of training and policies to support parent involvement', type:'Barrier', strategies:[11] } },
-        { neutral:'Education/counseling for caregivers', context:{ text:'Poor education/counseling for caregivers', type:'Barrier', strategies:[4,6,11] } },
-        { neutral:'Family members\' awareness of handwashing and Infection Prevention and Control (IPC) practices', context:{ text:'Family members lack awareness in handwashing and Infection Prevention and Control (IPC)', type:'Barrier', strategies:[4,5,11] } },
-        { neutral:'Family interest in being involved in the care process', context:{ text:'Family interest in being involved in the care process', type:'Both', strategies:[4,11] } },
-        { neutral:'Family involvement in decision-making process', context:{ text:'Lack of family involvement in decision making process', type:'Barrier', strategies:[6,7,11] } },
-        { neutral:'Availability of bereavement care', context:{ text:'Unavailability of bereavement care', type:'Barrier', strategies:[1,4] } }
+      { name:'Family and community involvement and support', items:[
+        { neutral:'Training and policies to support parent involvement', context:{ text:'Lack of training and policies to support parent involvement', type:'Barrier', strategies:[11] } },
+        { neutral:'Education and counseling for caregivers', context:{ text:'Poor education/counseling for caregivers', type:'Barrier', strategies:[4,6,11] } },
+        { neutral:'Family involvement in the care process', context:{ text:'Family interest in being involved in the care process', type:'Facilitator', strategies:[4,11] } },
+        { neutral:'Family involvement in decision making process', context:{ text:'Lack of family involvement in decision making process', type:'Barrier', strategies:[6,7,11] } },
+        { neutral:'Availability of bereavement care', context:{ text:'Unavailability of bereavement care', type:'Barrier', strategies:[1,4] } },
+        { neutral:'Family members\' awareness of handwashing and Infection Prevention and Control (IPC)', context:{ text:'Family members lack awareness in handwashing and Infection Prevention and Control (IPC)', type:'Barrier', strategies:[4,5,11] } }
       ] },
-      { name:'Post-Discharge Follow-Up', items:[
-        { neutral:'Discharge follow-up and early child development', context:{ text:'No/poor discharge follow up and early child development', type:'Barrier', strategies:[1] } },
-        { neutral:'Follow-up feedback mechanisms', context:{ text:'No/poor follow up feedback mechanisms', type:'Barrier', strategies:[1,3] } },
+      { name:'Post-discharge follow-up system', items:[
+        { neutral:'Discharge follow up and early child development', context:{ text:'No/poor discharge follow up and early child development', type:'Barrier', strategies:[1] } },
+        { neutral:'Follow up feedback mechanisms', context:{ text:'No/poor follow up feedback mechanisms', type:'Barrier', strategies:[1,3] } },
         { neutral:'Community health worker engagement', context:{ text:'No/poor community health worker engagement', type:'Barrier', strategies:[5,6,7] } },
-        { neutral:'Community-based support and continuous care', context:{ text:'Community based support and continuous care', type:'Both', strategies:[1,4,11] } }
+        { neutral:'Community based support and continuous care', context:{ text:'Community based support and continuous care', type:'Both', strategies:[1,4,11] } }
       ] },
-      { name:'Infrastructure', items:[
+      { name:'Infrastructure and design', items:[
         { neutral:'Standard guide for space for Level 2 SSNC', context:{ text:'No standard guide for space for Level 2 SSNC', type:'Barrier', strategies:[1,4,13] } },
-        { neutral:'Adequate space for SSNC including Kangaroo Mother Care (KMC)/immediate KMC', context:{ text:'Inadequate space for SSNC incl. Kangaroo Mother Care (KMC)/immediate KMC', type:'Barrier', strategies:[1,3,12,13] } },
-        { neutral:'Appropriately designed space — supports easy flow and strong Infection Prevention and Control (IPC) practices', context:{ text:'Poorly designed space — poor flow, poor Infection Prevention and Control (IPC) practices', type:'Barrier', strategies:[1,12,13] } },
-        { neutral:'Flow of care for newborns from labor ward to Newborn Unit (NBU)', context:{ text:'Poor flow of care from labor ward to Newborn Unit (NBU)', type:'Barrier', strategies:[1,13] } },
-        { neutral:'Reliable electric power and backup power sources', context:{ text:'Unreliable electric power and poor backup power sources', type:'Barrier', strategies:[1,12,13] } },
-        { neutral:'Medical gas and vacuum systems', context:{ text:'Poor medical gas and vacuum systems', type:'Barrier', strategies:[1,8,13] } },
-        { neutral:'Sufficient Water, Sanitation and Hygiene (WASH) facilities', context:{ text:'Insufficient Water, Sanitation and Hygiene (WASH) facilities', type:'Barrier', strategies:[1,12,13] } },
-        { neutral:'Blood cultures available', context:{ text:'Blood cultures unavailable', type:'Barrier', strategies:[1,8,9,12] } }
-      ] },
-      { name:'Infection Prevention & Control', items:[
-        { neutral:'Healthcare provider awareness/knowledge of Infection Prevention and Control (IPC)', context:{ text:'Healthcare provider awareness/knowledge', type:'Both', strategies:[2,4,5,6] } },
-        { neutral:'Staff and support-role adherence to Infection Prevention and Control (IPC) guidelines', context:{ text:'Supporting staff not following Infection Prevention and Control (IPC) guidelines (janitors, guards, support runners)', type:'Barrier', strategies:[2,5,6] } },
-        { neutral:'Family awareness of handwashing and Infection Prevention and Control (IPC)', context:{ text:'Family members lack awareness in handwashing and Infection Prevention and Control (IPC)', type:'Barrier', strategies:[4,5,11] } },
-        { neutral:'Availability of blood cultures', context:{ text:'Blood cultures are unavailable', type:'Barrier', strategies:[1,8,9,12] } }
+        { neutral:'Adequate space for SSNC including Kangaroo Mother Care (KMC) and immediate KMC', context:{ text:'Inadequate space for SSNC incl. Kangaroo Mother Care (KMC)/immediate KMC', type:'Barrier', strategies:[1,3,12,13] } },
+        { neutral:'Space design to enable Infection Prevention and Control (IPC) flow and practice', context:{ text:'Poorly designed space — poor flow, poor Infection Prevention and Control (IPC) practices', type:'Barrier', strategies:[1,12,13] } },
+        { neutral:'Flow of care of newborns from labor ward to Newborn Unit (NBU)', context:{ text:'Poor flow of care from labor ward to Newborn Unit (NBU)', type:'Barrier', strategies:[1,13] } },
+        { neutral:'Reliability of electric power and backup power sources', context:{ text:'Unreliable electric power and poor backup power sources', type:'Barrier', strategies:[1,12,13] } },
+        { neutral:'Adequate medical gas and vacuum systems', context:{ text:'Poor medical gas and vacuum systems', type:'Barrier', strategies:[1,8,13] } },
+        { neutral:'Adequate Water, Sanitation and Hygiene (WASH) facilities', context:{ text:'Insufficient Water, Sanitation and Hygiene (WASH) facilities', type:'Barrier', strategies:[1,12,13] } },
+        'Adequate number of Biomedical Engineering (BME) workshops',
+        { neutral:'Blood culture availability', context:{ text:'Blood cultures unavailable', type:'Barrier', strategies:[1,8,9,12] } }
       ] },
       { name:'Financing', items:[
         { neutral:'Donor funding', context:{ text:'Donor funding', type:'Facilitator', strategies:[6,12] } },
         { neutral:'Government financing', context:{ text:'Government financing', type:'Both', strategies:[12] } },
+        { neutral:'Budget allocation to SSNC in national and facility budgets', context:{ text:'No budget allocation to SSNC in national/facility budgets', type:'Barrier', strategies:[1,12] } },
+        'Budget allocation to account for lifetime of devices',
         { neutral:'Long-term funding', context:{ text:'Long-term funding', type:'Both', strategies:[6,12] } },
-        { neutral:'Budget allocations for SSNC in national and facility budgets', context:{ text:'No budget allocation to SSNC in national/facility budgets', type:'Barrier', strategies:[1,12] } },
-        { neutral:'No poverty', context:{ text:'Poverty', type:'Barrier', strategies:[1] } },
-        { neutral:'Insurance coverage', context:{ text:'Little insurance coverage', type:'Barrier', strategies:[] } },
-        { neutral:'Exempted service reimbursement system', context:{ text:'Poor exempted service reimbursement system', type:'Barrier', strategies:[] } }
+        { neutral:'Availability of insurance coverage', context:{ text:'Little insurance coverage', type:'Barrier', strategies:[] } },
+        { neutral:'Resource constraints', context:{ text:'Poverty', type:'Barrier', strategies:[1] } },
+        'User fees'
+      ] },
+      { name:'Care delivery', items:[
+        'Baseline coverage rates for Level 2+ evidence-based interventions (EBIs)'
+      ] },
+      { name:'External health system shocks', items:[
+        'COVID-19',
+        'Weather shocks (cyclone, flooding, etc.)',
+        'Fragility, conflict, and violence (FCV)',
+        'Loss of foreign aid and funding'
       ] },
     ]
   },
